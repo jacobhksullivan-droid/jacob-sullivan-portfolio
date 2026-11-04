@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+._*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Local-only stuff (never commit)
+.env
+.env.*
+*.local
+private/
+.vercel/
+
+# Raw / source files: keep big masters out of the repo
+*.aep
+*.aep Logs/
+*.prproj
+*.c4d
+*.blend
+*.blend1
+*.psd
+*.ai
+*.mov
+*.zip

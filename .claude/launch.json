@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/Users/jacobsullivan/Documents/portfolio/tools/devserver.py", "8780"],
+      "port": 8780
+    },
+    {
+      "name": "portfolio-attach",
+      "url": "http://localhost:8780"
+    }
+  ]
+}
