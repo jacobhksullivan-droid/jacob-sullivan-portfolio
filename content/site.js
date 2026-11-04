@@ -14,8 +14,9 @@ window.SITE = {
   // Short line shown on top of the reel, bottom left. Set to "" to remove it.
   positioning: "2D & 3D motion designer. Sydney.",
 
-  // The big line on the home page, under the reel
-  headline: "I make motion design and 3D for brands, from first idea to final render.",
+  // OPTIONAL big statement under the reel, with a "Get in touch" button.
+  // Off by default: the line on the reel already says who you are (per the research brief).
+  headline: "",
 
   // Shown on the Contact page and in the closing block. Set to "" to hide.
   availability: "Open to freelance projects and full-time roles.",

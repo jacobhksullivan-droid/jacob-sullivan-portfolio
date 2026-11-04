@@ -383,18 +383,21 @@
         '<div class="hero__shade" aria-hidden="true"></div>' +
         ((controls || S.positioning) ?
           '<div class="hero__overlay">' +
-            (S.positioning ? '<p class="hero__line">' + esc(S.positioning) + "</p>" : "") +
+            // The line on the reel is the page's main heading, unless a separate headline is set
+            (S.positioning ? (S.headline ? '<p class="hero__line">' : '<h1 class="hero__line">') + esc(S.positioning) + (S.headline ? "</p>" : "</h1>") : "") +
             (controls ? '<div class="hero__controls">' + controls + "</div>" : "") +
           "</div>" : "") +
       "</section>" +
+      (!S.positioning && !S.headline ? '<h1 class="visually-hidden">' + esc(S.name) + ", " + esc(S.roleLine) + "</h1>" : "") +
 
+      (S.headline ?
       '<section class="intro wrap">' +
         '<h1 class="intro__headline reveal">' + esc(S.headline) + "</h1>" +
         '<div class="intro__row reveal" style="--d:120ms">' +
           '<p class="intro__role">' + esc(S.roleLine) + "</p>" +
           '<a class="btn" href="' + esc(mailto()) + '">Get in touch ' + arrow + "</a>" +
         "</div>" +
-      "</section>" +
+      "</section>" : "") +
 
       (brands ?
       '<section class="brands" aria-label="' + esc(S.brandsLabel || "Brands") + '">' +
