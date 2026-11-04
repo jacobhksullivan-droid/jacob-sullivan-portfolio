@@ -121,7 +121,7 @@ Second paragraph. Leave a blank line between paragraphs.`,
    ```
 3. Refresh. If it looks too heavy or too small next to the others, change `size` (e.g. `0.7` smaller, `1.3` bigger).
 
-Still text, waiting for a logo: The Rugby Pod, Taldumande Youth Services, L'Oréal, Pictet.
+Still text, waiting for a logo: L'Oréal, Pictet.
 
 Tip: crop the logo tight (no empty margin around it), otherwise it looks smaller than the rest.
 
