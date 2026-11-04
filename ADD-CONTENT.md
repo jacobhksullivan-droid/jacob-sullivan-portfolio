@@ -120,7 +120,7 @@ Right now Jim Beam, Suntory and Genius Sports are set up as case studies.
 
 - **Hide:** change `visible: true` to `visible: false`. The block stays in the file, but the project disappears from the site.
 - **Take it off the home page but keep it on Work:** `featured: false`.
-- **Reorder:** cut a whole block, from its `{` down to its `},`, and paste it where you want it. The order in the file is the order on the site. The home page shows the first 6 projects marked `featured: true`.
+- **Reorder:** cut a whole block, from its `{` down to its `},`, and paste it where you want it. The order in the file is the order on the site. The home page shows every project marked `featured: true`.
 
 ---
 

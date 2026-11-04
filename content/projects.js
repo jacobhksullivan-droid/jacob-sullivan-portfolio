@@ -29,7 +29,7 @@
    details           short silent loops (3 to 9 s, small mp4s):
                        [{ video: "media/jb-detail-1.mp4", poster: "images/jb-detail-1.jpg", caption: "Lighting pass" }]
    visible       true shows it, false hides it everywhere
-   featured      true puts it in "Selected work" on the home page (first 6 shown)
+   featured      true puts it in "Selected work" on the home page
    placeholder   true while it still has made-up or missing media. Set to false when it's real.
    ========================================================================== */
 
@@ -191,7 +191,7 @@ It was part of two busy years there, working with partners like the NFL and the 
     videoDate: null,
     credits: [{ role: "Agency", name: "Fuel" }],
     visible: true,
-    featured: false,
+    featured: true,
     placeholder: true
   },
   {
@@ -209,7 +209,7 @@ It was part of two busy years there, working with partners like the NFL and the 
     videoDate: null,
     credits: [],
     visible: true,
-    featured: false,
+    featured: true,
     placeholder: false
   }
 ];

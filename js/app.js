@@ -363,9 +363,9 @@
         '<svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><rect x="2" y="1" width="2.5" height="10"/><rect x="7.5" y="1" width="2.5" height="10"/></svg></button>';
     }
 
+    // Home shows every project marked featured: true, in file order
     var featured = visible.filter(function (p) { return p.featured; });
-    if (featured.length < 6) featured = featured.concat(visible.filter(function (p) { return !p.featured; }));
-    featured = featured.slice(0, 6);
+    if (!featured.length) featured = visible.slice(0, 6);
 
     // Each brand is either "Name" (shown as text) or { name: "Name", logo: "images/logos/x.svg", size: 1 }
     var brands = (S.brands || []).map(function (b) {
