@@ -35,6 +35,62 @@
 
 window.PROJECTS = [
   {
+    slug: "taldumande-youth-services",
+    title: "50th birthday animation",
+    client: "Taldumande Youth Services",
+    year: "2026",
+    role: "Animation",
+    tools: ["After Effects", "Claude Code (After Effects MCP)"],
+    summary: "A slow, emotional film built around one simple motif: a ball.",
+    description: `I took a set of storyboards for Taldumande Youth Services and brought them to life as a slow, emotional piece with voice-over and music. A ball carries the feeling through the whole film.
+
+I built it in After Effects, using an After Effects MCP to speed up the set-up so more of my time went into the animation.`,
+    thumbnail: "images/taldumande-thumb.jpg",
+    previewVideo: "media/taldumande-loop.mp4",
+    video: { vimeo: "1243128832" },
+    videoDate: "2026-11-03",
+    credits: [{ role: "Agency", name: "Fuel" }],
+    visible: true,
+    featured: true,
+    placeholder: false
+  },
+  {
+    slug: "school-of-motion-final",
+    title: "Animation Bootcamp final project",
+    client: "School of Motion",
+    year: "2022",
+    role: "Design and animation",
+    tools: [],
+    summary: "My final project from School of Motion's Animation Bootcamp: bold shapes, loud colour and a lot of keyframes.",
+    description: `This was my final project for School of Motion's Animation Bootcamp in 2022, a 35-second piece where I got to put everything the course taught me into practice.`,
+    thumbnail: "images/school-of-motion-thumb-2.jpg",
+    previewVideo: "media/school-of-motion-loop-2.mp4",
+    video: { file: "media/school-of-motion.mp4" },
+    videoDate: null,
+    credits: [],
+    visible: true,
+    featured: true,
+    placeholder: false
+  },
+  {
+    slug: "landart-brand-reel",
+    title: "Brand and website reel",
+    client: "Landart",
+    year: "2026",
+    role: "Motion design, 3D and edit",
+    tools: [],
+    summary: "A reel showing off Landart's new brand and website, from phone to laptop to the gardens themselves.",
+    description: `A reel for Landart's new brand and website. It moves from the identity, onto the site on a phone, through the garden photography and onto the desktop site, all in 44 seconds.`,
+    thumbnail: "images/landart-thumb.jpg",
+    previewVideo: "media/landart-loop.mp4",
+    video: null,
+    videoDate: null,
+    credits: [{ role: "Agency", name: "Fuel" }],
+    visible: true,
+    featured: true,
+    placeholder: true
+  },
+  {
     slug: "jim-beam-ooh",
     title: "Out-of-home rollout",
     client: "Jim Beam",
@@ -109,26 +165,6 @@ To move the viewer through it, I used a depth camera with layers of waves, so ea
     placeholder: true
   },
   {
-    slug: "taldumande-youth-services",
-    title: "50th birthday animation",
-    client: "Taldumande Youth Services",
-    year: "2026",
-    role: "Animation",
-    tools: ["After Effects", "Claude Code (After Effects MCP)"],
-    summary: "A slow, emotional film built around one simple motif: a ball.",
-    description: `I took a set of storyboards for Taldumande Youth Services and brought them to life as a slow, emotional piece with voice-over and music. A ball carries the feeling through the whole film.
-
-I built it in After Effects, using an After Effects MCP to speed up the set-up so more of my time went into the animation.`,
-    thumbnail: "images/taldumande-thumb.jpg",
-    previewVideo: "media/taldumande-loop.mp4",
-    video: { vimeo: "1243128832" },
-    videoDate: "2026-11-03",
-    credits: [{ role: "Agency", name: "Fuel" }],
-    visible: true,
-    featured: true,
-    placeholder: false
-  },
-  {
     slug: "the-rugby-pod",
     title: "Tactics analysis and Shorts",
     client: "Dan Biggar, The Rugby Pod",
@@ -175,41 +211,5 @@ It was part of two busy years there, working with partners like the NFL and the 
     visible: true,
     featured: true,
     placeholder: true
-  },
-  {
-    slug: "landart-brand-reel",
-    title: "Brand and website reel",
-    client: "Landart",
-    year: "2026",
-    role: "Motion design, 3D and edit",
-    tools: [],
-    summary: "A reel showing off Landart's new brand and website, from phone to laptop to the gardens themselves.",
-    description: `A reel for Landart's new brand and website. It moves from the identity, onto the site on a phone, through the garden photography and onto the desktop site, all in 44 seconds.`,
-    thumbnail: "images/landart-thumb.jpg",
-    previewVideo: "media/landart-loop.mp4",
-    video: null,
-    videoDate: null,
-    credits: [{ role: "Agency", name: "Fuel" }],
-    visible: true,
-    featured: true,
-    placeholder: true
-  },
-  {
-    slug: "school-of-motion-final",
-    title: "Animation Bootcamp final project",
-    client: "School of Motion",
-    year: "2022",
-    role: "Design and animation",
-    tools: [],
-    summary: "My final project from School of Motion's Animation Bootcamp: bold shapes, loud colour and a lot of keyframes.",
-    description: `This was my final project for School of Motion's Animation Bootcamp in 2022, a 35-second piece where I got to put everything the course taught me into practice.`,
-    thumbnail: "images/school-of-motion-thumb-2.jpg",
-    previewVideo: "media/school-of-motion-loop-2.mp4",
-    video: { file: "media/school-of-motion.mp4" },
-    videoDate: null,
-    credits: [],
-    visible: true,
-    featured: true,
-    placeholder: false
   }
 ];
