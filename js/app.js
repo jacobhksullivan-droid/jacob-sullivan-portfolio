@@ -9,7 +9,6 @@
   var host = location.hostname;
   var isDev = host === "localhost" || host === "127.0.0.1" || host === "[::1]" || /\.(localhost|test)$/.test(host);
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  var canHover = window.matchMedia("(hover: hover) and (pointer: fine)");
   root.classList.add("js");
   if (isDev) root.classList.add("is-dev");
 
@@ -132,6 +131,35 @@
     if (noindex) meta("name", "robots", "noindex");
   }
 
+  /* Tells Google about a video (VideoObject structured data) so it can appear in
+     video search. Only added once the video, a thumbnail and a date are all set. */
+  function videoData(name, description, v, thumb, date) {
+    if (!hasVideo(v) || !date) return;
+    var base = (S.url || "").replace(/\/$/, "");
+    var thumbUrl = posterFor(v, thumb);
+    if (!thumbUrl) return;
+    if (thumbUrl.charAt(0) === "/") thumbUrl = base + thumbUrl;
+    var data = {
+      "@context": "https://schema.org", "@type": "VideoObject",
+      name: name, description: String(description || name).slice(0, 300),
+      thumbnailUrl: thumbUrl, uploadDate: date
+    };
+    if (v.file) data.contentUrl = base + src(v.file); else data.embedUrl = embedUrl(v, false);
+    var s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.textContent = JSON.stringify(data);
+    document.head.appendChild(s);
+  }
+
+  /* Vercel Web Analytics: switch on in Vercel first, then set analytics: true in site.js */
+  function analytics() {
+    if (!S.analytics || isDev) return;
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    var s = document.createElement("script");
+    s.defer = true; s.src = "/_vercel/insights/script.js";
+    document.head.appendChild(s);
+  }
+
   /* ---------- header, menu, footer ---------- */
 
   var NAV = [
@@ -251,38 +279,46 @@
     }
     return '<article class="card reveal" style="--d:' + ((i % 2) * 90) + 'ms">' +
       '<a class="card__link" href="/work/' + encodeURIComponent(p.slug) + '"' +
-        (p.previewVideo ? ' data-preview="' + esc(src(p.previewVideo)) + '"' : "") + ">" +
+        (p.previewVideo ? ' data-preview="' + esc(src(p.previewVideo)) + '"' : "") +
+        (p.thumbnail ? ' data-poster="' + esc(src(p.thumbnail)) + '"' : "") + ">" +
+        (p.client ? '<p class="label card__client">' + esc(p.client) + "</p>" : "") +
         '<h3 class="card__title"><span>' + esc(p.title) + "</span></h3>" +
         '<p class="card__summary">' + esc(p.summary) + "</p>" +
         '<div class="card__media">' + media + (p.placeholder ? devTag() : "") + "</div>" +
       "</a></article>";
   }
 
+  /* Card loops play silently while the card is on screen (phones too) and pause
+     when it scrolls away. Nothing downloads until a card is close to the screen.
+     With "reduce motion" switched on, the still thumbnail stays instead. */
   function wireCardPreviews(scope) {
-    $$("[data-preview]", scope).forEach(function (a) {
-      var box = $(".card__media", a), vid = null;
-      function start() {
-        if (!canHover.matches || reduceMotion.matches) return;
-        if (!vid) {
-          vid = document.createElement("video");
-          vid.muted = true; vid.loop = true; vid.playsInline = true;
-          vid.setAttribute("muted", ""); vid.setAttribute("playsinline", ""); vid.setAttribute("aria-hidden", "true");
-          vid.preload = "auto";
-          vid.src = a.getAttribute("data-preview");
-          box.appendChild(vid);
-        }
-        var pr = vid.play();
-        if (pr && pr.catch) pr.catch(function () {});
-        box.classList.add("is-previewing");
-      }
-      function stop() {
-        box.classList.remove("is-previewing");
-        if (vid) vid.pause();
-      }
-      a.addEventListener("mouseenter", start);
-      a.addEventListener("mouseleave", stop);
-      a.addEventListener("focus", start);
-      a.addEventListener("blur", stop);
+    var cards = $$("[data-preview]", scope);
+    if (!cards.length || reduceMotion.matches) return;
+    function setup(a) {
+      var box = $(".card__media", a);
+      var vid = document.createElement("video");
+      vid.muted = true; vid.loop = true; vid.playsInline = true; vid.autoplay = false;
+      vid.setAttribute("muted", ""); vid.setAttribute("playsinline", ""); vid.setAttribute("aria-hidden", "true");
+      vid.preload = "none";
+      if (a.getAttribute("data-poster")) vid.poster = a.getAttribute("data-poster");
+      vid.src = a.getAttribute("data-preview");
+      vid.addEventListener("playing", function () { box.classList.add("is-previewing"); });
+      box.appendChild(vid);
+      return vid;
+    }
+    function play(a) {
+      a._vid = a._vid || setup(a);
+      var pr = a._vid.play();
+      if (pr && pr.catch) pr.catch(function () {});
+    }
+    function pause(a) { if (a._vid) a._vid.pause(); }
+    if (!("IntersectionObserver" in window)) { cards.forEach(play); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) play(en.target); else pause(en.target); });
+    }, { rootMargin: "120px 0px", threshold: 0.25 });
+    cards.forEach(function (a) { io.observe(a); });
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) cards.forEach(pause);
     });
   }
 
@@ -291,6 +327,7 @@
     return '<section class="closing wrap reveal" aria-labelledby="closing-title">' +
       '<h2 class="closing__title" id="closing-title">' + esc(c.title || "Have a project in mind?") + "</h2>" +
       (c.text ? '<p class="closing__text">' + esc(c.text) + "</p>" : "") +
+      (S.availability ? '<p class="availability">' + esc(S.availability) + "</p>" : "") +
       '<a class="btn" href="' + esc(mailto()) + '">' + esc(c.button || "Email me") + " " + arrow + "</a>" +
     "</section>";
   }
@@ -313,8 +350,13 @@
       media = ph("Add reel here", true);
     }
     var controls = "";
+    var playLabel = '<span class="hero__play-icon" aria-hidden="true"></span><span>Play ' + esc(reelTitle) + "</span>" +
+      (R.length ? '<span class="hero__len">' + esc(R.length) + "</span>" : "");
     if (hasVideo(R.video)) {
-      controls += '<button class="hero__play" type="button" data-reel-open><span class="hero__play-icon" aria-hidden="true"></span>Play reel</button>';
+      controls += '<button class="hero__play" type="button" data-reel-open>' + playLabel + "</button>";
+    } else if (isDev) {
+      // Preview of the button on your computer only, until the reel is added
+      controls += '<button class="hero__play" type="button" disabled title="Add the reel in content/reel.js">' + playLabel + "</button>";
     }
     if (loop) {
       controls += '<button class="hero__pause" type="button" aria-label="Pause background video" data-loop-toggle>' +
@@ -339,7 +381,11 @@
       '<section class="hero" data-hero aria-label="' + esc(reelTitle) + '">' +
         '<div class="hero__media">' + media + "</div>" +
         '<div class="hero__shade" aria-hidden="true"></div>' +
-        (controls ? '<div class="hero__controls">' + controls + "</div>" : "") +
+        ((controls || S.positioning) ?
+          '<div class="hero__overlay">' +
+            (S.positioning ? '<p class="hero__line">' + esc(S.positioning) + "</p>" : "") +
+            (controls ? '<div class="hero__controls">' + controls + "</div>" : "") +
+          "</div>" : "") +
       "</section>" +
 
       '<section class="intro wrap">' +
@@ -381,6 +427,7 @@
       "</dialog>";
 
     setMeta((S.name || "") + " | " + (S.roleLine || "Motion designer"), S.description, "/");
+    videoData((S.name || "") + " " + reelTitle, S.description, R.video, R.poster, R.date);
 
     var dlg = $(".lightbox", main), frame = $("[data-reel-frame]", main);
     var openBtn = $("[data-reel-open]", main);
@@ -434,6 +481,44 @@
     var credits = (p.credits || []).filter(function (c) { return c && (c.role || c.name); });
 
     function metaRow(label, val) { return val ? '<div><dt class="label">' + label + "</dt><dd>" + esc(val) + "</dd></div>" : ""; }
+    var resp = (p.responsibilities || []).filter(Boolean);
+    var respRow = resp.length ? '<div><dt class="label">Responsibilities</dt><dd><ul class="meta__list">' +
+      resp.map(function (r) { return "<li>" + esc(r) + "</li>"; }).join("") + "</ul></dd></div>" : "";
+
+    /* Case-study sections (only for projects with caseStudy: true).
+       Empty sections are hidden on the live site; on your computer they show
+       as placeholders so you can see what to fill in. */
+    function textRow(title, text, hint) {
+      if (text) return '<section class="row reveal"><h2 class="row__title">' + title + '</h2><div class="row__text">' + paras(text) + "</div></section>";
+      return isDev ? '<section class="row"><h2 class="row__title">' + title + '</h2><div class="dev-hint">' + devTag(true) + " " + esc(hint) + "</div></section>" : "";
+    }
+    function mediaTile(m, loop) {
+      var inner;
+      if (loop && m.video) {
+        return '<figure class="tile reveal"><div data-preview="' + esc(src(m.video)) + '"' + (m.poster ? ' data-poster="' + esc(src(m.poster)) + '"' : "") + ">" +
+          '<div class="card__media tile__media">' + (m.poster ? '<img src="' + esc(src(m.poster)) + '" alt="" loading="lazy" decoding="async">' : ph("Loop")) + "</div></div>" +
+          (m.caption ? '<figcaption class="tile__cap">' + esc(m.caption) + "</figcaption>" : "") + "</figure>";
+      }
+      inner = m.image ? '<img src="' + esc(src(m.image)) + '" alt="' + esc(m.caption || "") + '" loading="lazy" decoding="async">' : ph("Add frame");
+      return '<figure class="tile reveal"><div class="tile__media">' + inner + "</div>" +
+        (m.caption ? '<figcaption class="tile__cap">' + esc(m.caption) + "</figcaption>" : "") + "</figure>";
+    }
+    function gallery(title, list, loop, hint) {
+      list = (list || []).filter(function (m) { return m && (m.image || m.video); });
+      if (!list.length && !isDev) return "";
+      var body = list.length ? list.map(function (m) { return mediaTile(m, loop); }).join("")
+        : [1, 2, 3].map(function () { return '<figure class="tile"><div class="tile__media">' + ph(hint) + "</div></figure>"; }).join("");
+      return '<section class="gallery-block"><h2 class="label">' + title + "</h2>" +
+        '<div class="gallery' + (loop ? " gallery--loops" : "") + '">' + body + "</div></section>";
+    }
+    var caseStudy = p.caseStudy ?
+      '<div class="case">' +
+        textRow("The brief", p.brief, "Add the brief in projects.js (brief: ...)") +
+        gallery("Process", p.process, false, "Add process frame") +
+        textRow("Key decision", p.keyDecision, "Add the key creative decision (keyDecision: ...)") +
+        textRow("Result", p.result, "Add the result (result: ...). Only real outcomes.") +
+        gallery("Details", p.details, true, "Add detail loop") +
+      "</div>" : "";
 
     main.innerHTML =
       '<section class="project__video wrap">' +
@@ -446,10 +531,11 @@
             '<div class="project__desc reveal" style="--d:100ms">' + paras(p.description) + "</div>" +
           "</div>" +
           '<dl class="meta reveal" style="--d:180ms">' +
-            metaRow("Client", p.client) + metaRow("Role", p.role) + metaRow("Year", p.year) +
-            metaRow("Tools", tools.join(", ")) +
+            metaRow("Client", p.client) + metaRow("Agency", p.agency) + metaRow("Role", p.role) + respRow +
+            metaRow("Year", p.year) + metaRow("Tools", tools.join(", ")) +
           "</dl>" +
         "</div>" +
+        caseStudy +
         (credits.length ?
           '<section class="credits reveal" aria-labelledby="credits-title"><h2 class="label" id="credits-title">Credits</h2><ul class="credits__list">' +
           credits.map(function (c) { return '<li><span class="muted">' + esc(c.role) + "</span><span>" + esc(c.name) + "</span></li>"; }).join("") +
@@ -462,7 +548,9 @@
       "</article>" + closing();
 
     setMeta(p.title + " | " + S.name, p.summary || S.description, "/work/" + p.slug);
+    videoData(p.title, p.summary || p.description, p.video, p.thumbnail, p.videoDate);
     wirePlayers(main, function () { return p.video; });
+    wireCardPreviews(main);
   }
 
   function renderAbout(main) {
@@ -484,6 +572,13 @@
       return '<li><span>' + esc(e.name) + (e.by ? ' <span class="muted">&middot; ' + esc(e.by) + "</span>" : "") + '</span><span class="job__dates">' + esc(e.dates) + "</span></li>";
     }).join("");
     function row(title, body, d) { return '<section class="row reveal"' + (d ? ' style="--d:' + d + 'ms"' : "") + '><h2 class="row__title">' + title + "</h2><div>" + body + "</div></section>"; }
+    var clients = (S.brands || []).map(function (b) { return typeof b === "string" ? b : (b && b.name) || ""; }).filter(Boolean);
+    var t = A.testimonial || {};
+    var quote = t.quote ?
+      '<figure class="quote reveal"><blockquote><p>' + esc(t.quote) + "</p></blockquote>" +
+        '<figcaption><span class="quote__name">' + esc(t.name) + "</span>" + (t.role ? ' <span class="muted">' + esc(t.role) + "</span>" : "") + "</figcaption></figure>"
+      : (isDev ? '<div class="dev-hint" style="margin-top:32px">' + devTag(true) + " Testimonial slot: add a real quote in about.js (testimonial). Hidden on the live site until then.</div>" : "");
+    var cvBtn = S.cv ? '<p style="margin-top:8px"><a class="btn btn--ghost" href="' + esc(src(S.cv)) + '" download>Download CV ' + arrow + "</a></p>" : "";
 
     main.innerHTML =
       '<section class="page-top wrap">' +
@@ -491,10 +586,12 @@
         '<h1 class="page-title reveal" style="margin-top:16px;margin-bottom:clamp(40px,6vw,96px)">' + esc(S.name) + "</h1>" +
         '<div class="about__top">' +
           '<figure class="about__photo reveal">' + photo + "</figure>" +
-          '<div class="about__bio reveal" style="--d:120ms">' + paras(A.bio) + "</div>" +
+          '<div class="about__bio reveal" style="--d:120ms">' + paras(A.bio) + cvBtn + "</div>" +
         "</div>" +
+        quote +
       "</section>" +
       '<div class="wrap section">' +
+        (clients.length ? row("Clients and companies", '<ul class="clients">' + clients.map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") + "</ul>") : "") +
         row("Experience", '<ol class="timeline">' + jobs + "</ol>" +
           (earlier ? '<div style="margin-top:40px"><p class="label" style="margin-bottom:12px">Earlier</p><ul class="earlier">' + earlier + "</ul></div>" : "")) +
         row("Skills", tags(A.skills)) +
@@ -515,6 +612,7 @@
       '<section class="page-top wrap">' +
         '<p class="label reveal">Contact</p>' +
         '<h1 class="page-title reveal" style="margin-top:16px;max-width:14ch">' + esc((S.closing && S.closing.title) || "Have a project in mind?") + "</h1>" +
+        (S.availability ? '<p class="availability reveal">' + esc(S.availability) + "</p>" : "") +
         '<a class="contact__email link-u reveal" href="' + esc(mailto()) + '">' + esc(S.email) + "</a>" +
         '<div class="contact__actions reveal">' +
           '<a class="btn" href="' + esc(mailto()) + '">Email me ' + arrow + "</a>" +
@@ -581,6 +679,14 @@
     });
   }
 
+  // Page-to-page transitions get skipped when a tab is in the background; that's fine, so keep it out of the console.
+  ["pagereveal", "pageswap"].forEach(function (type) {
+    window.addEventListener(type, function (e) {
+      var vt = e.viewTransition;
+      if (vt) [vt.ready, vt.finished, vt.updateCallbackDone].forEach(function (pr) { if (pr && pr.catch) pr.catch(function () {}); });
+    });
+  });
+
   /* ---------- go ---------- */
 
   try {
@@ -590,6 +696,7 @@
     renderHeader();
     renderFooter();
     wireReveals();
+    analytics();
   } catch (err) {
     missing.push(String(err && err.message || err));
     if (window.console) console.error(err);

@@ -17,9 +17,11 @@ Personal motion design portfolio. Plain static site (HTML, CSS, vanilla JS), **n
 
 ## Content (the only files Jacob edits)
 - `content/site.js`: name, headline, email, url, socials, brand strip, showPhone, closing CTA. Each brand is `"Name"` (text) or `{ name, logo: "images/logos/x.svg", size }` (logo in its own colours; `--logo-filter` in style.css can force all-black; `size` is an optical-weight multiplier). Logos in `images/logos/`: Jim Beam, Suntory -196, Canadian Club, Genius Sports, Premier League, NFL, Taldumande, The Rugby Pod (white-on-black original recoloured to ink) supplied by Jacob (cropped to content, transparent, 128px tall PNG); Prada, Samsung, YSL from Wikimedia Commons. Still text: L'Oréal, Pictet.
-- `content/reel.js`: `video` (`{vimeo}`/`{youtube}`/`{file}`), optional `loop` (silent hero mp4) and `poster`.
+- `content/reel.js`: `title` + `length` (play-button label), `video` (`{vimeo}`/`{youtube}`/`{file}`), optional `loop` (silent hero mp4), `poster`, `date` (enables VideoObject JSON-LD).
+- `site.js` also: `positioning` (line over the reel; "" removes it, an experiment Jacob may revert), `availability`, `cv` (PDF path, must not contain his phone), `analytics` (loads Vercel Web Analytics; only after he enables it in Vercel).
 - `content/projects.js`: one object per project (slug, title, client, year, role, tools[], summary, description, thumbnail, previewVideo, video, credits[], visible, featured, placeholder). File order = site order. Home shows first 6 `featured`.
-- `content/about.js`: photo, teaser, bio[], experience[], earlier[], skills[], tools[], education[], outside.
+- `content/about.js`: photo, teaser, bio[], experience[], earlier[], skills[], tools[], education[], outside, testimonial {quote,name,role} (real quotes only).
+- Projects with `caseStudy: true` (Jim Beam, Suntory, Genius Sports) get agency, responsibilities[], brief, keyDecision, result, process[] ({image,caption}), details[] ({video,poster,caption} loops). Card `previewVideo` and detail loops autoplay muted while on screen (IntersectionObserver), not under reduced motion. `videoDate` enables JSON-LD per project.
 - Missing media renders as labelled placeholders. `placeholder: true` shows a yellow tag **only on localhost**.
 - Plain-English editing guide for Jacob: `ADD-CONTENT.md`. Keep it in sync if fields change.
 

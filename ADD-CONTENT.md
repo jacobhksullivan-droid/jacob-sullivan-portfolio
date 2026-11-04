@@ -40,7 +40,9 @@ Open `content/reel.js` and change `video: null,` to:
   video: { vimeo: "123456789" },
 ```
 
-That's it. A "Play reel" button appears on the home page.
+That's it. A "Play 2026 Reel" button appears on the home page. Change `title` and `length` in the same file to update the label.
+
+Also set `date: "2026-11-15"` (the day it went up). With a date and a poster, Google can show the reel in video results.
 
 **Optional extras:**
 - A still frame shown before it plays: save a 1920×1080 JPG as `images/reel-poster.jpg`, then set
@@ -90,7 +92,27 @@ Second paragraph. Leave a blank line between paragraphs.`,
 
 **Replacing one of the six placeholder projects** is the same: fill in `thumbnail`, `video` and the text, then change `placeholder: true` to `placeholder: false`.
 
-**Hover preview (optional):** save a 3 to 5 second silent mp4 in `media`, then set `previewVideo: "media/my-new-project-preview.mp4",`. It plays when someone hovers over the card.
+**Card loop (optional):** save a 3 to 5 second silent mp4 in `media` (under ~3 MB), then set `previewVideo: "media/my-new-project-preview.mp4",`. It plays silently whenever the card is on screen, on phones too. People with "reduce motion" switched on see the thumbnail instead.
+
+**Turn a project into a full case study:** add `caseStudy: true,` and fill in any of these (empty ones stay hidden on the live site; on your computer they show as yellow placeholders):
+
+```js
+    caseStudy: true,
+    agency: "Fuel",
+    responsibilities: ["3D build", "Lighting and rendering"],
+    brief: "What the client asked for.",
+    keyDecision: "The main creative call you made, and why.",
+    result: "What happened. Real outcomes only.",
+    process: [
+      { image: "images/jb-board-1.jpg", caption: "Storyboard" },
+      { image: "images/jb-style-1.jpg", caption: "Style frame" }
+    ],
+    details: [
+      { video: "media/jb-detail-1.mp4", poster: "images/jb-detail-1.jpg", caption: "Lighting pass" }
+    ],
+```
+
+Right now Jim Beam, Suntory and Genius Sports are set up as case studies.
 
 ---
 
@@ -132,6 +154,11 @@ Tip: crop the logo tight (no empty margin around it), otherwise it looks smaller
 - **Headline, email, brand names:** `content/site.js`.
 - **Social links:** `content/site.js` → `socials`. Paste full links, e.g. `linkedin: "https://www.linkedin.com/in/yourname",`. Empty ones stay hidden on the live site.
 - **Bio and CV details:** `content/about.js`.
+- **Line on top of the reel:** `positioning` in `content/site.js`. Set it to `""` to remove it.
+- **Availability line** (Contact page and closing block): `availability` in `content/site.js`. `""` hides it.
+- **CV download:** put the PDF in a `files` folder, e.g. `files/jacob-sullivan-cv.pdf`, then set `cv: "files/jacob-sullivan-cv.pdf",` in `content/site.js`. Use a version without your phone number.
+- **Testimonial:** `testimonial` in `content/about.js`. Only a real quote, with the person's OK. Hidden while empty.
+- **Visitor stats:** in Vercel open the project → **Analytics** → **Enable**, then set `analytics: true` in `content/site.js` and publish.
 - **The `[START DATE]` and `[YEAR]` placeholders:** search for `[` in `content/about.js` and `content/projects.js` and fill them in.
 
 ---

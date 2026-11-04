@@ -106,5 +106,12 @@ window.ABOUT = {
     { name: "A Levels", by: "Farnborough Sixth Form", dates: "" }
   ],
 
-  outside: "Outside work I'm usually in the ocean: surfing at Manly around three times a week, spearfishing and ocean swimming."
+  outside: "Outside work I'm usually in the ocean: surfing at Manly around three times a week, spearfishing and ocean swimming.",
+
+  // A real quote from someone you've worked with. Hidden while quote is "".
+  testimonial: {
+    quote: "",
+    name: "",
+    role: ""      // e.g. "Creative Director, Fuel"
+  }
 };

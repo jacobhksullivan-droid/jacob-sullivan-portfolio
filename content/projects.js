@@ -15,7 +15,19 @@
    previewVideo  OPTIONAL short silent loop played when the mouse is over the card,
                  e.g. "media/jim-beam-preview.mp4"  (keep it small: 2 to 5 MB)
    video         the full video: { vimeo: "ID" } or { youtube: "ID" } or { file: "media/x.mp4" }
+   videoDate     OPTIONAL "YYYY-MM-DD" the video went up. Lets Google show it in video results.
    credits       OPTIONAL list, e.g. [{ role: "Agency", name: "Fuel" }]
+
+   CASE STUDY (only when caseStudy: true; any empty part is hidden on the live site)
+   agency            e.g. "Fuel"
+   responsibilities  list of what you did, e.g. ["3D build", "Lighting"]
+   brief             what the client asked for
+   keyDecision       the main creative call you made, and why
+   result            what happened. Real outcomes only.
+   process           images of boards, style frames, tests:
+                       [{ image: "images/jb-board-1.jpg", caption: "Storyboard" }]
+   details           short silent loops (3 to 9 s, small mp4s):
+                       [{ video: "media/jb-detail-1.mp4", poster: "images/jb-detail-1.jpg", caption: "Lighting pass" }]
    visible       true shows it, false hides it everywhere
    featured      true puts it in "Selected work" on the home page (first 6 shown)
    placeholder   true while it still has made-up or missing media. Set to false when it's real.
@@ -36,7 +48,16 @@ Delivered in four aspect sizes and in 6, 7 and 10 second versions: 12 deliverabl
     thumbnail: null,
     previewVideo: null,
     video: null,
-    credits: [{ role: "Agency", name: "Fuel" }],
+    videoDate: null,
+    credits: [],
+    caseStudy: true,
+    agency: "Fuel",
+    responsibilities: ["3D build in Cinema 4D", "Lighting and rendering in Redshift", "Versioning across four sizes and three durations"],
+    brief: "",
+    keyDecision: "",
+    result: "",
+    process: [],
+    details: [],
     visible: true,
     featured: true,
     placeholder: true
@@ -55,7 +76,16 @@ A depth camera moves through layers of waves to carry the viewer from one part o
     thumbnail: null,
     previewVideo: null,
     video: null,
-    credits: [{ role: "Agency", name: "Fuel" }],
+    videoDate: null,
+    credits: [],
+    caseStudy: true,
+    agency: "Fuel",
+    responsibilities: ["Restructuring the reel into a narrative", "Voice-over led edit", "Depth camera and wave-layer animation"],
+    brief: "",
+    keyDecision: "",
+    result: "",
+    process: [],
+    details: [],
     visible: true,
     featured: true,
     placeholder: true
@@ -72,6 +102,7 @@ A depth camera moves through layers of waves to carry the viewer from one part o
     thumbnail: null,
     previewVideo: null,
     video: null,
+    videoDate: null,
     credits: [{ role: "Agency", name: "Fuel" }],
     visible: true,
     featured: true,
@@ -91,6 +122,7 @@ Built in After Effects, using an After Effects MCP to speed up the set-up and bu
     thumbnail: null,
     previewVideo: null,
     video: null,
+    videoDate: null,
     credits: [{ role: "Agency", name: "Fuel" }],
     visible: true,
     featured: true,
@@ -110,6 +142,7 @@ I scoped, priced and delivered the work independently, from brief to final expor
     thumbnail: null,
     previewVideo: null,
     video: null,
+    videoDate: null,
     credits: [],
     visible: true,
     featured: true,
@@ -129,7 +162,16 @@ It sat alongside wider work at Genius Sports with partners including the NFL and
     thumbnail: null,
     previewVideo: null,
     video: null,
+    videoDate: null,
     credits: [],
+    caseStudy: true,
+    agency: "In-house, Genius Sports",
+    responsibilities: ["Creative direction of the 3D renders", "Sizzle reel animation"],
+    brief: "",
+    keyDecision: "",
+    result: "",
+    process: [],
+    details: [],
     visible: true,
     featured: true,
     placeholder: true

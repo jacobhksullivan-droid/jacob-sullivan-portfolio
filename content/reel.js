@@ -2,11 +2,14 @@
    DEMO REEL
    The reel sits full width at the top of the home page.
 
-   video:  the full reel, with sound. Plays when someone clicks "Play reel".
+   title:  shown on the play button, e.g. "2026 Reel"
+   length: shown next to it, e.g. "1:00". "" hides it.
+
+   video:  the full reel, with sound. Plays when someone clicks "Play".
            Use ONE of these:
              { vimeo: "123456789" }
              { vimeo: "123456789/abc123def" }   (unlisted Vimeo: number/code from the share link)
-             { youtube: "dQw4w9WgXcQ" }
+             { youtube: "dQw4w9WgXcQ" }         (Vimeo is better: no ads or other people's videos)
              { file: "media/reel.mp4" }         (not recommended: big files don't belong on GitHub)
 
    loop:   OPTIONAL short silent loop that plays behind the home page header.
@@ -14,12 +17,16 @@
 
    poster: OPTIONAL still image shown before anything plays, e.g. "images/reel-poster.jpg"
 
+   date:   OPTIONAL date the reel went up, "YYYY-MM-DD". Lets Google show it in video results.
+
    Leave any of them as null and the site shows a placeholder instead.
    ========================================================================== */
 
 window.REEL = {
-  title: "Showreel",
+  title: "2026 Reel",
+  length: "1:00",
   video: null,
   loop: null,
-  poster: null
+  poster: null,
+  date: null
 };

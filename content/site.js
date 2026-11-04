@@ -11,8 +11,21 @@ window.SITE = {
   location: "Sydney, Australia",
   email: "Jacob.hksullivan@gmail.com",
 
+  // Short line shown on top of the reel, bottom left. Set to "" to remove it.
+  positioning: "3D & motion designer for brands. Sydney.",
+
   // The big line on the home page, under the reel
   headline: "I make motion design and 3D for brands, from first idea to final render.",
+
+  // Shown on the Contact page and in the closing block. Set to "" to hide.
+  availability: "Open to freelance projects and full-time roles.",
+
+  // Your CV as a PDF in the "files" folder, e.g. "files/jacob-sullivan-cv.pdf".
+  // null hides the download button. Use a version WITHOUT your phone number.
+  cv: null,
+
+  // Visitor stats. Turn on Web Analytics in Vercel first, then set to true.
+  analytics: false,
 
   // Used by Google and when the link is shared (keep it under ~155 characters)
   description: "Jacob Sullivan is a motion designer in Sydney making animation, 3D and video for brands like Jim Beam, Suntory and Genius Sports.",
