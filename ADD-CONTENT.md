@@ -112,6 +112,19 @@ Second paragraph. Leave a blank line between paragraphs.`,
 
 ---
 
+## Add a logo to the brand strip
+
+1. Save the logo in `images/logos`, e.g. `images/logos/jim-beam.svg`. Use **SVG**, or a **PNG with a transparent background** (a white background turns into a black box). Colour doesn't matter: the site shows every logo in solid black.
+2. In `content/site.js`, find the brand in `brands` and change the plain name, e.g. `"Jim Beam",`, to:
+   ```js
+     { name: "Jim Beam", logo: "images/logos/jim-beam.svg", size: 1 },
+   ```
+3. Refresh. If it looks too heavy or too small next to the others, change `size` (e.g. `0.7` smaller, `1.3` bigger).
+
+Still text, waiting for a logo: Jim Beam, Genius Sports, NFL, The Rugby Pod, Taldumande Youth Services, L'Oréal, Pictet.
+
+---
+
 ## Other quick edits
 
 - **Headline, email, brand names:** `content/site.js`.

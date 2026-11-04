@@ -38,20 +38,25 @@ window.SITE = {
   showPhone: false,
   phone: "",
 
-  // The scrolling strip of names on the home page
+  // The scrolling strip on the home page.
+  // A plain "Name" shows as text. To show a logo instead, use:
+  //   { name: "Name", logo: "images/logos/name.svg", size: 1 }
+  // Logos are shown in solid black automatically. Use SVG or a PNG with a
+  // transparent background. "size" nudges one logo bigger (1.3) or smaller (0.7)
+  // so they all look the same weight.
   brandsLabel: "Brands I've worked on",
   brands: [
     "Jim Beam",
-    "Suntory",
-    "Canadian Club",
+    { name: "Suntory", logo: "images/logos/suntory.svg", size: 0.7 },
+    { name: "Canadian Club", logo: "images/logos/canadian-club.svg", size: 1.5 },
     "Genius Sports",
-    "Premier League",
+    { name: "Premier League", logo: "images/logos/premier-league.svg", size: 1.4 },
     "NFL",
     "The Rugby Pod",
     "Taldumande Youth Services",
-    "Prada",
-    "Samsung",
-    "Yves Saint Laurent",
+    { name: "Prada", logo: "images/logos/prada.svg", size: 0.6 },
+    { name: "Samsung", logo: "images/logos/samsung.svg", size: 0.55 },
+    { name: "Yves Saint Laurent", logo: "images/logos/yves-saint-laurent.svg", size: 0.8 },
     "L'Oréal",
     "Pictet"
   ],

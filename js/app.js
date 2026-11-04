@@ -325,7 +325,15 @@
     if (featured.length < 6) featured = featured.concat(visible.filter(function (p) { return !p.featured; }));
     featured = featured.slice(0, 6);
 
-    var brands = (S.brands || []).map(function (b) { return '<li class="marquee__item">' + esc(b) + "</li>"; }).join("");
+    // Each brand is either "Name" (shown as text) or { name: "Name", logo: "images/logos/x.svg", size: 1 }
+    var brands = (S.brands || []).map(function (b) {
+      var name = typeof b === "string" ? b : (b && b.name) || "";
+      var logo = b && typeof b === "object" && b.logo;
+      if (!logo) return '<li class="marquee__item">' + esc(name) + "</li>";
+      var size = b.size && b.size > 0 ? b.size : 1;
+      return '<li class="marquee__item marquee__item--logo"><img src="' + esc(src(logo)) + '" alt="' + esc(name) +
+        '" decoding="async" style="--logo-size:' + size + '"></li>';
+    }).join("");
 
     main.innerHTML =
       '<section class="hero" data-hero aria-label="' + esc(reelTitle) + '">' +

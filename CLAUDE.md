@@ -16,7 +16,7 @@ Personal motion design portfolio. Plain static site (HTML, CSS, vanilla JS), **n
 - Never change hosting, account or security settings yourself. Ask Jacob to click them.
 
 ## Content (the only files Jacob edits)
-- `content/site.js`: name, headline, email, url, socials, brand strip, showPhone, closing CTA.
+- `content/site.js`: name, headline, email, url, socials, brand strip, showPhone, closing CTA. Each brand is `"Name"` (text) or `{ name, logo: "images/logos/x.svg", size }` (logo, forced to solid ink by CSS filter; `size` is an optical-weight multiplier). Logos in `images/logos/`: Suntory, Canadian Club, Prada, Samsung, YSL from Wikimedia Commons; Premier League lion from Simple Icons (CC0). Jacob supplies the rest from brand packs.
 - `content/reel.js`: `video` (`{vimeo}`/`{youtube}`/`{file}`), optional `loop` (silent hero mp4) and `poster`.
 - `content/projects.js`: one object per project (slug, title, client, year, role, tools[], summary, description, thumbnail, previewVideo, video, credits[], visible, featured, placeholder). File order = site order. Home shows first 6 `featured`.
 - `content/about.js`: photo, teaser, bio[], experience[], earlier[], skills[], tools[], education[], outside.
