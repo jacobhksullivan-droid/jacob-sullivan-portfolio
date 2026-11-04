@@ -112,15 +112,15 @@ To move the viewer through it, I used a depth camera with layers of waves, so ea
     slug: "taldumande-youth-services",
     title: "50th birthday animation",
     client: "Taldumande Youth Services",
-    year: "[YEAR]",
+    year: "2026",
     role: "Animation",
     tools: ["After Effects", "Claude Code (After Effects MCP)"],
     summary: "A slow, emotional film built around one simple motif: a ball.",
     description: `I took a set of storyboards for Taldumande Youth Services and brought them to life as a slow, emotional piece with voice-over and music. A ball carries the feeling through the whole film.
 
 I built it in After Effects, using an After Effects MCP to speed up the set-up so more of my time went into the animation.`,
-    thumbnail: null,
-    previewVideo: null,
+    thumbnail: "images/taldumande-thumb.jpg",
+    previewVideo: "media/taldumande-loop.mp4",
     video: null,
     videoDate: null,
     credits: [{ role: "Agency", name: "Fuel" }],
