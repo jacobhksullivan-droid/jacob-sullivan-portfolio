@@ -121,12 +121,12 @@ To move the viewer through it, I used a depth camera with layers of waves, so ea
 I built it in After Effects, using an After Effects MCP to speed up the set-up so more of my time went into the animation.`,
     thumbnail: "images/taldumande-thumb.jpg",
     previewVideo: "media/taldumande-loop.mp4",
-    video: null,
-    videoDate: null,
+    video: { vimeo: "1243128832" },
+    videoDate: "2026-11-03",
     credits: [{ role: "Agency", name: "Fuel" }],
     visible: true,
     featured: true,
-    placeholder: true
+    placeholder: false
   },
   {
     slug: "the-rugby-pod",
