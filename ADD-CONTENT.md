@@ -159,7 +159,7 @@ Tip: crop the logo tight (no empty margin around it), otherwise it looks smaller
 - **CV download:** put the PDF in a `files` folder, e.g. `files/jacob-sullivan-cv.pdf`, then set `cv: "files/jacob-sullivan-cv.pdf",` in `content/site.js`. Use a version without your phone number.
 - **Testimonial:** `testimonial` in `content/about.js`. Only a real quote, with the person's OK. Hidden while empty.
 - **Visitor stats:** in Vercel open the project → **Analytics** → **Enable**, then set `analytics: true` in `content/site.js` and publish.
-- **The `[START DATE]` and `[YEAR]` placeholders:** search for `[` in `content/about.js` and `content/projects.js` and fill them in.
+- **The `[START DATE]` and `[YEAR]` placeholders:** search for `[` in `content/projects.js` and fill them in. The CV has `[START DATE]` too: tell Claude the date and it will update the CV PDF.
 
 ---
 
