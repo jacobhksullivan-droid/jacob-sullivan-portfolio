@@ -41,22 +41,22 @@ window.SITE = {
   // The scrolling strip on the home page.
   // A plain "Name" shows as text. To show a logo instead, use:
   //   { name: "Name", logo: "images/logos/name.svg", size: 1 }
-  // Logos are shown in solid black automatically. Use SVG or a PNG with a
-  // transparent background. "size" nudges one logo bigger (1.3) or smaller (0.7)
+  // Logos show in their own colours. Use SVG or a PNG with a transparent
+  // background (no white logos: they vanish on the off-white page). "size" nudges one logo bigger (1.3) or smaller (0.7)
   // so they all look the same weight.
   brandsLabel: "Brands I've worked on",
   brands: [
-    "Jim Beam",
-    { name: "Suntory", logo: "images/logos/suntory.svg", size: 0.7 },
-    { name: "Canadian Club", logo: "images/logos/canadian-club.svg", size: 1.5 },
-    "Genius Sports",
-    { name: "Premier League", logo: "images/logos/premier-league.svg", size: 1.4 },
-    "NFL",
+    { name: "Jim Beam", logo: "images/logos/jim-beam.png", size: 1.7 },
+    { name: "Suntory -196", logo: "images/logos/suntory.png", size: 1.4 },
+    { name: "Canadian Club", logo: "images/logos/canadian-club.png", size: 1.3 },
+    { name: "Genius Sports", logo: "images/logos/genius-sports.png", size: 1.05 },
+    { name: "Premier League", logo: "images/logos/premier-league.png", size: 1.15 },
+    { name: "NFL", logo: "images/logos/nfl.png", size: 1.55 },
     "The Rugby Pod",
     "Taldumande Youth Services",
-    { name: "Prada", logo: "images/logos/prada.svg", size: 0.6 },
-    { name: "Samsung", logo: "images/logos/samsung.svg", size: 0.55 },
-    { name: "Yves Saint Laurent", logo: "images/logos/yves-saint-laurent.svg", size: 0.8 },
+    { name: "Prada", logo: "images/logos/prada.svg", size: 0.48 },
+    { name: "Samsung", logo: "images/logos/samsung.svg", size: 0.44 },
+    { name: "Yves Saint Laurent", logo: "images/logos/yves-saint-laurent.svg", size: 0.68 },
     "L'Oréal",
     "Pictet"
   ],

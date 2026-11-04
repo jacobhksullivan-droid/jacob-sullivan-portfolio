@@ -46,7 +46,7 @@
   --dur: 450ms;
   --dur-slow: 900ms;
   --marquee-speed: 48s;
-  --logo-h: clamp(22px, 1.2rem + 1vw, 36px);   /* height of logos in the brand strip */
+  --logo-h: clamp(28px, 1.3rem + 1.4vw, 46px);   /* height of logos in the brand strip */
   --logo-filter: none;                          /* logos in their own colours. All black instead: grayscale(1) brightness(0) */
 }
 
