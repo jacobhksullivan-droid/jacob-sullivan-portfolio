@@ -114,7 +114,7 @@ Second paragraph. Leave a blank line between paragraphs.`,
 
 ## Add a logo to the brand strip
 
-1. Save the logo in `images/logos`, e.g. `images/logos/jim-beam.svg`. Use **SVG**, or a **PNG with a transparent background** (a white background turns into a black box). Colour doesn't matter: the site shows every logo in solid black.
+1. Save the logo in `images/logos`, e.g. `images/logos/jim-beam.svg`. Use **SVG**, or a **PNG with a transparent background**, in the brand's full colour (the site shows logos in their own colours). Avoid white logos: they disappear on the off-white background.
 2. In `content/site.js`, find the brand in `brands` and change the plain name, e.g. `"Jim Beam",`, to:
    ```js
      { name: "Jim Beam", logo: "images/logos/jim-beam.svg", size: 1 },
