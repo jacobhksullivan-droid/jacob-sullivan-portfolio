@@ -153,7 +153,7 @@ Tip: crop the logo tight (no empty margin around it), otherwise it looks smaller
 
 - **Headline, email, brand names:** `content/site.js`.
 - **Social links:** `content/site.js` → `socials`. Paste full links, e.g. `linkedin: "https://www.linkedin.com/in/yourname",`. Empty ones stay hidden on the live site.
-- **Bio and CV details:** `content/about.js`.
+- **Bio, photo, tools, testimonial:** `content/about.js`. Your full work history lives in the CV PDF, not on the site.
 - **Line on top of the reel:** `positioning` in `content/site.js`. Set it to `""` to remove it.
 - **Availability line** (Contact page and closing block): `availability` in `content/site.js`. `""` hides it.
 - **CV download:** put the PDF in a `files` folder, e.g. `files/jacob-sullivan-cv.pdf`, then set `cv: "files/jacob-sullivan-cv.pdf",` in `content/site.js`. Use a version without your phone number.

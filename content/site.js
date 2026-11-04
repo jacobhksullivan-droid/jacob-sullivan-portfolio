@@ -19,7 +19,7 @@ window.SITE = {
   headline: "",
 
   // Shown on the Contact page and in the closing block. Set to "" to hide.
-  availability: "Open to freelance projects and full-time roles.",
+  availability: "I'm open to freelance projects and full-time roles.",
 
   // Your CV as a PDF in the "files" folder, e.g. "files/jacob-sullivan-cv.pdf".
   // null hides the download button. Use a version WITHOUT your phone number.
@@ -78,7 +78,7 @@ window.SITE = {
   // The closing block on the home page
   closing: {
     title: "Have a project in mind?",
-    text: "Tell me what you're making. Email is the quickest way to reach me.",
+    text: "Tell me what you're working on and I'll get back to you. Email is the quickest way to reach me.",
     button: "Email me"
   }
 };

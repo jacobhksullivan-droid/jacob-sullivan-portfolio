@@ -41,10 +41,10 @@ window.PROJECTS = [
     year: "[YEAR]",
     role: "3D animation, lighting and rendering",
     tools: ["Cinema 4D", "Redshift"],
-    summary: "3D cans on textured concrete pillars, delivered as a twelve-piece out-of-home rollout.",
-    description: `An out-of-home rollout for Jim Beam, built in Cinema 4D and rendered in Redshift. 3D cans sit on textured concrete pillars, with custom lighting and motion blur.
+    summary: "3D cans on concrete pillars, built for a 12-piece out-of-home rollout.",
+    description: `For this Jim Beam rollout I built 3D cans sitting on textured concrete pillars in Cinema 4D, then lit and rendered them in Redshift with custom lighting and motion blur.
 
-Delivered in four aspect sizes and in 6, 7 and 10 second versions: 12 deliverables in total.`,
+Then came the versioning: four aspect sizes, each in 6, 7 and 10 second cuts. Twelve deliverables in total.`,
     thumbnail: null,
     previewVideo: null,
     video: null,
@@ -69,10 +69,10 @@ Delivered in four aspect sizes and in 6, 7 and 10 second versions: 12 deliverabl
     year: "[YEAR]",
     role: "Motion design and edit",
     tools: [],
-    summary: "A hype reel for Japanese spirits, reworked into a narrative led by voice-over.",
-    description: `A hype reel for Suntory Oceania's Japanese spirits, reworked into a narrative-based piece. Voice-over carries the story, so the screen needs far less copy.
+    summary: "A Japanese spirits hype reel, reworked into a story told through voice-over.",
+    description: `Suntory Oceania had a hype reel for their Japanese spirits, and I reworked it into a narrative piece. Instead of filling the screen with copy, I let a voice-over carry the story.
 
-A depth camera moves through layers of waves to carry the viewer from one part of the story to the next.`,
+To move the viewer through it, I used a depth camera with layers of waves, so each part of the story flows into the next.`,
     thumbnail: null,
     previewVideo: null,
     video: null,
@@ -97,8 +97,8 @@ A depth camera moves through layers of waves to carry the viewer from one part o
     year: "[YEAR]",
     role: "Motion guidelines and brand system",
     tools: [],
-    summary: "How the brand moves across social video, banners, hype reels and logo animation.",
-    description: `Motion guidelines for Canadian Club, defining how animation is used across social media video, digital banners, hype reels and logo animation.`,
+    summary: "How the brand moves, from social video right through to logo animation.",
+    description: `I created Canadian Club's motion guidelines: the rules for how the brand moves across social video, digital banners, hype reels and logo animation.`,
     thumbnail: null,
     previewVideo: null,
     video: null,
@@ -115,10 +115,10 @@ A depth camera moves through layers of waves to carry the viewer from one part o
     year: "[YEAR]",
     role: "Animation",
     tools: ["After Effects", "Claude Code (After Effects MCP)"],
-    summary: "Storyboards animated into a slow, emotional piece, with a ball as the emotional motif.",
-    description: `A set of storyboards for Taldumande Youth Services, animated into a slow, emotional piece with voice-over and music. A ball carries the emotion through the film.
+    summary: "A slow, emotional film built around one simple motif: a ball.",
+    description: `I took a set of storyboards for Taldumande Youth Services and brought them to life as a slow, emotional piece with voice-over and music. A ball carries the feeling through the whole film.
 
-Built in After Effects, using an After Effects MCP to speed up the set-up and build.`,
+I built it in After Effects, using an After Effects MCP to speed up the set-up so more of my time went into the animation.`,
     thumbnail: null,
     previewVideo: null,
     video: null,
@@ -135,10 +135,10 @@ Built in After Effects, using an After Effects MCP to speed up the set-up and bu
     year: "[START DATE] to present",
     role: "Freelance motion designer and creative director",
     tools: [],
-    summary: "Animated rugby tactics analysis and YouTube Shorts, with creative direction throughout.",
-    description: `Freelance work for Dan Biggar, co-host of The Rugby Pod. I animate rugby tactics analysis and YouTube Shorts, and provide creative direction throughout.
+    summary: "Animated tactics breakdowns and YouTube Shorts for Dan Biggar's The Rugby Pod.",
+    description: `I work freelance with Dan Biggar, co-host of The Rugby Pod, animating his rugby tactics analysis and YouTube Shorts and looking after the creative direction.
 
-I scoped, priced and delivered the work independently, from brief to final export.`,
+It's my own gig, so I scope it, price it and deliver it myself, from brief to final export.`,
     thumbnail: null,
     previewVideo: null,
     video: null,
@@ -155,10 +155,10 @@ I scoped, priced and delivered the work independently, from brief to final expor
     year: "2023 to 2025",
     role: "Creative direction, 3D and animation",
     tools: [],
-    summary: "3D renders and a sizzle reel that helped define a new brand identity for one part of the business.",
-    description: `I directed the creative vision for a set of 3D renders and animated a sizzle reel that helped define a new brand identity for one sector of Genius Sports.
+    summary: "3D renders and a sizzle reel that helped shape a new brand identity.",
+    description: `At Genius Sports I directed the creative vision for a set of 3D renders and animated the sizzle reel that helped define a new brand identity for one part of the business.
 
-It sat alongside wider work at Genius Sports with partners including the NFL and the Premier League.`,
+It was part of two busy years there, working with partners like the NFL and the Premier League and leading a team of motion designers.`,
     thumbnail: null,
     previewVideo: null,
     video: null,

@@ -414,13 +414,15 @@
         '<div class="grid">' + featured.map(card).join("") + "</div>" +
       "</section>" +
 
+      // Optional About teaser: only shows if about.js has a teaser line (off: not in the research brief's home order)
+      (A.teaser ?
       '<section class="wrap" aria-labelledby="about-teaser">' +
         '<div class="teaser reveal">' +
           '<h2 class="label" id="about-teaser">About</h2>' +
           '<div><p class="teaser__text">' + esc(A.teaser) + "</p>" +
           '<p style="margin-top:24px"><a class="link-u" href="/about">More about me</a></p></div>' +
         "</div>" +
-      "</section>" +
+      "</section>" : "") +
 
       closing() +
 
@@ -560,22 +562,7 @@
 
   function renderAbout(main) {
     var photo = A.photo ? '<img src="' + esc(src(A.photo)) + '" alt="' + esc(A.photoAlt || S.name) + '" decoding="async" fetchpriority="high">' : ph("Add photo here");
-    var jobs = (A.experience || []).map(function (j) {
-      return '<li class="job">' +
-        '<div class="job__head"><p><span class="job__role">' + esc(j.role) + "</span>" +
-          (j.company ? ', <span>' + esc(j.company) + "</span>" : "") +
-          (j.place ? ' <span class="job__where">&middot; ' + esc(j.place) + "</span>" : "") + "</p>" +
-          '<p class="job__dates">' + esc(j.dates) + "</p></div>" +
-        ((j.points || []).length ? '<ul class="job__points">' + j.points.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") +
-      "</li>";
-    }).join("");
-    var earlier = (A.earlier || []).map(function (j) {
-      return '<li><span>' + esc(j.role) + (j.company ? ", " + esc(j.company) : "") + '</span><span class="job__dates">' + esc(j.dates) + "</span></li>";
-    }).join("");
     function tags(list) { return '<ul class="tags">' + (list || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>"; }
-    var edu = (A.education || []).map(function (e) {
-      return '<li><span>' + esc(e.name) + (e.by ? ' <span class="muted">&middot; ' + esc(e.by) + "</span>" : "") + '</span><span class="job__dates">' + esc(e.dates) + "</span></li>";
-    }).join("");
     function row(title, body, d) { return '<section class="row reveal"' + (d ? ' style="--d:' + d + 'ms"' : "") + '><h2 class="row__title">' + title + "</h2><div>" + body + "</div></section>"; }
     var clients = (S.brands || []).map(function (b) { return typeof b === "string" ? b : (b && b.name) || ""; }).filter(Boolean);
     var t = A.testimonial || {};
@@ -597,16 +584,11 @@
       "</section>" +
       '<div class="wrap section">' +
         (clients.length ? row("Clients and companies", '<ul class="clients">' + clients.map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") + "</ul>") : "") +
-        row("Experience", '<ol class="timeline">' + jobs + "</ol>" +
-          (earlier ? '<div style="margin-top:40px"><p class="label" style="margin-bottom:12px">Earlier</p><ul class="earlier">' + earlier + "</ul></div>" : "")) +
-        row("Skills", tags(A.skills)) +
-        row("Tools", tags(A.tools)) +
-        row("Education", '<ul class="edu">' + edu + "</ul>") +
-        (A.outside ? row("Outside work", '<p style="font-size:var(--fs-body-l);max-width:52ch">' + esc(A.outside) + "</p>") : "") +
+        ((A.tools || []).length ? row("Tools", tags(A.tools)) : "") +
       "</div>" + closing();
 
-    var first = (Array.isArray(A.bio) ? A.bio[0] : A.bio) || S.description;
-    setMeta("About | " + S.name, String(first).slice(0, 155), "/about");
+    var bioText = (Array.isArray(A.bio) ? A.bio.slice(0, 2).join(" ") : A.bio) || S.description;
+    setMeta("About | " + S.name, String(bioText).slice(0, 155).replace(/\s+\S*$/, "") + "...", "/about");
   }
 
   function renderContact(main) {
