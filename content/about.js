@@ -9,6 +9,10 @@ window.ABOUT = {
   photo: "images/jacob.jpg",
   photoAlt: "Jacob Sullivan",
 
+  // Shown when someone hovers over (or taps) your photo. The page fades to ocean blue at the same time. null turns it off.
+  photoHover: "images/jacob-ocean.jpg",
+  photoHoverAlt: "Spearfishing: a diver looking up at another diver on the surface",
+
   bio: [
     "I grew up in Deepcut, a quiet village just outside London, and I've always had a passion for film. After A-levels that passion shifted into post-production, which took me down a video production path for a few years, directing, filming and editing events for brands like Prada, Samsung and L'Oréal. Along the way I started animating, taught myself 3D, and never really looked back.",
     "These days I'm the only animator at Fuel, a marketing agency in Sydney, taking work from first idea to final delivery for brands like Jim Beam, Suntory and Canadian Club. Before that I spent two years at Genius Sports in London, leading campaigns with partners like the NFL and the Premier League and managing a team of motion designers. I'm working towards a Creative Director role, so I care as much about the idea as I do about the keyframes.",

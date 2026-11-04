@@ -562,6 +562,7 @@
 
   function renderAbout(main) {
     var photo = A.photo ? '<img src="' + esc(src(A.photo)) + '" alt="' + esc(A.photoAlt || S.name) + '" decoding="async" fetchpriority="high">' : ph("Add photo here");
+    if (A.photo && A.photoHover) photo += '<img class="about__photo-alt" src="' + esc(src(A.photoHover)) + '" alt="' + esc(A.photoHoverAlt || "") + '" decoding="async">';
     function tags(list) { return '<ul class="tags">' + (list || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>"; }
     function row(title, body, d) { return '<section class="row reveal"' + (d ? ' style="--d:' + d + 'ms"' : "") + '><h2 class="row__title">' + title + "</h2><div>" + body + "</div></section>"; }
     var clients = (S.brands || []).map(function (b) { return typeof b === "string" ? b : (b && b.name) || ""; }).filter(Boolean);
@@ -577,7 +578,7 @@
         '<p class="label reveal">About</p>' +
         '<h1 class="page-title reveal" style="margin-top:16px;margin-bottom:clamp(40px,6vw,96px)">' + esc(S.name) + "</h1>" +
         '<div class="about__top">' +
-          '<figure class="about__photo reveal">' + photo + "</figure>" +
+          '<figure class="about__photo reveal"' + (A.photo && A.photoHover ? ' data-deep tabindex="0" aria-label="Photo: hover or tap to see me in the water"' : "") + ">" + photo + "</figure>" +
           '<div class="about__bio reveal" style="--d:120ms">' + paras(A.bio) + cvBtn + "</div>" +
         "</div>" +
         quote +
@@ -586,6 +587,18 @@
         (clients.length ? row("Clients and companies", '<ul class="clients">' + clients.map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") + "</ul>") : "") +
         ((A.tools || []).length ? row("Tools", tags(A.tools)) : "") +
       "</div>" + closing();
+
+    // Hover (or tap) the photo: it swaps to the ocean shot and the whole page fades to deep ocean blue
+    var deep = $("[data-deep]", main);
+    if (deep) {
+      var on = function () { root.classList.add("deep-sea"); deep.classList.add("is-alt"); };
+      var off = function () { root.classList.remove("deep-sea"); deep.classList.remove("is-alt"); };
+      deep.addEventListener("mouseenter", on);
+      deep.addEventListener("mouseleave", off);
+      deep.addEventListener("focus", on);
+      deep.addEventListener("blur", off);
+      deep.addEventListener("click", function () { if (deep.classList.contains("is-alt")) off(); else on(); });
+    }
 
     var bioText = (Array.isArray(A.bio) ? A.bio.slice(0, 2).join(" ") : A.bio) || S.description;
     setMeta("About | " + S.name, String(bioText).slice(0, 155).replace(/\s+\S*$/, "") + "...", "/about");
