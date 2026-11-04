@@ -177,6 +177,24 @@ It was part of two busy years there, working with partners like the NFL and the 
     placeholder: true
   },
   {
+    slug: "landart-brand-reel",
+    title: "Brand and website reel",
+    client: "Landart",
+    year: "2026",
+    role: "Motion design, 3D and edit",
+    tools: [],
+    summary: "A reel showing off Landart's new brand and website, from phone to laptop to the gardens themselves.",
+    description: `A reel for Landart's new brand and website. It moves from the identity, onto the site on a phone, through the garden photography and onto the desktop site, all in 44 seconds.`,
+    thumbnail: "images/landart-thumb.jpg",
+    previewVideo: "media/landart-loop.mp4",
+    video: null,
+    videoDate: null,
+    credits: [{ role: "Agency", name: "Fuel" }],
+    visible: true,
+    featured: false,
+    placeholder: true
+  },
+  {
     slug: "school-of-motion-final",
     title: "Animation Bootcamp final project",
     client: "School of Motion",
