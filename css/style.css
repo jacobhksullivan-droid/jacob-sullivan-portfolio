@@ -569,6 +569,7 @@ ul, ol { padding: 0; list-style: none; }
 .about__top { display: grid; gap: var(--s7); }
 .about__photo { aspect-ratio: 4 / 5; position: relative; overflow: hidden; background: var(--ph); }
 .about__photo > img, .about__photo > .ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.about__photo > img { object-position: 50% 15%; }   /* keep the face in frame */
 .about__bio { display: grid; gap: var(--s4); font-size: var(--fs-body-l); max-width: 58ch; }
 .about__bio p:first-child {
   font-family: var(--serif); font-weight: var(--serif-weight);

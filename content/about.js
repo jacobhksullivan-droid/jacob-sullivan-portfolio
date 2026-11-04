@@ -5,7 +5,7 @@
 
 window.ABOUT = {
   // Your photo, e.g. "images/jacob.jpg" (portrait, roughly 4:5). null shows a placeholder.
-  photo: null,
+  photo: "images/jacob.jpg",
   photoAlt: "Jacob Sullivan",
 
   // Short version shown on the home page
