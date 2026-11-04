@@ -175,5 +175,23 @@ It was part of two busy years there, working with partners like the NFL and the 
     visible: true,
     featured: true,
     placeholder: true
+  },
+  {
+    slug: "school-of-motion-final",
+    title: "Bootcamp final project",
+    client: "School of Motion",
+    year: "[YEAR]",
+    role: "Design and animation",
+    tools: [],
+    summary: "My final project from School of Motion: bold shapes, loud colour and a lot of keyframes.",
+    description: `This was my final project for School of Motion, a 35-second piece where I got to put everything the course taught me into practice.`,
+    thumbnail: "images/school-of-motion-thumb.jpg",
+    previewVideo: "media/school-of-motion-loop.mp4",
+    video: null,
+    videoDate: null,
+    credits: [],
+    visible: true,
+    featured: false,
+    placeholder: true
   }
 ];
