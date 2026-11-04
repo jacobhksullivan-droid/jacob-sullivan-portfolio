@@ -187,11 +187,11 @@ It was part of two busy years there, working with partners like the NFL and the 
     description: `This was my final project for School of Motion's Animation Bootcamp in 2022, a 35-second piece where I got to put everything the course taught me into practice.`,
     thumbnail: "images/school-of-motion-thumb.jpg",
     previewVideo: "media/school-of-motion-loop.mp4",
-    video: null,
+    video: { file: "media/school-of-motion.mp4" },
     videoDate: null,
     credits: [],
     visible: true,
     featured: false,
-    placeholder: true
+    placeholder: false
   }
 ];

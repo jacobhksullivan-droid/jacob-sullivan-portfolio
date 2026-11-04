@@ -12,7 +12,7 @@ Personal motion design portfolio. Plain static site (HTML, CSS, vanilla JS), **n
 - **Never publish his phone number.** `showPhone` in `content/site.js` stays `false` unless he says otherwise; the repo is public.
 - Don't invent results, numbers or client quotes. Only CV facts.
 - Site must be **indexable**: no `X-Robots-Tag: noindex` (unlike the camper app). No passcode gate.
-- Big videos go on Vimeo/YouTube, never in the repo (GitHub rejects >100 MB). Local mp4s only for short silent loops.
+- Big videos go on Vimeo/YouTube, never in the repo (GitHub rejects >100 MB). Local mp4s for short silent loops, plus small finished films (under ~25 MB, e.g. `media/school-of-motion.mp4`, 19.5 MB). Taldumande (2.2 GB ProRes) needs Vimeo.
 - Never change hosting, account or security settings yourself. Ask Jacob to click them.
 
 ## Content (the only files Jacob edits)
