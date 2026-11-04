@@ -36,7 +36,7 @@
 window.PROJECTS = [
   {
     slug: "jim-beam-ooh",
-    title: "Jim Beam out-of-home rollout",
+    title: "Out-of-home rollout",
     client: "Jim Beam",
     year: "[YEAR]",
     role: "3D animation, lighting and rendering",
@@ -64,7 +64,7 @@ Delivered in four aspect sizes and in 6, 7 and 10 second versions: 12 deliverabl
   },
   {
     slug: "suntory-oceania-hype-reel",
-    title: "Suntory Oceania hype reel",
+    title: "Japanese spirits hype reel",
     client: "Suntory Oceania",
     year: "[YEAR]",
     role: "Motion design and edit",
@@ -92,7 +92,7 @@ A depth camera moves through layers of waves to carry the viewer from one part o
   },
   {
     slug: "canadian-club-motion-guidelines",
-    title: "Canadian Club motion guidelines",
+    title: "Motion guidelines",
     client: "Canadian Club",
     year: "[YEAR]",
     role: "Motion guidelines and brand system",
@@ -110,7 +110,7 @@ A depth camera moves through layers of waves to carry the viewer from one part o
   },
   {
     slug: "taldumande-youth-services",
-    title: "Taldumande Youth Services",
+    title: "50th birthday animation",
     client: "Taldumande Youth Services",
     year: "[YEAR]",
     role: "Animation",
@@ -130,7 +130,7 @@ Built in After Effects, using an After Effects MCP to speed up the set-up and bu
   },
   {
     slug: "the-rugby-pod",
-    title: "The Rugby Pod: tactics and Shorts",
+    title: "Tactics analysis and Shorts",
     client: "Dan Biggar, The Rugby Pod",
     year: "[START DATE] to present",
     role: "Freelance motion designer and creative director",
@@ -150,7 +150,7 @@ I scoped, priced and delivered the work independently, from brief to final expor
   },
   {
     slug: "genius-sports-sizzle-reel",
-    title: "Genius Sports sizzle reel",
+    title: "Sizzle reel",
     client: "Genius Sports",
     year: "2023 to 2025",
     role: "Creative direction, 3D and animation",

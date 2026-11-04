@@ -530,6 +530,7 @@
       '<article class="wrap">' +
         '<div class="project__head">' +
           "<div>" +
+            (p.client ? '<p class="label reveal" style="margin-bottom:12px">' + esc(p.client) + "</p>" : "") +
             '<h1 class="project__title reveal">' + esc(p.title) + (p.placeholder ? devTag(true) : "") + "</h1>" +
             '<div class="project__desc reveal" style="--d:100ms">' + paras(p.description) + "</div>" +
           "</div>" +
@@ -545,13 +546,14 @@
           "</ul></section>" : "") +
         (visible.length > 1 ?
         '<nav class="pager" aria-label="More projects">' +
-          '<a href="/work/' + encodeURIComponent(prev.slug) + '"><span class="label">&larr; Previous</span><span class="pager__title">' + esc(prev.title) + "</span></a>" +
-          '<a href="/work/' + encodeURIComponent(next.slug) + '"><span class="label">Next &rarr;</span><span class="pager__title">' + esc(next.title) + "</span></a>" +
+          '<a href="/work/' + encodeURIComponent(prev.slug) + '"><span class="label">&larr; Previous' + (prev.client ? " &middot; " + esc(prev.client) : "") + '</span><span class="pager__title">' + esc(prev.title) + "</span></a>" +
+          '<a href="/work/' + encodeURIComponent(next.slug) + '"><span class="label">' + (next.client ? esc(next.client) + " &middot; " : "") + 'Next &rarr;</span><span class="pager__title">' + esc(next.title) + "</span></a>" +
         "</nav>" : "") +
       "</article>" + closing();
 
-    setMeta(p.title + " | " + S.name, p.summary || S.description, "/work/" + p.slug);
-    videoData(p.title, p.summary || p.description, p.video, p.thumbnail, p.videoDate);
+    var fullTitle = p.client ? p.client + ": " + p.title : p.title;   // brand kept in for Google and link previews
+    setMeta(fullTitle + " | " + S.name, p.summary || S.description, "/work/" + p.slug);
+    videoData(fullTitle, p.summary || p.description, p.video, p.thumbnail, p.videoDate);
     wirePlayers(main, function () { return p.video; });
     wireCardPreviews(main);
   }

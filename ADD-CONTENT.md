@@ -86,7 +86,7 @@ Second paragraph. Leave a blank line between paragraphs.`,
   },
 ```
 
-4. Change the text. `slug` becomes the web address (`/work/my-new-project`): lowercase, dashes, no spaces.
+4. Change the text. `slug` becomes the web address (`/work/my-new-project`): lowercase, dashes, no spaces. Keep the client name out of `title`: the site already shows `client` in small capitals above it.
 5. Make sure there's a comma after the closing `}` (`},`).
 6. Run `python3 tools/make_sitemap.py` so Google finds the new page (see Publish).
 
