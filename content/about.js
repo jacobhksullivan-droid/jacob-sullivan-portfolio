@@ -10,8 +10,8 @@ window.ABOUT = {
   photoAlt: "Jacob Sullivan",
 
   // Shown when someone hovers over (or taps) your photo. The page fades to ocean blue at the same time. null turns it off.
-  photoHover: "images/jacob-ocean.jpg",
-  photoHoverAlt: "Spearfishing: a diver looking up at another diver on the surface",
+  photoHover: "images/jacob-ocean-2.jpg",
+  photoHoverAlt: "Jacob underwater in a wetsuit, looking up at the surface",
 
   bio: [
     "I grew up in Deepcut, a quiet village just outside London, and I've always had a passion for film. After A-levels that passion shifted into post-production, which took me down a video production path for a few years, directing, filming and editing events for brands like Prada, Samsung and L'Oréal. Along the way I started animating, taught myself 3D, and never really looked back.",
