@@ -12,7 +12,7 @@ window.SITE = {
   email: "Jacob.hksullivan@gmail.com",
 
   // Short line shown on top of the reel, bottom left. Set to "" to remove it.
-  positioning: "2D & 3D motion designer. Sydney.",
+  positioning: "",
 
   // OPTIONAL big statement under the reel, with a "Get in touch" button.
   // Off by default: the line on the reel already says who you are (per the research brief).
