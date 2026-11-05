@@ -373,7 +373,9 @@
       var logo = b && typeof b === "object" && b.logo;
       if (!logo) return '<li class="marquee__item">' + esc(name) + "</li>";
       var size = b.size && b.size > 0 ? b.size : 1;
-      return '<li class="marquee__item marquee__item--logo"><img src="' + esc(src(logo)) + '" alt="' + esc(name) +
+      // Optional logoMono: a hand-made black version (for logos with white parts, like the NFL shield)
+      var mono = b.logoMono ? '<img class="logo-mono" src="' + esc(src(b.logoMono)) + '" alt="" aria-hidden="true" decoding="async" style="--logo-size:' + size + '">' : "";
+      return '<li class="marquee__item marquee__item--logo' + (mono ? " has-mono" : "") + '">' + mono + '<img src="' + esc(src(logo)) + '" alt="' + esc(name) +
         '" decoding="async" style="--logo-size:' + size + '"></li>';
     }).join("");
 
@@ -400,8 +402,8 @@
       "</section>" : "") +
 
       (brands ?
-      '<section class="brands" aria-label="' + esc(S.brandsLabel || "Brands") + '">' +
-        '<p class="label wrap brands__label">' + esc(S.brandsLabel || "Brands") + "</p>" +
+      '<section class="brands" aria-label="' + esc(S.brandsLabel || "Brands I've worked with") + '">' +
+        (S.brandsLabel ? '<p class="label wrap brands__label">' + esc(S.brandsLabel) + "</p>" : "") +
         '<div class="marquee"><div class="marquee__track">' +
           '<ul class="marquee__group">' + brands + "</ul>" +
           '<ul class="marquee__group" aria-hidden="true">' + brands + "</ul>" +
@@ -409,7 +411,7 @@
       "</section>" : "") +
 
       '<section class="section section--tight-top wrap" aria-labelledby="sel-title">' +
-        '<div class="section__head"><h2 class="label" id="sel-title">Selected work</h2>' +
+        '<div class="section__head"><h2 class="visually-hidden" id="sel-title">Selected work</h2><span></span>' +
           '<a class="link-u" href="/work">All work</a></div>' +
         '<div class="grid">' + featured.map(card).join("") + "</div>" +
       "</section>" +

@@ -58,14 +58,14 @@ window.SITE = {
   // Logos show in their own colours. Use SVG or a PNG with a transparent
   // background (no white logos: they vanish on the off-white page). "size" nudges one logo bigger (1.3) or smaller (0.7)
   // so they all look the same weight.
-  brandsLabel: "Brands I've worked on",
+  brandsLabel: "",          // small label above the logos; "" hides it
   brands: [
     { name: "Jim Beam", logo: "images/logos/jim-beam.png", size: 1.7 },
     { name: "Suntory -196", logo: "images/logos/suntory.png", size: 1.4 },
     { name: "Canadian Club", logo: "images/logos/canadian-club.png", size: 1.3 },
     { name: "Genius Sports", logo: "images/logos/genius-sports.png", size: 1.05 },
     { name: "Premier League", logo: "images/logos/premier-league.png", size: 1.15 },
-    { name: "NFL", logo: "images/logos/nfl.png", size: 1.55 },
+    { name: "NFL", logo: "images/logos/nfl.png", logoMono: "images/logos/nfl-mono.png", size: 1.55 },
     { name: "The Rugby Pod", logo: "images/logos/rugby-pod.png", size: 1.65 },
     { name: "Taldumande Youth Services", logo: "images/logos/taldumande.png", size: 1 },
     { name: "Prada", logo: "images/logos/prada.svg", size: 0.48 },
