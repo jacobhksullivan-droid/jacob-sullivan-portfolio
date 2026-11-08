@@ -25,3 +25,6 @@ private/
 *.ai
 *.mov
 *.zip
+
+# Encoder/sandbox temp files
+*.sb-*
