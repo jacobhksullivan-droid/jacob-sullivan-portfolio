@@ -424,7 +424,9 @@ ul, ol { padding: 0; list-style: none; }
   .grid > :nth-child(6n+4) { grid-column: span 3; }
   .grid > :nth-child(6n+5) { grid-column: span 2; }
   .grid > :nth-child(6n+6) { grid-column: span 4; }
-  .grid > :last-child:nth-child(6n+1) { grid-column: span 6; }
+  .grid > :last-child:nth-child(6n+1),
+  .grid > :last-child:nth-child(6n+3),
+  .grid > :last-child:nth-child(6n+5) { grid-column: span 6; }   /* a card left alone on its row goes full width */
 }
 
 .card__link { display: block; position: relative; }

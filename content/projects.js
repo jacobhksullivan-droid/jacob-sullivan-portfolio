@@ -83,12 +83,12 @@ I built it in After Effects, using an After Effects MCP to speed up the set-up s
     description: `A reel for Landart's new brand and website. It moves from the identity, onto the site on a phone, through the garden photography and onto the desktop site, all in 44 seconds.`,
     thumbnail: "images/landart-thumb.jpg",
     previewVideo: "media/landart-loop.mp4",
-    video: null,
+    video: { file: "media/landart.mp4" },
     videoDate: null,
     credits: [{ role: "Agency", name: "Fuel" }],
     visible: true,
     featured: true,
-    placeholder: true
+    placeholder: false
   },
   {
     slug: "jim-beam-ooh",
@@ -114,7 +114,7 @@ Then came the versioning: four aspect sizes, each in 6, 7 and 10 second cuts. Tw
     result: "",
     process: [],
     details: [],
-    visible: true,
+    visible: false,   // hidden until the film is ready
     featured: true,
     placeholder: true
   },
@@ -142,7 +142,7 @@ To move the viewer through it, I used a depth camera with layers of waves, so ea
     result: "",
     process: [],
     details: [],
-    visible: true,
+    visible: false,   // hidden until the film is ready
     featured: true,
     placeholder: true
   },
@@ -160,7 +160,7 @@ To move the viewer through it, I used a depth camera with layers of waves, so ea
     video: null,
     videoDate: null,
     credits: [{ role: "Agency", name: "Fuel" }],
-    visible: true,
+    visible: false,   // hidden until the film is ready
     featured: true,
     placeholder: true
   },
@@ -180,7 +180,7 @@ It's my own gig, so I scope it, price it and deliver it myself, from brief to fi
     video: null,
     videoDate: null,
     credits: [],
-    visible: true,
+    visible: false,   // hidden until the film is ready
     featured: true,
     placeholder: true
   },
@@ -208,7 +208,7 @@ It was part of two busy years there, working with partners like the NFL and the 
     result: "",
     process: [],
     details: [],
-    visible: true,
+    visible: false,   // hidden until the film is ready
     featured: true,
     placeholder: true
   }
