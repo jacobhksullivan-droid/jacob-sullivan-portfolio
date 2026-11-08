@@ -429,7 +429,7 @@
       closing() +
 
       '<dialog class="lightbox" aria-label="' + esc(reelTitle) + '">' +
-        '<button class="lightbox__close" type="button" data-reel-close>Close</button>' +
+        '<button class="lightbox__close" type="button" data-reel-close aria-label="Close reel"><span aria-hidden="true">&times;</span> Close</button>' +
         '<div class="player" data-reel-frame></div>' +
       "</dialog>";
 
@@ -441,11 +441,12 @@
     if (openBtn && dlg && dlg.showModal) {
       openBtn.addEventListener("click", function () {
         frame.innerHTML = playerInner(R.video, reelTitle, true);
+        root.classList.add("reel-open");
         dlg.showModal();
       });
       $("[data-reel-close]", main).addEventListener("click", function () { dlg.close(); });
       dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
-      dlg.addEventListener("close", function () { frame.innerHTML = ""; openBtn.focus(); });
+      dlg.addEventListener("close", function () { frame.innerHTML = ""; root.classList.remove("reel-open"); openBtn.focus(); });
     } else if (openBtn) {
       openBtn.addEventListener("click", function () { $(".hero__media", main).innerHTML = playerInner(R.video, reelTitle, true); });
     }

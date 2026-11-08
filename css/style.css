@@ -525,17 +525,29 @@ ul, ol { padding: 0; list-style: none; }
 }
 .player:hover .player__btn { transform: translate(-50%, -50%) scale(1.06); }
 
-/* Lightbox for the reel */
+/* Reel player: takes over the whole browser window, nothing else on screen */
 .lightbox {
-  width: min(1400px, 100vw - 2 * var(--gutter)); max-width: none; max-height: none;
-  padding: 0; border: 0; background: transparent; color: var(--on-dark); overflow: visible;
+  position: fixed; inset: 0; margin: 0;
+  width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none;
+  padding: 0; border: 0; background: #000; color: #fff; overflow: hidden;
 }
-.lightbox::backdrop { background: rgba(8,8,8,.92); }
-.lightbox[open] { animation: fadeUp var(--dur) var(--ease); }
+.lightbox[open] { display: grid; place-items: center; animation: reelIn 400ms var(--ease); }
+.lightbox::backdrop { background: #000; }
+.lightbox > .player {
+  /* biggest 16:9 box that fits the window */
+  width: min(100vw, 100dvh * 16 / 9); height: auto; aspect-ratio: 16 / 9; background: #000;
+}
+.lightbox > .player > video { object-fit: contain; }
 .lightbox__close {
-  position: absolute; right: 0; bottom: calc(100% + 12px);
-  font-size: var(--fs-small); font-weight: 500; padding: 10px 0; min-height: 44px;
+  position: absolute; top: max(12px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); z-index: 2;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: var(--fs-small); font-weight: 500; padding: 10px 14px; min-height: 44px;
+  color: #fff; background: rgba(0,0,0,.45); border-radius: 999px;
+  opacity: .75; transition: opacity var(--dur-fast) var(--ease);
 }
+.lightbox__close:hover, .lightbox__close:focus-visible { opacity: 1; }
+html.reel-open { overflow: hidden; }
+@keyframes reelIn { from { opacity: 0; } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } }
 
 /* ---------- Project page ---------- */
