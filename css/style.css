@@ -488,7 +488,7 @@ ul, ol { padding: 0; list-style: none; }
 }
 .footer__col p, .footer__col li { line-height: 1.7; }
 .footer__col .label { margin-bottom: var(--s3); }
-.footer__links { display: grid; gap: 4px; font-size: clamp(1.15rem, 1rem + .5vw, 1.45rem); }
+.footer__links { display: grid; gap: 4px; align-content: start; font-size: clamp(1.15rem, 1rem + .5vw, 1.45rem); }
 .footer__links a { justify-self: start; }
 .footer__base {
   margin-top: clamp(48px, 6vw, 88px); padding-top: var(--s5); border-top: 1px solid var(--line);

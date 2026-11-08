@@ -622,10 +622,10 @@
           '<button class="btn btn--ghost" type="button" data-copy>Copy email</button>' +
           '<span class="visually-hidden" aria-live="polite" data-copy-status></span>' +
         "</div>" +
-        '<dl class="contact__details reveal">' +
-          '<div><dt class="label">Location</dt><dd>' + esc(S.location) + "</dd></div>" + phone +
+        ((phone || socials.length) ?
+        '<dl class="contact__details reveal">' + phone +
           (socials.length ? '<div><dt class="label">Elsewhere</dt><dd class="socials">' + socials.join("") + "</dd></div>" : "") +
-        "</dl>" +
+        "</dl>" : "") +
       "</section>" +
       '<div class="section"></div>';
     setMeta("Contact | " + S.name, "Get in touch with " + S.name + ", " + (S.roleLine || "motion designer") + ". Email " + S.email + ".", "/contact");
