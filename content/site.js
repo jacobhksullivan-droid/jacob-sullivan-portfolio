@@ -67,7 +67,6 @@ window.SITE = {
     { name: "Premier League", logo: "images/logos/premier-league.png", size: 1.15 },
     { name: "NFL", logo: "images/logos/nfl.png", logoMono: "images/logos/nfl-mono.png", size: 1.55 },
     { name: "The Rugby Pod", logo: "images/logos/rugby-pod.png", size: 1.65 },
-    { name: "Taldumande Youth Services", logo: "images/logos/taldumande.png", size: 1 },
     { name: "Prada", logo: "images/logos/prada.svg", size: 0.48 },
     { name: "Samsung", logo: "images/logos/samsung.svg", size: 0.44 },
     { name: "Yves Saint Laurent", logo: "images/logos/yves-saint-laurent.svg", size: 0.68 },
