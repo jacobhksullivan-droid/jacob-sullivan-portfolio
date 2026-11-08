@@ -47,7 +47,7 @@
   --dur-slow: 900ms;
   --marquee-speed: 48s;
   --logo-h: clamp(28px, 1.3rem + 1.4vw, 46px);   /* height of logos in the brand strip */
-  --logo-filter: grayscale(1) brightness(0);   /* logos solid black; each one shows its own colours on hover. "none" = always colour */
+  --logo-filter: grayscale(1) brightness(0);   /* logos solid black. "none" = their own colours */
 }
 
 @media (min-width: 900px) {
@@ -365,7 +365,6 @@ ul, ol { padding: 0; list-style: none; }
   display: flex; width: max-content;
   animation: marquee var(--marquee-speed) linear infinite;
 }
-.marquee:hover .marquee__track { animation-play-state: paused; }
 .marquee__group { display: flex; flex: none; }
 .marquee__item {
   flex: none; padding-inline: clamp(22px, 3vw, 48px);
@@ -381,13 +380,10 @@ ul, ol { padding: 0; list-style: none; }
   transition: filter var(--dur) var(--ease);
 }
 .marquee__group { align-items: center; }
-.marquee__item--logo:hover img { filter: none; }
 .marquee__item--logo.has-mono { position: relative; }
 .marquee__item--logo.has-mono img { filter: none; }
 .marquee__item--logo.has-mono img:not(.logo-mono) { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; transition: opacity var(--dur) var(--ease); }
 .marquee__item--logo.has-mono img.logo-mono { transition: opacity var(--dur) var(--ease); }
-.marquee__item--logo.has-mono:hover img:not(.logo-mono) { opacity: 1; }
-.marquee__item--logo.has-mono:hover img.logo-mono { opacity: 0; }
 @keyframes marquee { to { transform: translate3d(-50%, 0, 0); } }
 
 /* ---------- Sections ---------- */

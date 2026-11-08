@@ -136,7 +136,7 @@ Right now Jim Beam, Suntory and Genius Sports are set up as case studies.
 
 ## Add a logo to the brand strip
 
-1. Save the logo in `images/logos`, e.g. `images/logos/jim-beam.svg`. Use **SVG**, or a **PNG with a transparent background**, in the brand's full colour. The site shows every logo in black and switches to its own colours when someone hovers over it. Avoid white logos: they disappear on the off-white background.
+1. Save the logo in `images/logos`, e.g. `images/logos/jim-beam.svg`. Use **SVG**, or a **PNG with a transparent background**, in the brand's full colour. The site shows every logo in solid black. Avoid white logos: they disappear on the off-white background.
 2. In `content/site.js`, find the brand in `brands` and change the plain name, e.g. `"Jim Beam",`, to:
    ```js
      { name: "Jim Beam", logo: "images/logos/jim-beam.svg", size: 1 },
