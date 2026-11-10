@@ -162,6 +162,12 @@
 
   /* ---------- header, menu, footer ---------- */
 
+  // Jacob's JS monogram (from images/logo.svg), inline so it takes the header's colour (white over the reel, black elsewhere)
+  var LOGO = '<svg class="brand__mark" viewBox="0 0 157.29 90.86" fill="currentColor" aria-hidden="true" focusable="false">' +
+    '<path d="M62.77,12.94c0,1.71.01,40.67.01,45.09,0,22.29-17.75,32.83-28.98,32.83.01-3.6.09-77.09.09-77.92,0-1.2,2.91-12.4,14.4-12.4s14.48,12.4,14.48,12.4Z"/>' +
+    '<circle cx="14.49" cy="76.37" r="14.49"/><circle cx="103.82" cy="73.23" r="14.49"/><circle cx="142.8" cy="15.49" r="14.49"/>' +
+    '<path d="M133.55,77.22c-1.15-1.27-27.29-30.15-30.25-33.44-14.95-16.53-8.86-36.26-.53-43.79,2.41,2.68,35.63,39.4,40.57,44.86,14.04,15.52,9.93,35.29.53,43.79-3.57-3.94-10.32-11.43-10.32-11.43Z"/></svg>';
+
   var NAV = [
     { href: "/work", label: "Work", key: "work" },
     { href: "/about", label: "About", key: "about" },
@@ -177,7 +183,7 @@
     el.className = "site-header";
     el.innerHTML =
       '<div class="wrap site-header__inner">' +
-        '<a class="brand" href="/">' + esc(S.name || "Jacob Sullivan") + "</a>" +
+        '<a class="brand" href="/" aria-label="' + esc(S.name || "Jacob Sullivan") + ', home">' + LOGO + '<span class="brand__name">' + esc(S.name || "Jacob Sullivan") + "</span></a>" +
         '<nav class="nav" aria-label="Main"><ul class="nav__list">' +
           NAV.map(function (n) { return '<li><a class="nav__link" href="' + n.href + '"' + current(n.key) + ">" + n.label + "</a></li>"; }).join("") +
         "</ul></nav>" +
