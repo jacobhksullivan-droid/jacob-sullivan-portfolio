@@ -15,16 +15,16 @@
   --ph-ink: #8a8985;        /* placeholder labels */
 
   /* Type */
-  --serif: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
-  --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --serif-weight: 300;
-  --track-name: 0.18em;     /* letter spacing for your name */
+  --serif: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;   /* headings */
+  --sans: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;    /* body */
+  --serif-weight: 500;
+  --track-name: 0.12em;     /* letter spacing for your name */
   --track-label: 0.08em;    /* small uppercase labels */
 
-  --fs-display: clamp(2.6rem, 1.5rem + 4.4vw, 5.6rem);
-  --fs-h1: clamp(2.4rem, 1.6rem + 3.2vw, 4.6rem);
-  --fs-h2: clamp(1.9rem, 1.4rem + 1.8vw, 3rem);
-  --fs-h3: clamp(1.45rem, 1.25rem + 0.6vw, 1.85rem);
+  --fs-display: clamp(2.2rem, 1.3rem + 3.6vw, 4.6rem);
+  --fs-h1: clamp(2.1rem, 1.4rem + 2.6vw, 3.8rem);
+  --fs-h2: clamp(1.6rem, 1.2rem + 1.4vw, 2.5rem);
+  --fs-h3: clamp(1.2rem, 1.1rem + 0.45vw, 1.5rem);
   --fs-body-l: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
   --fs-body: 1rem;
   --fs-small: 0.875rem;
@@ -81,6 +81,7 @@ img { height: auto; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
+h1, h2, h3, .page-title, .project__title, .closing__title, .hero__line, .row__title, .teaser__text, .quote p { letter-spacing: -0.02em; }
 ul, ol { padding: 0; list-style: none; }
 
 :focus-visible {
@@ -371,7 +372,7 @@ ul, ol { padding: 0; list-style: none; }
 .marquee__group { display: flex; flex: none; }
 .marquee__item {
   flex: none; padding-inline: clamp(22px, 3vw, 48px);
-  font-family: var(--serif); font-weight: 400;
+  font-family: var(--serif); font-weight: 500;
   font-size: clamp(1.4rem, 1.1rem + 1vw, 2.1rem); line-height: 1.2; white-space: nowrap;
   color: var(--ink);
 }
@@ -431,7 +432,7 @@ ul, ol { padding: 0; list-style: none; }
 .card__link { display: block; position: relative; }
 .card__client { margin-bottom: 6px; }
 .card__title {
-  font-family: var(--serif); font-weight: 400;
+  font-family: var(--serif); font-weight: 500;
   font-size: var(--fs-h3); line-height: 1.12;
 }
 .card__summary {
@@ -486,7 +487,7 @@ ul, ol { padding: 0; list-style: none; }
 .site-footer { border-top: 1px solid var(--line); padding-block: clamp(48px, 6vw, 88px) var(--s6); }
 .footer__grid { display: grid; gap: var(--s7); }
 .footer__name {
-  font-family: var(--serif); font-weight: 400; font-size: 1.35rem;
+  font-family: var(--serif); font-weight: 500; font-size: 1.35rem;
   letter-spacing: var(--track-name); text-transform: uppercase; margin-bottom: var(--s3);
 }
 .footer__col p, .footer__col li { line-height: 1.7; }
@@ -579,7 +580,7 @@ html.reel-open { overflow: hidden; }
 .pager a { display: grid; gap: 6px; }
 .pager a:last-child { text-align: right; justify-items: end; }
 .pager__title {
-  font-family: var(--serif); font-weight: 400; font-size: var(--fs-h3); line-height: 1.12;
+  font-family: var(--serif); font-weight: 500; font-size: var(--fs-h3); line-height: 1.12;
   transition: transform var(--dur) var(--ease);
 }
 .pager a:first-child:hover .pager__title { transform: translateX(-4px); }
