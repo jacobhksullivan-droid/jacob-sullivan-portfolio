@@ -27,7 +27,7 @@ window.REEL = {
   length: "0:33",
   // Self-hosted (re-encoded from JS_ShowReel_26_a02.mp4: 1080p, 21.6 MB)
   video: { file: "media/reel-2026.mp4" },
-  loop: { file: "media/reel-2026-loop.mp4" },
-  poster: "images/reel-2026-poster.jpg",
+  loop: { file: "media/reel-2026-hero.mp4" },   // the whole reel, silent, from the start
+  poster: "images/reel-2026-poster-start.jpg",
   date: "2026-11-14"
 };

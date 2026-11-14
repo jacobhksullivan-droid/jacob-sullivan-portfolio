@@ -167,11 +167,10 @@ ul, ol { padding: 0; list-style: none; }
 .site-header.on-dark:not(.is-solid) { color: var(--on-dark); }
 
 .brand {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-weight: 400;
-  font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem);
-  letter-spacing: var(--track-name);
-  text-transform: uppercase;
+  font-size: clamp(1.05rem, 0.98rem + 0.3vw, 1.25rem);
+  letter-spacing: -0.01em;
   white-space: nowrap;
   padding-block: 8px;
 }

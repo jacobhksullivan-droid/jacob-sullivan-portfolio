@@ -60,13 +60,14 @@ window.SITE = {
   // so they all look the same weight.
   brandsLabel: "",          // small label above the logos; "" hides it
   brands: [
-    { name: "Jim Beam", logo: "images/logos/jim-beam.png", size: 1.7 },
+    { name: "Jim Beam", logo: "images/logos/jim-beam.png", logoMono: "images/logos/jim-beam-black.png", size: 1.7 },
     { name: "Suntory -196", logo: "images/logos/suntory.png", size: 1.4 },
     { name: "Canadian Club", logo: "images/logos/canadian-club.png", size: 1.3 },
     { name: "Genius Sports", logo: "images/logos/genius-sports.png", size: 1.05 },
-    { name: "Premier League", logo: "images/logos/premier-league.png", size: 1.15 },
+    { name: "Premier League", logo: "images/logos/premier-league.png", logoMono: "images/logos/premier-league-black.png", size: 1.15 },
     { name: "NFL", logo: "images/logos/nfl.png", logoMono: "images/logos/nfl-mono.png", size: 1.55 },
     { name: "The Rugby Pod", logo: "images/logos/rugby-pod.png", size: 1.65 },
+    { name: "Taldumande Youth Services", logo: "images/logos/taldumande.png", logoMono: "images/logos/taldumande-black.png", size: 1 },
     { name: "Prada", logo: "images/logos/prada.svg", size: 0.48 },
     { name: "Samsung", logo: "images/logos/samsung.svg", size: 0.44 },
     { name: "Yves Saint Laurent", logo: "images/logos/yves-saint-laurent.svg", size: 0.68 },

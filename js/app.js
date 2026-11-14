@@ -183,7 +183,7 @@
     el.className = "site-header";
     el.innerHTML =
       '<div class="wrap site-header__inner">' +
-        '<a class="brand" href="/" aria-label="' + esc(S.name || "Jacob Sullivan") + ', home">' + LOGO + "</a>" +   // logo only; the name is read out by screen readers via aria-label
+        '<a class="brand" href="/">' + '<span class="brand__name">' + esc(S.name || "Jacob Sullivan") + "</span></a>" +   // name only (the JS logo is the browser-tab icon)
         '<nav class="nav" aria-label="Main"><ul class="nav__list">' +
           NAV.map(function (n) { return '<li><a class="nav__link" href="' + n.href + '"' + current(n.key) + ">" + n.label + "</a></li>"; }).join("") +
         "</ul></nav>" +
