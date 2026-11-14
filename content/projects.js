@@ -91,6 +91,34 @@ I built it in After Effects, using an After Effects MCP to speed up the set-up s
     placeholder: false
   },
   {
+    slug: "genius-sports-sizzle-reel",
+    title: "GeniusIQ sizzle reel",
+    client: "Genius Sports",
+    year: "2025",
+    role: "Creative direction, 3D and animation",
+    tools: [],
+    summary: "3D renders and a sizzle reel that helped shape a new brand identity.",
+    description: `At Genius Sports I directed the creative vision for a set of 3D renders and animated the sizzle reel that helped define a new brand identity for one part of the business.
+
+It was part of two busy years there, working with partners like the NFL and the Premier League and leading a team of motion designers.`,
+    thumbnail: "images/geniusiq-thumb.jpg",
+    previewVideo: "media/geniusiq-loop.mp4",
+    video: { file: "media/geniusiq.mp4" },
+    videoDate: null,
+    credits: [],
+    caseStudy: true,
+    agency: "In-house, Genius Sports",
+    responsibilities: ["Creative direction of the 3D renders", "Sizzle reel animation"],
+    brief: "",
+    keyDecision: "",
+    result: "",
+    process: [],
+    details: [],
+    visible: true,
+    featured: true,
+    placeholder: false
+  },
+  {
     slug: "jim-beam-ooh",
     title: "Out-of-home rollout",
     client: "Jim Beam",
@@ -180,34 +208,6 @@ It's my own gig, so I scope it, price it and deliver it myself, from brief to fi
     video: null,
     videoDate: null,
     credits: [],
-    visible: false,   // hidden until the film is ready
-    featured: true,
-    placeholder: true
-  },
-  {
-    slug: "genius-sports-sizzle-reel",
-    title: "Sizzle reel",
-    client: "Genius Sports",
-    year: "2023 to 2025",
-    role: "Creative direction, 3D and animation",
-    tools: [],
-    summary: "3D renders and a sizzle reel that helped shape a new brand identity.",
-    description: `At Genius Sports I directed the creative vision for a set of 3D renders and animated the sizzle reel that helped define a new brand identity for one part of the business.
-
-It was part of two busy years there, working with partners like the NFL and the Premier League and leading a team of motion designers.`,
-    thumbnail: null,
-    previewVideo: null,
-    video: null,
-    videoDate: null,
-    credits: [],
-    caseStudy: true,
-    agency: "In-house, Genius Sports",
-    responsibilities: ["Creative direction of the 3D renders", "Sizzle reel animation"],
-    brief: "",
-    keyDecision: "",
-    result: "",
-    process: [],
-    details: [],
     visible: false,   // hidden until the film is ready
     featured: true,
     placeholder: true
