@@ -12,7 +12,7 @@ window.SITE = {
   email: "Jacob.hksullivan@gmail.com",
 
   // Short line shown on top of the reel, bottom left. Set to "" to remove it.
-  positioning: "2D & 3D motion designer. Sydney.",
+  positioning: "2D & 3D motion designer.",
 
   // OPTIONAL big statement under the reel, with a "Get in touch" button.
   // Off by default: the line on the reel already says who you are (per the research brief).
@@ -37,7 +37,7 @@ window.SITE = {
 
   // Image shown when the link is shared on LinkedIn, iMessage etc. (1200 x 630).
   // Leave as null for none.
-  shareImage: "images/share.jpg",
+  shareImage: "images/share-satoshi.jpg",
 
   // Social links. Paste the full address, e.g. "https://www.linkedin.com/in/yourname".
   // Empty ones are hidden on the live site.

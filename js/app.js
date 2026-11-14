@@ -356,7 +356,7 @@
       media = ph("Add reel here", true);
     }
     var controls = "";
-    var playLabel = '<span class="hero__play-icon" aria-hidden="true"></span><span>Play ' + esc(reelTitle) + "</span>" +
+    var playLabel = '<span class="hero__play-icon" aria-hidden="true"></span><span>' + esc(R.button || ("Play " + reelTitle)) + "</span>" +
       (R.length ? '<span class="hero__len">' + esc(R.length) + "</span>" : "");
     if (hasVideo(R.video)) {
       controls += '<button class="hero__play" type="button" data-reel-open>' + playLabel + "</button>";

@@ -53,4 +53,4 @@ Personal motion design portfolio. Plain static site (HTML, CSS, vanilla JS), **n
 - `css/style.css`: all design tokens (colours, fonts, spacing, motion) in `:root` at the top. Font: Satoshi everywhere (Fontshare, free; 300/400/500/700). `--serif` and `--sans` both point at it; headings weight 500, tracking -0.02em. Grid rhythm 4/2, 3/3, 2/4 on a 6-column grid. Cross-page view transitions; `prefers-reduced-motion` respected.
 - `tools/make_sitemap.py`: rebuilds `sitemap.xml` + `robots.txt` from `content/site.js` url and visible projects.
 - Logo: Jacob's JS monogram. `images/logo.svg` (master), inline copy in `js/app.js` (`LOGO`, currently unused); the header shows his name in Satoshi Regular, the logo is the tab icon, `images/favicon-js.svg` (tab icon, flips to light in dark mode).
-- `tools/devserver.py`: local preview. `tools/share-card.html`: source for `images/share.jpg` (OG image, 1200×630).
+- `tools/devserver.py`: local preview. `tools/share-card.html`: source for `images/share-satoshi.jpg` (OG image, 1200×630).

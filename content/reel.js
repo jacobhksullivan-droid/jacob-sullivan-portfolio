@@ -24,7 +24,8 @@
 
 window.REEL = {
   title: "2026 Reel",
-  length: "0:33",
+  button: "Play reel",          // text on the home page button
+  length: "",
   // Self-hosted (re-encoded from JS_ShowReel_26_a02.mp4: 1080p, 21.6 MB)
   video: { file: "media/reel-2026.mp4" },
   loop: { file: "media/reel-2026-hero.mp4" },   // the whole reel, silent, from the start
