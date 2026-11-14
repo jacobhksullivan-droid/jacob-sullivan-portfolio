@@ -23,11 +23,11 @@
    ========================================================================== */
 
 window.REEL = {
-  title: "Reel",
-  length: "0:39",
-  // Placeholder: Jacob's older reel, self-hosted (21 MB). Swap for the 2026 reel on Vimeo when it's ready.
-  video: { file: "media/reel-placeholder.mp4" },
-  loop: { file: "media/reel-loop.mp4" },
-  poster: "images/reel-poster.jpg",
-  date: null
+  title: "2026 Reel",
+  length: "0:33",
+  // Self-hosted (re-encoded from JS_ShowReel_26_a02.mp4: 1080p, 21.6 MB)
+  video: { file: "media/reel-2026.mp4" },
+  loop: { file: "media/reel-2026-loop.mp4" },
+  poster: "images/reel-2026-poster.jpg",
+  date: "2026-11-14"
 };

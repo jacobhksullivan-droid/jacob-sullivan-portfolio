@@ -445,11 +445,17 @@
     var dlg = $(".lightbox", main), frame = $("[data-reel-frame]", main);
     var openBtn = $("[data-reel-open]", main);
     if (openBtn && dlg && dlg.showModal) {
-      openBtn.addEventListener("click", function () {
-        frame.innerHTML = playerInner(R.video, reelTitle, true);
+      var openReel = function () {
+        frame.innerHTML = playerInner(R.video, reelTitle, true);   // fresh player each time, so it always starts from 0:00
+        var v = $("video", frame);
+        if (v) { v.currentTime = 0; v.muted = false; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
         root.classList.add("reel-open");
         dlg.showModal();
-      });
+      };
+      openBtn.addEventListener("click", openReel);
+      // Clicking anywhere on the reel area opens it too
+      var heroMedia = $(".hero__media", main);
+      if (heroMedia) { heroMedia.style.cursor = "pointer"; heroMedia.addEventListener("click", openReel); }
       $("[data-reel-close]", main).addEventListener("click", function () { dlg.close(); });
       dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
       dlg.addEventListener("close", function () { frame.innerHTML = ""; root.classList.remove("reel-open"); openBtn.focus(); });
