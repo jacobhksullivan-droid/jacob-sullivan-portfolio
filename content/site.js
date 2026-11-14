@@ -22,8 +22,8 @@ window.SITE = {
   availability: "I'm open to freelance projects and full-time roles.",
 
   // Your CV as a PDF in the "files" folder, e.g. "files/jacob-sullivan-cv.pdf".
-  // null hides the download button. Use a version WITHOUT your phone number.
-  cv: "files/jacob-sullivan-cv.pdf",
+  // null hides the download button. (This one includes your phone number, by your choice.)
+  cv: "files/jacob-sullivan-cv-2026.pdf",
 
   // Visitor stats. Turn on Web Analytics in Vercel first, then set to true.
   analytics: false,
