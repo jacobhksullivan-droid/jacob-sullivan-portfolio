@@ -56,7 +56,7 @@ It opened Taldumande's 50th birthday gala dinner in front of more than 1,000 gue
       title: "Process",
       intro: "The goal was to show the problem young people in Sydney have faced with homelessness over the years, and how Taldumande has been there to help them. The catch: I had just two weeks from the brief to the gala dinner to make it.",
       items: [
-        // { image: "images/taldumande-moodboard.jpg", caption: "Moodboard", wide: true },
+        { video: "media/taldumande-moodboard.mp4", poster: "images/taldumande-moodboard.jpg", ratio: "1600 / 820", caption: "Moodboard", wide: true },
         // { image: "images/taldumande-board-1.jpg", caption: "Storyboard" },
         // { image: "images/taldumande-board-2.jpg", caption: "Style frame" },
         // { video: "media/taldumande-animatic.mp4", caption: "Animatic", wide: true }

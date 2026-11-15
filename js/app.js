@@ -562,7 +562,7 @@
           var media;
           if (m.video) {
             media = '<div data-preview="' + esc(src(m.video)) + '"' + (m.poster ? ' data-poster="' + esc(src(m.poster)) + '"' : "") + '>' +
-              '<div class="card__media process__video">' + (m.poster ? '<img src="' + esc(src(m.poster)) + '" alt="" loading="lazy" decoding="async">' : ph("Loop")) + "</div></div>";
+              '<div class="card__media process__video"' + (m.ratio ? ' style="aspect-ratio:' + esc(m.ratio) + '"' : "") + '>' + (m.poster ? '<img src="' + esc(src(m.poster)) + '" alt="" loading="lazy" decoding="async">' : ph("Loop")) + "</div></div>";
           } else {
             media = '<img class="process__img" src="' + esc(src(m.image)) + '" alt="' + esc(m.caption || "") + '" loading="lazy" decoding="async">';
           }
