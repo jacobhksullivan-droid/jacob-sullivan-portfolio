@@ -42,11 +42,9 @@ window.PROJECTS = [
     role: "Creative direction, sound design and animation",
     tools: ["After Effects", "Illustrator"],
     summary: "From the problems young people faced to how Taldumande helped them.",
-    description: `For Taldumande Youth Services' 50th birthday, the goal was to tell the story of how Taldumande came to be: the problems young people were facing, and how Taldumande stepped in to help them.
+    description: `For Taldumande Youth Services' 50th birthday, the goal was to tell the story of how Taldumande came to be: the problems young people were facing and how Taldumande stepped in to help them.
 
-Working with a talented graphic designer, we took it from start to finish, from the idea and creative direction through to the sound design and animation. The biggest challenge was the turnaround: just two weeks from the brief to the gala dinner, where it opened the night in front of more than 1,000 guests.
-
-We're really proud of how it came out in the time we had, especially as it was all done pro bono, outside of work hours the whole way through.`,
+Collaborating with a talented graphic designer, we took it from start to finish, from the idea and creative direction through to the sound design and animation. We were really proud of how this came out in the time we had, especially as this was all done pro bono, working out of work hours the whole time. The problem we had was the tight turnaround, with only 2 weeks from the brief before the gala dinner was hosted in front of 1,000 guests.`,
     thumbnail: "images/taldumande-thumb.jpg",
     previewVideo: "media/taldumande-loop.mp4",
     video: { vimeo: "1243128832" },
