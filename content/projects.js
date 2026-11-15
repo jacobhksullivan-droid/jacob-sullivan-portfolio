@@ -36,7 +36,7 @@
 window.PROJECTS = [
   {
     slug: "taldumande-youth-services",
-    title: "50th birthday animation",
+    title: "50th birthday",
     client: "Taldumande Youth Services",
     year: "2026",
     role: "Creative direction, sound design and animation",
