@@ -51,7 +51,10 @@ It opened Taldumande's 50th birthday gala dinner in front of more than 1,000 gue
     previewVideo: "media/taldumande-loop.mp4",
     video: { vimeo: "1243128832" },
     videoDate: "2026-11-03",
-    credits: [{ role: "Agency", name: "Fuel" }],
+    credits: [
+      { role: "Agency", name: "Fuel" },
+      { role: "Graphic designer", name: "Oscar Hoare-Swinney" }
+    ],
     process: {
       title: "Process",
       intro: "The goal was to show the problem young people in Sydney have faced with homelessness over the years, and how Taldumande has been there to help them. The catch: I had just two weeks from the brief to the gala dinner to make it.",
