@@ -26,7 +26,7 @@ window.SITE = {
   cv: "files/jacob-sullivan-cv-2026.pdf",
 
   // Visitor stats. Turn on Web Analytics in Vercel first, then set to true.
-  analytics: false,
+  analytics: true,
 
   // Used by Google and when the link is shared (keep it under ~155 characters)
   description: "Jacob Sullivan is a motion designer in Sydney making animation, 3D and video for brands like Jim Beam, Suntory and Genius Sports.",
