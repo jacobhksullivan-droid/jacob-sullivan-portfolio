@@ -84,6 +84,11 @@ Collaborating with a talented graphic designer, we took it from start to finish,
     video: { file: "media/school-of-motion.mp4" },
     videoDate: null,
     credits: [],
+    process: {
+      title: "Process",
+      intro: "",
+      items: []
+    },
     visible: true,
     featured: true,
     placeholder: false
