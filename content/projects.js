@@ -41,7 +41,7 @@ window.PROJECTS = [
     year: "2026",
     role: "Creative direction, storyboards, sound design and animation",
     tools: ["After Effects", "Claude Code (After Effects MCP)"],
-    summary: "The story of how Taldumande came to be, from the problems young people were facing to how Taldumande stepped in to help them.",
+    summary: "From the problems young people faced to how Taldumande helped them.",
     description: `For Taldumande Youth Services' 50th birthday, I made this film pro bono. The goal was to tell the story of how Taldumande came to be: the problems young people were facing, and how Taldumande stepped in to help them.
 
 I took it from start to finish, from the idea and creative direction through to the storyboards, sound design and animation. A ball carries the emotion through the whole film.
