@@ -149,6 +149,35 @@ Tip: crop the logo tight (no empty margin around it), otherwise it looks smaller
 
 ---
 
+## Add a process section (boards, moodboards, frames)
+
+Every project can have a **Process** section under the film, like Buck's project pages. Taldumande already has one set up, empty.
+
+1. Save your images in `images`, e.g. `images/taldumande-moodboard.jpg`. Any shape is fine (wide, tall, square): they're never cropped. Around 2000 px wide and under 500 KB each is plenty.
+2. In `content/projects.js`, find the project's `process` and fill it in:
+
+```js
+    process: {
+      title: "Process",
+      intro: "A short paragraph about how you approached it.",
+      items: [
+        { image: "images/taldumande-moodboard.jpg", caption: "Moodboard", wide: true },
+        { image: "images/taldumande-board-1.jpg", caption: "Storyboard" },
+        { image: "images/taldumande-board-2.jpg", caption: "Style frame" },
+        { video: "media/taldumande-animatic.mp4", caption: "Animatic", wide: true }
+      ]
+    },
+```
+
+- `wide: true` makes an item full width. Without it, items sit two side by side.
+- `video` is for short silent loops (animatics, tests). Keep them small (under ~5 MB).
+- `caption` is optional.
+- Until you add items or an intro, the section stays hidden on the live site.
+
+Or just send Claude the images and say which project.
+
+---
+
 ## Other quick edits
 
 - **Headline, email, brand names:** `content/site.js`.

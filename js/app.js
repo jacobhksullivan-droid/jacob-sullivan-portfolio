@@ -544,10 +544,46 @@
       return '<section class="gallery-block"><h2 class="label">' + title + "</h2>" +
         '<div class="gallery' + (loop ? " gallery--loops" : "") + '">' + body + "</div></section>";
     }
+    /* Process section (boards, moodboards, style frames, animatics), Buck-style:
+       a heading, a short intro, then images full width or two side by side.
+       process: { title, intro, items: [{ image, caption, wide }, { video, poster, caption, wide }] }
+       (a plain list of items also works). Images keep their own shape. */
+    function processBlock() {
+      var pr = p.process;
+      if (!pr) return "";
+      if (Array.isArray(pr)) pr = { items: pr };
+      var items = (pr.items || []).filter(function (m) { return m && (m.image || m.video); });
+      var intro = pr.intro ? '<div class="process__intro">' + paras(pr.intro) + "</div>" : "";
+      if (!items.length && !intro && !isDev) return "";
+      var body;
+      if (items.length) {
+        body = items.map(function (m) {
+          var cls = "process__item reveal" + (m.wide ? " process__item--wide" : "");
+          var media;
+          if (m.video) {
+            media = '<div data-preview="' + esc(src(m.video)) + '"' + (m.poster ? ' data-poster="' + esc(src(m.poster)) + '"' : "") + '>' +
+              '<div class="card__media process__video">' + (m.poster ? '<img src="' + esc(src(m.poster)) + '" alt="" loading="lazy" decoding="async">' : ph("Loop")) + "</div></div>";
+          } else {
+            media = '<img class="process__img" src="' + esc(src(m.image)) + '" alt="' + esc(m.caption || "") + '" loading="lazy" decoding="async">';
+          }
+          return '<figure class="' + cls + '">' + media + (m.caption ? '<figcaption class="tile__cap">' + esc(m.caption) + "</figcaption>" : "") + "</figure>";
+        }).join("");
+      } else {
+        // Preview of the layout on your computer only, until real images are added
+        body = [["Add moodboard", true], ["Add storyboard frame"], ["Add style frame"], ["Add animatic or test", true]].map(function (x) {
+          return '<figure class="process__item' + (x[1] ? " process__item--wide" : "") + '"><div class="process__ph">' + ph(x[0]) + "</div></figure>";
+        }).join("");
+        intro = intro || ('<div class="dev-hint" style="margin-top:16px">' + devTag(true) + " Add your process in projects.js: process: { intro: \"…\", items: [ { image: \"images/…\", caption: \"…\", wide: true } ] }</div>");
+      }
+      return '<section class="process" aria-labelledby="process-title">' +
+        '<h2 class="process__title reveal" id="process-title">' + esc(pr.title || "Process") + "</h2>" + intro +
+        '<div class="process__grid">' + body + "</div></section>";
+    }
+
     var caseStudy = p.caseStudy ?
       '<div class="case">' +
         textRow("The brief", p.brief, "Add the brief in projects.js (brief: ...)") +
-        gallery("Process", p.process, false, "Add process frame") +
+        processBlock() +
         textRow("Key decision", p.keyDecision, "Add the key creative decision (keyDecision: ...)") +
         textRow("Result", p.result, "Add the result (result: ...). Only real outcomes.") +
         gallery("Details", p.details, true, "Add detail loop") +
@@ -569,7 +605,7 @@
             metaRow("Year", p.year) + metaRow("Tools", tools.join(", ")) +
           "</dl>" +
         "</div>" +
-        caseStudy +
+        (p.caseStudy ? caseStudy : processBlock()) +
         (credits.length ?
           '<section class="credits reveal" aria-labelledby="credits-title"><h2 class="label" id="credits-title">Credits</h2><ul class="credits__list">' +
           credits.map(function (c) { return '<li><span class="muted">' + esc(c.role) + "</span><span>" + esc(c.name) + "</span></li>"; }).join("") +

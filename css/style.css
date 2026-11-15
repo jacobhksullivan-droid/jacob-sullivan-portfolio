@@ -759,3 +759,18 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
   .footer__base { align-items: center; }
   .hero__pause { width: 44px; height: 44px; }
 }
+
+
+/* ---------- Process section (project pages) ---------- */
+.process { margin-top: clamp(56px, 7vw, 112px); border-top: 1px solid var(--line); padding-top: clamp(32px, 4vw, 56px); }
+.process__title { font-family: var(--serif); font-weight: var(--serif-weight); font-size: var(--fs-h2); line-height: 1.1; }
+.process__intro { margin-top: var(--s4); display: grid; gap: var(--s4); font-size: var(--fs-body-l); max-width: 60ch; }
+.process__grid { margin-top: clamp(28px, 3.5vw, 48px); display: grid; grid-template-columns: 1fr; gap: clamp(20px, 2.4vw, 36px); align-items: start; }
+@media (min-width: 768px) {
+  .process__grid { grid-template-columns: 1fr 1fr; }
+  .process__item--wide { grid-column: 1 / -1; }
+}
+.process__img { width: 100%; height: auto; background: var(--ph); }
+.process__video { margin-top: 0; aspect-ratio: 16 / 9; }
+.process__ph { position: relative; aspect-ratio: 16 / 9; }
+.process__ph > .ph { position: absolute; inset: 0; }

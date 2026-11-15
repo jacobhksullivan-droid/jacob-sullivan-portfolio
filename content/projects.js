@@ -52,6 +52,16 @@ It opened Taldumande's 50th birthday gala dinner in front of more than 1,000 gue
     video: { vimeo: "1243128832" },
     videoDate: "2026-11-03",
     credits: [{ role: "Agency", name: "Fuel" }],
+    process: {
+      title: "Process",
+      intro: "",
+      items: [
+        // { image: "images/taldumande-moodboard.jpg", caption: "Moodboard", wide: true },
+        // { image: "images/taldumande-board-1.jpg", caption: "Storyboard" },
+        // { image: "images/taldumande-board-2.jpg", caption: "Style frame" },
+        // { video: "media/taldumande-animatic.mp4", caption: "Animatic", wide: true }
+      ]
+    },
     visible: true,
     featured: true,
     placeholder: false
