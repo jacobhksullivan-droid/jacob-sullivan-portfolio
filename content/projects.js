@@ -41,7 +41,7 @@ window.PROJECTS = [
     year: "2026",
     role: "Animation",
     tools: ["After Effects", "Claude Code (After Effects MCP)"],
-    summary: "A slow, emotional film built around one simple motif: a ball.",
+    summary: "The story of how Taldumande came to be, from the problems young people were facing to how Taldumande stepped in to help them.",
     description: `I took a set of storyboards for Taldumande Youth Services and brought them to life as a slow, emotional piece with voice-over and music. A ball carries the feeling through the whole film.
 
 I built it in After Effects, using an After Effects MCP to speed up the set-up so more of my time went into the animation.`,
