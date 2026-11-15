@@ -601,15 +601,16 @@
             '<div class="project__desc reveal" style="--d:100ms">' + paras(p.description) + "</div>" +
           "</div>" +
           '<dl class="meta reveal" style="--d:180ms">' +
-            metaRow("Client", p.client) + metaRow("Agency", p.agency) + metaRow("Role", p.role) + respRow +
+            metaRow("Client", p.client) +
+            // Credits sit right under Client, in the same column
+            credits.map(function (c) { return metaRow(c.role || "Credit", c.name); }).join("") +
+            (credits.some(function (c) { return /agency/i.test(c.role || ""); }) ? "" : metaRow("Agency", p.agency)) +
+            metaRow("Role", p.role) + respRow +
             metaRow("Year", p.year) + metaRow("Tools", tools.join(", ")) +
           "</dl>" +
         "</div>" +
         (p.caseStudy ? caseStudy : processBlock()) +
-        (credits.length ?
-          '<section class="credits reveal" aria-labelledby="credits-title"><h2 class="label" id="credits-title">Credits</h2><ul class="credits__list">' +
-          credits.map(function (c) { return '<li><span class="muted">' + esc(c.role) + "</span><span>" + esc(c.name) + "</span></li>"; }).join("") +
-          "</ul></section>" : "") +
+
         (visible.length > 1 ?
         '<nav class="pager" aria-label="More projects">' +
           '<a href="/work/' + encodeURIComponent(prev.slug) + '"><span class="label">&larr; Previous' + (prev.client ? " &middot; " + esc(prev.client) : "") + '</span><span class="pager__title">' + esc(prev.title) + "</span></a>" +
