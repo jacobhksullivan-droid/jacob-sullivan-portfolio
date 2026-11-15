@@ -55,7 +55,7 @@ Collaborating with a talented graphic designer, we took it from start to finish,
     ],
     process: {
       title: "Process",
-      intro: "The goal was to show the problem young people in Sydney have faced with homelessness over the years, and how Taldumande has been there to help them. The catch: I had just two weeks from the brief to the gala dinner to make it.",
+      intro: "The goal was to show the problem young people in Sydney have faced with homelessness over the years, and how Taldumande has been there to help them. The challenge was to find a way to take the warm, welcoming brand identity Taldumande have and turn it into a look and feel that evoked emotion and put the viewer through the journey that young people are facing.",
       items: [
         { video: "media/taldumande-moodboard.mp4", poster: "images/taldumande-moodboard.jpg", ratio: "1600 / 820", caption: "Moodboard", wide: true },
         { image: "images/taldumande-frame-street.jpg", caption: "Style frame", wide: true },
