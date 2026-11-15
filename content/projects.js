@@ -40,7 +40,7 @@ window.PROJECTS = [
     client: "Taldumande Youth Services",
     year: "2026",
     role: "Creative direction, storyboards, sound design and animation",
-    tools: ["After Effects", "Claude Code (After Effects MCP)"],
+    tools: ["After Effects", "Illustrator"],
     summary: "From the problems young people faced to how Taldumande helped them.",
     description: `For Taldumande Youth Services' 50th birthday, I made this film pro bono. The goal was to tell the story of how Taldumande came to be: the problems young people were facing, and how Taldumande stepped in to help them.
 
