@@ -601,7 +601,7 @@
             '<div class="project__desc reveal" style="--d:100ms">' + paras(p.description) + "</div>" +
           "</div>" +
           '<dl class="meta reveal" style="--d:180ms">' +
-            metaRow("Client", p.client) +
+            (/^personal project$/i.test(p.client || "") ? "" : metaRow("Client", p.client)) +
             // Credits sit right under Client, in the same column
             credits.map(function (c) { return metaRow(c.role || "Credit", c.name); }).join("") +
             (credits.some(function (c) { return /agency/i.test(c.role || ""); }) ? "" : metaRow("Agency", p.agency)) +
