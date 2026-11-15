@@ -42,11 +42,11 @@ window.PROJECTS = [
     role: "Creative direction, sound design and animation",
     tools: ["After Effects", "Illustrator"],
     summary: "From the problems young people faced to how Taldumande helped them.",
-    description: `For Taldumande Youth Services' 50th birthday, I made this film pro bono. The goal was to tell the story of how Taldumande came to be: the problems young people were facing, and how Taldumande stepped in to help them.
+    description: `For Taldumande Youth Services' 50th birthday, the goal was to tell the story of how Taldumande came to be: the problems young people were facing, and how Taldumande stepped in to help them.
 
-I took it from start to finish, from the idea and creative direction through to the sound design and animation. A ball carries the emotion through the whole film.
+Working with a talented graphic designer, we took it from start to finish, from the idea and creative direction through to the sound design and animation. The biggest challenge was the turnaround: just two weeks from the brief to the gala dinner, where it opened the night in front of more than 1,000 guests.
 
-It opened Taldumande's 50th birthday gala dinner in front of more than 1,000 guests.`,
+We're really proud of how it came out in the time we had, especially as it was all done pro bono, outside of work hours the whole way through.`,
     thumbnail: "images/taldumande-thumb.jpg",
     previewVideo: "media/taldumande-loop.mp4",
     video: { vimeo: "1243128832" },
