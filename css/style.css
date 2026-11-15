@@ -486,8 +486,8 @@ ul, ol { padding: 0; list-style: none; }
 .site-footer { border-top: 1px solid var(--line); padding-block: clamp(48px, 6vw, 88px) var(--s6); }
 .footer__grid { display: grid; gap: var(--s7); }
 .footer__name {
-  font-family: var(--serif); font-weight: 500; font-size: 1.35rem;
-  letter-spacing: var(--track-name); text-transform: uppercase; margin-bottom: var(--s3);
+  font-family: var(--sans); font-weight: 400; font-size: 1.35rem;
+  letter-spacing: -0.01em; margin-bottom: var(--s3);
 }
 .footer__col p, .footer__col li { line-height: 1.7; }
 .footer__col .label { margin-bottom: var(--s3); }
@@ -744,3 +744,18 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
 
 .clients { display: flex; flex-wrap: wrap; gap: 6px 0; font-size: var(--fs-body-l); }
 .clients li:not(:last-child)::after { content: "\00B7"; margin-inline: 12px; color: var(--muted); }
+
+/* ---------- Phones / touch: bigger tap areas without changing the look ---------- */
+@media (pointer: coarse), (max-width: 767px) {
+  .site-footer a, .section__head a, .contact__email, .contact__details a, .about__bio a {
+    position: relative;
+  }
+  .site-footer a::after, .section__head a::after, .contact__details a::after {
+    content: ""; position: absolute; inset: -10px -6px;   /* invisible, extends the touch area to ~44px */
+  }
+  .footer__col ul { display: grid; gap: 8px; }
+  .footer__col p + p { margin-top: 4px; }
+  .footer__links { gap: 10px; }
+  .footer__base { align-items: center; }
+  .hero__pause { width: 44px; height: 44px; }
+}

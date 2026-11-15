@@ -9,6 +9,7 @@
   var host = location.hostname;
   var isDev = host === "localhost" || host === "127.0.0.1" || host === "[::1]" || /\.(localhost|test)$/.test(host);
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var touch = window.matchMedia("(pointer: coarse)");
   root.classList.add("js");
   if (isDev) root.classList.add("is-dev");
 
@@ -451,6 +452,18 @@
         if (v) { v.currentTime = 0; v.muted = false; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
         root.classList.add("reel-open");
         dlg.showModal();
+        // On phones, go straight into the phone's own fullscreen player (fills the screen, rotates with the phone).
+        // Leaving fullscreen closes the reel.
+        if (v && touch.matches) {
+          try {
+            if (v.requestFullscreen) v.requestFullscreen().catch(function () {});
+            else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();       // iPhone
+          } catch (e) {}
+          var done = function () { if (dlg.open) dlg.close(); };
+          v.addEventListener("webkitendfullscreen", done, { once: true });
+          var onFs = function () { if (!document.fullscreenElement) { document.removeEventListener("fullscreenchange", onFs); done(); } };
+          document.addEventListener("fullscreenchange", onFs);
+        }
       };
       openBtn.addEventListener("click", openReel);
       // Clicking anywhere on the reel area opens it too
