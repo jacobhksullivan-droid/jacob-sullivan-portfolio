@@ -99,7 +99,7 @@ It was also a great opportunity to animate in time with a voiceover, and to matc
   },
   {
     slug: "landart-brand-reel",
-    title: "Brand and website reel",
+    title: "Brand showcase",
     client: "Landart",
     year: "2026",
     role: "Motion design, 3D and edit",
@@ -117,7 +117,7 @@ It was also a great opportunity to animate in time with a voiceover, and to matc
   },
   {
     slug: "genius-sports-sizzle-reel",
-    title: "GeniusIQ sizzle reel",
+    title: "GeniusIQ",
     client: "Genius Sports",
     year: "2025",
     role: "Creative direction, 3D and animation",
