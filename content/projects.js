@@ -80,7 +80,7 @@ Collaborating with a talented graphic designer, we took it from start to finish,
     summary: "Design frames by Ordinary Folk, brought to life with bold shapes, loud colour and a lot of keyframes.",
     description: `A personal project animating a set of design frames by Ordinary Folk.
 
-The frames were made for School of Motion's Animation Bootcamp, and when they were refreshed I came back to animate them again, this time with everything I've learned since.`,
+It started life as the final project I made when I first taught myself animation. When the frames were redesigned, I wanted to revisit it and bring everything I've learned since into this animation.`,
     thumbnail: "images/school-of-motion-thumb-2.jpg",
     previewVideo: "media/school-of-motion-loop-2.mp4",
     video: { file: "media/school-of-motion.mp4" },
