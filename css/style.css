@@ -190,7 +190,6 @@ ul, ol { padding: 0; list-style: none; }
   transition: transform var(--dur) var(--ease);
 }
 .nav__link:hover::after, .nav__link[aria-current="page"]::after { transform: scaleX(1); transform-origin: left; }
-.nav__link[aria-current="page"]:not(:hover)::after { background: currentColor; }   /* current page keeps a plain line; hover is blue */
 
 .menu-btn {
   display: inline-flex; align-items: center; gap: 10px;
