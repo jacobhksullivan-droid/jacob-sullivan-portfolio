@@ -600,12 +600,12 @@ html.reel-open { overflow: hidden; }
 
 /* "Deep sea" mode while the About photo is hovered: the page fades to ocean blue */
 html.deep-sea {
-  --bg: #0b1c27;
-  --ink: #e9eff2;
-  --muted: #a3b4bd;
-  --line: #1d3341;
-  --ph: #13293a;
-  --ph-ink: #6f8794;
+  --bg: #1291bd;          /* ocean blue while the About photo is hovered */
+  --ink: #ffffff;
+  --muted: #e2f3f9;
+  --line: #3fa8cd;
+  --ph: #0f7fa6;
+  --ph-ink: #cfeaf4;
 }
 body, .site-header, .tags li, .site-footer, .row, .footer__base {
   transition: background-color 1.1s var(--ease), color 1.1s var(--ease), border-color 1.1s var(--ease);
