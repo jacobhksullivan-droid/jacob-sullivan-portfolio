@@ -83,7 +83,7 @@ Collaborating with a talented graphic designer, we took it from start to finish,
 It started life as the final project I made when I first taught myself animation. When the frames were redesigned, I wanted to revisit it and bring everything I've learned since into this animation.
 
 It was also a great opportunity to animate in time with a voiceover, and to match my animation to the style of the frames.`,
-    thumbnail: "images/school-of-motion-thumb-2.jpg",
+    thumbnail: "images/imagination-thumb.jpg",
     previewVideo: "media/school-of-motion-loop-2.mp4",
     video: { file: "media/school-of-motion.mp4" },
     videoDate: null,
