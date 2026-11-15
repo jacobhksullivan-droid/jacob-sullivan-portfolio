@@ -39,12 +39,14 @@ window.PROJECTS = [
     title: "50th birthday animation",
     client: "Taldumande Youth Services",
     year: "2026",
-    role: "Animation",
+    role: "Creative direction, storyboards, sound design and animation",
     tools: ["After Effects", "Claude Code (After Effects MCP)"],
     summary: "The story of how Taldumande came to be, from the problems young people were facing to how Taldumande stepped in to help them.",
-    description: `I took a set of storyboards for Taldumande Youth Services and brought them to life as a slow, emotional piece with voice-over and music. A ball carries the feeling through the whole film.
+    description: `For Taldumande Youth Services' 50th birthday, I made this film pro bono. The goal was to tell the story of how Taldumande came to be: the problems young people were facing, and how Taldumande stepped in to help them.
 
-I built it in After Effects, using an After Effects MCP to speed up the set-up so more of my time went into the animation.`,
+I took it from start to finish, from the idea and creative direction through to the storyboards, sound design and animation. A ball carries the emotion through the whole film.
+
+It opened Taldumande's 50th birthday gala dinner in front of more than 1,000 guests.`,
     thumbnail: "images/taldumande-thumb.jpg",
     previewVideo: "media/taldumande-loop.mp4",
     video: { vimeo: "1243128832" },
