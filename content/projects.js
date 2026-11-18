@@ -77,7 +77,7 @@ Collaborating with a talented graphic designer, we took it from start to finish,
     year: "2026",
     role: "Animation",
     tools: [],
-    summary: "It's not about the tools, it's about the craft, told through an ice sculptor and what he makes.",
+    summary: "It's not about the tools, it's about the craft.",
     description: `A personal project animating a set of design frames by Ordinary Folk.
 
 It started life as the final project I made when I first taught myself animation. When the frames were redesigned, I wanted to revisit it and bring everything I've learned since into this animation.
