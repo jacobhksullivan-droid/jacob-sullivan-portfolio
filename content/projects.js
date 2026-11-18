@@ -122,7 +122,7 @@ It was also a great opportunity to animate in time with a voiceover, and to matc
     year: "2025",
     role: "Creative direction, 3D and animation",
     tools: [],
-    summary: "3D renders and a sizzle reel that helped shape a new brand identity.",
+    summary: "The future of sports data.",
     description: `At Genius Sports I directed the creative vision for a set of 3D renders and animated the sizzle reel that helped define a new brand identity for one part of the business.
 
 It was part of two busy years there, working with partners like the NFL and the Premier League and leading a team of motion designers.`,
