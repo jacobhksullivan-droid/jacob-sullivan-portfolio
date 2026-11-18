@@ -91,7 +91,14 @@ It was also a great opportunity to animate in time with a voiceover, and to matc
     process: {
       title: "Process",
       intro: "",
-      items: []
+      items: [
+        { video: "media/imagination-chainsaw-build.mp4", poster: "images/imagination-chainsaw-build.jpg", ratio: "16 / 9", caption: "Chainsaw build" },
+        { video: "media/imagination-chainsaw-anim.mp4", poster: "images/imagination-chainsaw-anim.jpg", ratio: "16 / 9", caption: "Chainsaw in motion" },
+        { video: "media/imagination-robot-parts.mp4", poster: "images/imagination-robot-parts.jpg", ratio: "16 / 9", caption: "Robot: every part and its motion path" },
+        { video: "media/imagination-robot-timeline.mp4", poster: "images/imagination-robot-timeline.jpg", ratio: "1280 / 752", caption: "Robot: the timeline" },
+        { video: "media/imagination-ending.mp4", poster: "images/imagination-ending.jpg", ratio: "16 / 9", caption: "Ending" },
+        { video: "media/imagination-trex.mp4", poster: "images/imagination-trex.jpg", ratio: "16 / 9", caption: "T-rex move" }
+      ]
     },
     visible: true,
     featured: true,
