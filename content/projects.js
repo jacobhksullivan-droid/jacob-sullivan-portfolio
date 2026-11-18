@@ -104,7 +104,7 @@ It was also a great opportunity to animate in time with a voiceover, and to matc
     year: "2026",
     role: "Motion design, 3D and edit",
     tools: [],
-    summary: "A reel showing off Landart's new brand and website, from phone to laptop to the gardens themselves.",
+    summary: "The pinnacle of landscape design.",
     description: `A reel for Landart's new brand and website. It moves from the identity, onto the site on a phone, through the garden photography and onto the desktop site, all in 44 seconds.`,
     thumbnail: "images/landart-thumb.jpg",
     previewVideo: "media/landart-loop.mp4",
