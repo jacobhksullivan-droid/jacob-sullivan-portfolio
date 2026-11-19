@@ -364,16 +364,18 @@
             (st.text ? '<span class="design__set-text">' + esc(st.text) + "</span>" : "");
           var cap = inner ? (st.link ? '<a class="link-u" href="' + esc(st.link) + '">' + inner + "</a>" : "<span>" + inner + "</span>") : "<span></span>";
           return '<li class="design__set reveal" style="--r:' + r + ';--d:' + (i * 90) + 'ms">' +
+            '<div class="design__frame">' +
             '<div class="design__slides" tabindex="0" role="group" aria-roledescription="carousel" aria-label="' + esc(label) + '" style="aspect-ratio:' + r + '">' +
               st.items.map(function (it, j) {
                 return '<img class="design__slide" src="' + esc(src(it.image)) + '" alt="' + esc(it.alt || "") + '" loading="lazy" decoding="async"' +
                   (many ? ' aria-label="' + (j + 1) + " of " + st.items.length + '"' : "") + ">";
               }).join("") +
             "</div>" +
+            (many ? '<button type="button" class="design__btn design__btn--prev" data-dir="-1" aria-label="Previous ' + esc(label) + ' image">' + arrowL + "</button>" +
+              '<button type="button" class="design__btn design__btn--next" data-dir="1" aria-label="Next ' + esc(label) + ' image">' + arrowR + "</button>" : "") +
+            "</div>" +
             '<div class="design__bar">' + cap +
-              (many ? '<div class="design__nav"><span class="design__count" aria-hidden="true">1 / ' + st.items.length + "</span>" +
-                '<button type="button" class="design__btn" data-dir="-1" aria-label="Previous ' + esc(label) + ' image">' + arrowL + "</button>" +
-                '<button type="button" class="design__btn" data-dir="1" aria-label="Next ' + esc(label) + ' image">' + arrowR + "</button></div>" : "") +
+              (many ? '<span class="design__count" aria-hidden="true">1 / ' + st.items.length + "</span>" : "") +
             "</div></li>";
         }).join("") +
       "</ul></section>";
