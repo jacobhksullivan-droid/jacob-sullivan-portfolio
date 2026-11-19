@@ -75,6 +75,23 @@ window.SITE = {
     "Pictet"
   ],
 
+  // "Design" carousel on the home page, under the work. Swipe or use the arrows.
+  // Any size works (square, tall, wide): they all line up at the same height.
+  // Remove every item (or set items: []) to hide it.
+  design: {
+    title: "Design",
+    items: [
+      { image: "images/design/jake-three-sky.webp", alt: "Leave The World Behind cover art for Jake Three: a hand reaching down through the clouds" },
+      { image: "images/design/jake-three-space.webp", alt: "Leave The World Behind cover art for Jake Three: purple space and swirling smoke" },
+      { image: "images/design/gradient-bars.webp", alt: "Glowing red and pink gradient bars on black" },
+      { image: "images/design/gradient-cubes.webp", alt: "Two glossy cubes floating over a red gradient" },
+      { image: "images/design/gradient-discs.webp", alt: "A sphere resting on stacked gradient discs" },
+      { image: "images/design/genius-tshirts.webp", alt: "Genius Sports t-shirt design, front and back" },
+      { image: "images/design/genius-new-edge.jpg", alt: "Genius Sports frame: Everyone is looking for a new edge" },
+      { image: "images/design/genius-low-latency.jpg", alt: "Genius Sports frame: All within a low-latency stream" }
+    ]
+  },
+
   // The closing block on the home page
   closing: {
     title: "Have a project in mind?",

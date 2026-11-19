@@ -341,6 +341,43 @@
 
   /* ---------- pages ---------- */
 
+  // "Design" carousel (site.js -> design.items): one row of images at the same height, swipe or arrows
+  function designBlock() {
+    var d = S.design || {}, items = (d.items || []).filter(function (it) { return it && it.image; });
+    if (!items.length) return "";
+    var arrowL = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg>';
+    var arrowR = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg>';
+    return '<section class="design" aria-labelledby="design-title">' +
+      '<div class="wrap design__head reveal"><h2 class="design__title" id="design-title">' + esc(d.title || "Design") + "</h2>" +
+        '<div class="design__nav"><button type="button" class="design__btn" data-design="-1" aria-label="Previous">' + arrowL + "</button>" +
+        '<button type="button" class="design__btn" data-design="1" aria-label="Next">' + arrowR + "</button></div></div>" +
+      '<ul class="design__track reveal" tabindex="0" aria-label="' + esc(d.title || "Design") + ' images">' +
+        items.map(function (it) {
+          return '<li class="design__item"><img src="' + esc(src(it.image)) + '" alt="' + esc(it.alt || "") + '" loading="lazy" decoding="async"></li>';
+        }).join("") +
+      "</ul></section>";
+  }
+  function wireDesign(scope) {
+    var track = $(".design__track", scope);
+    if (!track) return;
+    var btns = $$("[data-design]", scope);
+    var still = window.matchMedia("(prefers-reduced-motion: reduce)");
+    function update() {
+      var max = track.scrollWidth - track.clientWidth - 2;
+      btns[0].disabled = track.scrollLeft <= 2;
+      btns[1].disabled = track.scrollLeft >= max;
+    }
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        track.scrollBy({ left: Number(b.getAttribute("data-design")) * track.clientWidth * 0.8, behavior: still.matches ? "auto" : "smooth" });
+      });
+    });
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    $$("img", track).forEach(function (im) { im.addEventListener("load", update); });
+    update();
+  }
+
   function renderHome(main) {
     var reelTitle = R.title || "Showreel";
     var media;
@@ -423,6 +460,8 @@
         '<div class="grid">' + featured.map(card).join("") + "</div>" +
       "</section>" +
 
+      designBlock() +
+
       // Optional About teaser: only shows if about.js has a teaser line (off: not in the research brief's home order)
       (A.teaser ?
       '<section class="wrap" aria-labelledby="about-teaser">' +
@@ -484,6 +523,7 @@
       });
     }
     wireCardPreviews(main);
+    wireDesign(main);
   }
 
   function renderWork(main) {

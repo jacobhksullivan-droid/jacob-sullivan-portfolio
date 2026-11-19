@@ -777,3 +777,28 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
 .process__video { margin-top: 0; aspect-ratio: 16 / 9; }
 .process__ph { position: relative; aspect-ratio: 16 / 9; }
 .process__ph > .ph { position: absolute; inset: 0; }
+
+/* ---------- Design carousel (home, under the work) ---------- */
+.design { padding-bottom: clamp(24px, 3vw, 48px); }
+.design__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s4); margin-bottom: clamp(20px, 2.5vw, 36px); }
+.design__title { font-family: var(--serif); font-weight: var(--serif-weight); font-size: var(--fs-h2); line-height: 1.1; }
+.design__nav { display: flex; gap: var(--s2); }
+.design__btn {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--ink);
+  display: grid; place-items: center; cursor: pointer; transition: background .25s, color .25s, border-color .25s, opacity .25s;
+}
+.design__btn svg { width: 16px; height: 16px; }
+.design__btn:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); color: #fff; }
+.design__btn:disabled { opacity: .3; cursor: default; }
+.design__track {
+  list-style: none; margin: 0; display: flex; gap: clamp(10px, 1.2vw, 18px);
+  overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+  padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
+  scroll-padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
+  scrollbar-width: none;
+}
+.design__track::-webkit-scrollbar { display: none; }
+.design__track:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.design__item { flex: 0 0 auto; scroll-snap-align: start; height: clamp(260px, 38vw, 560px); }
+.design__item img { height: 100%; width: auto; display: block; background: var(--line); }
+@media (max-width: 767px) { .design__item { height: 64vw; } }

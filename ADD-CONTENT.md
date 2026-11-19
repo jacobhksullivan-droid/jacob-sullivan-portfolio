@@ -184,6 +184,7 @@ Or just send Claude the images and say which project.
 - **Social links:** `content/site.js` → `socials`. Paste full links, e.g. `linkedin: "https://www.linkedin.com/in/yourname",`. Empty ones stay hidden on the live site.
 - **Bio, photo, tools, testimonial:** `content/about.js`. `photoHover` is the picture that appears when someone hovers over your photo (the page fades to ocean blue at the same time); set it to `null` to turn that off. Your full work history lives in the CV PDF, not on the site.
 - **Line on top of the reel:** `positioning` in `content/site.js`. Set it to `""` to remove it.
+- **Design carousel** (home page, under the work): `design.items` in `content/site.js`. Put the image in `images/design/`, then add a line like `{ image: "images/design/my-image.jpg", alt: "What it shows" },`. Any shape works; they line up at the same height. The order there is the order on the site. Delete every line to hide it.
 - **Availability line** (Contact page and closing block): `availability` in `content/site.js`. `""` hides it.
 - **CV download:** put the PDF in a `files` folder, e.g. `files/jacob-sullivan-cv.pdf`, then set `cv: "files/jacob-sullivan-cv.pdf",` in `content/site.js`. Use a version without your phone number.
 - **Testimonial:** `testimonial` in `content/about.js`. Only a real quote, with the person's OK. Hidden while empty.
