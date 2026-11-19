@@ -780,8 +780,21 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
 
 /* ---------- Design (home, under the work): one small carousel per set ---------- */
 .design__title { font-family: var(--serif); font-weight: var(--serif-weight); font-size: var(--fs-h2); line-height: 1.1; margin-bottom: clamp(20px, 2.5vw, 36px); }
-.design__sets { list-style: none; margin: 0; padding: 0; display: flex; align-items: flex-start; gap: clamp(16px, 2vw, 32px); }
-.design__set { flex: var(--r) 1 0; min-width: 0; }       /* width follows the set's shape, so all sets share one height */
+.design__sets {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: 1fr; gap: clamp(48px, 6vw, 88px) var(--grid-gap); align-items: start;
+}
+@media (min-width: 768px) {
+  /* same 6-column rhythm as the work grid: wide + narrow (the narrow one runs down two rows), then half */
+  .design__sets { grid-template-columns: repeat(6, 1fr); grid-auto-flow: row dense; }
+  .design__set:nth-child(3n+1) { grid-column: 1 / span 4; }
+  .design__set:nth-child(3n+2) { grid-column: 5 / span 2; grid-row: span 2; }
+  .design__set:nth-child(3n+3) { grid-column: 1 / span 3; }
+}
+.design__set { min-width: 0; }
+.design__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s3); margin-bottom: var(--s5); }
+.design__set-title a { color: inherit; }
+.design__set-title a:hover span { background-size: 100% 1px; }
 .design__slides {
   display: flex; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
   scrollbar-width: none; background: var(--line);
@@ -789,10 +802,6 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
 .design__slides::-webkit-scrollbar { display: none; }
 .design__slides:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .design__slide { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; display: block; scroll-snap-align: start; }
-.design__bar { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s3); margin-top: var(--s3); font-size: var(--fs-small); line-height: 1.4; }
-.design__set-title { font-weight: 500; }
-.design__set-text { color: var(--muted); }
-.design__set-title + .design__set-text::before { content: "\00b7"; margin-inline: .45em; }
 .design__count { color: var(--muted); font-variant-numeric: tabular-nums; flex: none; }
 .design__frame { position: relative; }
 .design__btn {
@@ -814,6 +823,5 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
   .design__frame .design__btn:disabled { opacity: 0; }
 }
 @media (max-width: 767px) {
-  .design__sets { flex-direction: column; gap: var(--s7); }
-  .design__set { width: min(100%, calc(62svh * var(--r))); flex: none; }
+  .design__frame { width: min(100%, calc(62svh * var(--r))); }
 }

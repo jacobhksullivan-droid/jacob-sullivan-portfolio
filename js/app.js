@@ -360,10 +360,11 @@
       '<ul class="design__sets">' +
         sets.map(function (st, i) {
           var r = ratioNum(st.ratio), many = st.items.length > 1, label = st.title || ("Set " + (i + 1));
-          var inner = (st.title ? '<span class="design__set-title">' + esc(st.title) + "</span>" : "") +
-            (st.text ? '<span class="design__set-text">' + esc(st.text) + "</span>" : "");
-          var cap = inner ? (st.link ? '<a class="link-u" href="' + esc(st.link) + '">' + inner + "</a>" : "<span>" + inner + "</span>") : "<span></span>";
-          return '<li class="design__set reveal" style="--r:' + r + ';--d:' + (i * 90) + 'ms">' +
+          var title = st.title ? '<h3 class="card__title design__set-title">' + (st.link ? '<a href="' + esc(st.link) + '"><span>' + esc(st.title) + "</span></a>" : "<span>" + esc(st.title) + "</span>") + "</h3>" : "";
+          var head = '<div class="design__head">' + '<div>' + title +
+            (st.text ? '<p class="card__summary">' + esc(st.text) + "</p>" : "") + "</div>" +
+            (many ? '<span class="design__count" aria-hidden="true">1 / ' + st.items.length + "</span>" : "") + "</div>";
+          return '<li class="design__set reveal" style="--r:' + r + ';--d:' + ((i % 2) * 90) + 'ms">' + head +
             '<div class="design__frame">' +
             '<div class="design__slides" tabindex="0" role="group" aria-roledescription="carousel" aria-label="' + esc(label) + '" style="aspect-ratio:' + r + '">' +
               st.items.map(function (it, j) {
@@ -373,9 +374,6 @@
             "</div>" +
             (many ? '<button type="button" class="design__btn design__btn--prev" data-dir="-1" aria-label="Previous ' + esc(label) + ' image">' + arrowL + "</button>" +
               '<button type="button" class="design__btn design__btn--next" data-dir="1" aria-label="Next ' + esc(label) + ' image">' + arrowR + "</button>" : "") +
-            "</div>" +
-            '<div class="design__bar">' + cap +
-              (many ? '<span class="design__count" aria-hidden="true">1 / ' + st.items.length + "</span>" : "") +
             "</div></li>";
         }).join("") +
       "</ul></section>";
@@ -386,7 +384,7 @@
       var box = $(".design__slides", set), btns = $$("[data-dir]", set), count = $(".design__count", set);
       if (!btns.length) return;
       var n = box.children.length;
-      function idx() { return Math.round(box.scrollLeft / box.clientWidth); }
+      function idx() { return box.clientWidth ? Math.round(box.scrollLeft / box.clientWidth) : 0; }
       function update() {
         var i = idx();
         btns[0].disabled = i <= 0;

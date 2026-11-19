@@ -87,13 +87,14 @@ window.SITE = {
     title: "Design",
     sets: [
       {
-        title: "Jake Three",
-        ratio: "1 / 1",
-        text: "Leave The World Behind",
-        link: "",
+        title: "Genius Sports",
+        ratio: "16 / 9",
+        text: "",
+        link: "/work/genius-sports-sizzle-reel",
         items: [
-          { image: "images/design/jake-three-sky.webp", alt: "Leave The World Behind cover art for Jake Three: a hand reaching down through the clouds" },
-          { image: "images/design/jake-three-space.webp", alt: "Leave The World Behind cover art for Jake Three: purple space and swirling smoke" }
+          { image: "images/design/genius-tshirts.webp", alt: "Genius Sports t-shirt design, front and back" },
+          { image: "images/design/genius-new-edge.jpg", alt: "Genius Sports frame: Everyone is looking for a new edge" },
+          { image: "images/design/genius-low-latency.jpg", alt: "Genius Sports frame: All within a low-latency stream" }
         ]
       },
       {
@@ -108,14 +109,13 @@ window.SITE = {
         ]
       },
       {
-        title: "Genius Sports",
-        ratio: "16 / 9",
-        text: "",
-        link: "/work/genius-sports-sizzle-reel",
+        title: "Jake Three",
+        ratio: "1 / 1",
+        text: "Leave The World Behind",
+        link: "",
         items: [
-          { image: "images/design/genius-tshirts.webp", alt: "Genius Sports t-shirt design, front and back" },
-          { image: "images/design/genius-new-edge.jpg", alt: "Genius Sports frame: Everyone is looking for a new edge" },
-          { image: "images/design/genius-low-latency.jpg", alt: "Genius Sports frame: All within a low-latency stream" }
+          { image: "images/design/jake-three-sky.webp", alt: "Leave The World Behind cover art for Jake Three: a hand reaching down through the clouds" },
+          { image: "images/design/jake-three-space.webp", alt: "Leave The World Behind cover art for Jake Three: purple space and swirling smoke" }
         ]
       }
     ]
