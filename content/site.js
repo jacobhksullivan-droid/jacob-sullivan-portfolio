@@ -80,13 +80,15 @@ window.SITE = {
   //   title  shown under the set
   //   text   OPTIONAL short line after the title ("" hides it)
   //   link   OPTIONAL page the caption links to, e.g. "/work/genius-sports-sizzle-reel"
-  // Any image size works (square, tall, wide): they all line up at the same height.
+  //   ratio  the shape of the set's images: "1 / 1" square, "9 / 16" tall, "16 / 9" wide
+  // Each set is its own little carousel: people use the arrows to flip through it.
   // Delete every set (sets: []) to hide the carousel.
   design: {
     title: "Design",
     sets: [
       {
         title: "Jake Three",
+        ratio: "1 / 1",
         text: "Leave The World Behind",
         link: "",
         items: [
@@ -96,6 +98,7 @@ window.SITE = {
       },
       {
         title: "Gradient series",
+        ratio: "9 / 16",
         text: "",
         link: "",
         items: [
@@ -106,6 +109,7 @@ window.SITE = {
       },
       {
         title: "Genius Sports",
+        ratio: "16 / 9",
         text: "",
         link: "/work/genius-sports-sizzle-reel",
         items: [

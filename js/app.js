@@ -341,55 +341,69 @@
 
   /* ---------- pages ---------- */
 
-  // "Design" carousel (site.js -> design.items): one row of images at the same height, swipe or arrows
+  // "Design" section (site.js -> design.sets): each set is its own little carousel with arrows and a caption
+  function ratioNum(r) {
+    var m = String(r || "").split("/");
+    var n = m.length === 2 ? parseFloat(m[0]) / parseFloat(m[1]) : parseFloat(r);
+    return n > 0 ? n : 1;
+  }
   function designBlock() {
     var d = S.design || {};
-    // sets: [{ title, text, link, items }]; a plain items list still works as one untitled set
     var sets = (d.sets || (d.items ? [{ items: d.items }] : [])).map(function (st) {
-      return { title: st.title, text: st.text, link: st.link, items: (st.items || []).filter(function (it) { return it && it.image; }) };
+      return { title: st.title, text: st.text, link: st.link, ratio: st.ratio, items: (st.items || []).filter(function (it) { return it && it.image; }) };
     }).filter(function (st) { return st.items.length; });
     if (!sets.length) return "";
     var arrowL = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg>';
     var arrowR = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg>';
-    return '<section class="design" aria-labelledby="design-title">' +
-      '<div class="wrap design__head reveal"><h2 class="design__title" id="design-title">' + esc(d.title || "Design") + "</h2>" +
-        '<div class="design__nav"><button type="button" class="design__btn" data-design="-1" aria-label="Previous">' + arrowL + "</button>" +
-        '<button type="button" class="design__btn" data-design="1" aria-label="Next">' + arrowR + "</button></div></div>" +
-      '<ul class="design__track reveal" tabindex="0" aria-label="' + esc(d.title || "Design") + ' images">' +
-        sets.map(function (st) {
-          var cap = "";
-          if (st.title || st.text) {
-            var inner = (st.title ? '<span class="design__set-title">' + esc(st.title) + "</span>" : "") +
-              (st.text ? '<span class="design__set-text">' + esc(st.text) + "</span>" : "");
-            cap = '<figcaption class="design__cap">' +
-              (st.link ? '<a class="link-u" href="' + esc(st.link) + '">' + inner + "</a>" : inner) + "</figcaption>";
-          }
-          return '<li class="design__set"><figure>' +
-            '<div class="design__imgs">' + st.items.map(function (it) {
-              return '<img class="design__item" src="' + esc(src(it.image)) + '" alt="' + esc(it.alt || "") + '" loading="lazy" decoding="async">';
-            }).join("") + "</div>" + cap + "</figure></li>";
+    return '<section class="design section section--tight-top wrap" aria-labelledby="design-title">' +
+      '<h2 class="design__title reveal" id="design-title">' + esc(d.title || "Design") + "</h2>" +
+      '<ul class="design__sets">' +
+        sets.map(function (st, i) {
+          var r = ratioNum(st.ratio), many = st.items.length > 1, label = st.title || ("Set " + (i + 1));
+          var inner = (st.title ? '<span class="design__set-title">' + esc(st.title) + "</span>" : "") +
+            (st.text ? '<span class="design__set-text">' + esc(st.text) + "</span>" : "");
+          var cap = inner ? (st.link ? '<a class="link-u" href="' + esc(st.link) + '">' + inner + "</a>" : "<span>" + inner + "</span>") : "<span></span>";
+          return '<li class="design__set reveal" style="--r:' + r + ';--d:' + (i * 90) + 'ms">' +
+            '<div class="design__slides" tabindex="0" role="group" aria-roledescription="carousel" aria-label="' + esc(label) + '" style="aspect-ratio:' + r + '">' +
+              st.items.map(function (it, j) {
+                return '<img class="design__slide" src="' + esc(src(it.image)) + '" alt="' + esc(it.alt || "") + '" loading="lazy" decoding="async"' +
+                  (many ? ' aria-label="' + (j + 1) + " of " + st.items.length + '"' : "") + ">";
+              }).join("") +
+            "</div>" +
+            '<div class="design__bar">' + cap +
+              (many ? '<div class="design__nav"><span class="design__count" aria-hidden="true">1 / ' + st.items.length + "</span>" +
+                '<button type="button" class="design__btn" data-dir="-1" aria-label="Previous ' + esc(label) + ' image">' + arrowL + "</button>" +
+                '<button type="button" class="design__btn" data-dir="1" aria-label="Next ' + esc(label) + ' image">' + arrowR + "</button></div>" : "") +
+            "</div></li>";
         }).join("") +
       "</ul></section>";
   }
   function wireDesign(scope) {
-    var track = $(".design__track", scope);
-    if (!track) return;
-    var btns = $$("[data-design]", scope);
     var still = window.matchMedia("(prefers-reduced-motion: reduce)");
-    function update() {
-      var max = track.scrollWidth - track.clientWidth - 2;
-      btns[0].disabled = track.scrollLeft <= 2;
-      btns[1].disabled = track.scrollLeft >= max;
-    }
-    btns.forEach(function (b) {
-      b.addEventListener("click", function () {
-        track.scrollBy({ left: Number(b.getAttribute("data-design")) * track.clientWidth * 0.8, behavior: still.matches ? "auto" : "smooth" });
+    $$(".design__set", scope).forEach(function (set) {
+      var box = $(".design__slides", set), btns = $$("[data-dir]", set), count = $(".design__count", set);
+      if (!btns.length) return;
+      var n = box.children.length;
+      function idx() { return Math.round(box.scrollLeft / box.clientWidth); }
+      function update() {
+        var i = idx();
+        btns[0].disabled = i <= 0;
+        btns[1].disabled = i >= n - 1;
+        if (count) count.textContent = (i + 1) + " / " + n;
+      }
+      function go(i) {
+        i = Math.max(0, Math.min(n - 1, i));
+        box.scrollTo({ left: i * box.clientWidth, behavior: still.matches ? "auto" : "smooth" });
+      }
+      btns.forEach(function (b) { b.addEventListener("click", function () { go(idx() + Number(b.getAttribute("data-dir"))); }); });
+      box.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") { e.preventDefault(); go(idx() + 1); }
+        if (e.key === "ArrowLeft") { e.preventDefault(); go(idx() - 1); }
       });
+      box.addEventListener("scroll", update, { passive: true });
+      window.addEventListener("resize", update);
+      update();
     });
-    track.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    $$("img", track).forEach(function (im) { im.addEventListener("load", update); });
-    update();
   }
 
   function renderHome(main) {

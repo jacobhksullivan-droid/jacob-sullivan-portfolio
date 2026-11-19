@@ -778,33 +778,32 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
 .process__ph { position: relative; aspect-ratio: 16 / 9; }
 .process__ph > .ph { position: absolute; inset: 0; }
 
-/* ---------- Design carousel (home, under the work) ---------- */
-.design { padding-bottom: clamp(24px, 3vw, 48px); }
-.design__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s4); margin-bottom: clamp(20px, 2.5vw, 36px); }
-.design__title { font-family: var(--serif); font-weight: var(--serif-weight); font-size: var(--fs-h2); line-height: 1.1; }
-.design__nav { display: flex; gap: var(--s2); }
+/* ---------- Design (home, under the work): one small carousel per set ---------- */
+.design__title { font-family: var(--serif); font-weight: var(--serif-weight); font-size: var(--fs-h2); line-height: 1.1; margin-bottom: clamp(20px, 2.5vw, 36px); }
+.design__sets { list-style: none; margin: 0; padding: 0; display: flex; align-items: flex-start; gap: clamp(16px, 2vw, 32px); }
+.design__set { flex: var(--r) 1 0; min-width: 0; }       /* width follows the set's shape, so all sets share one height */
+.design__slides {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+  scrollbar-width: none; background: var(--line);
+}
+.design__slides::-webkit-scrollbar { display: none; }
+.design__slides:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.design__slide { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; display: block; scroll-snap-align: start; }
+.design__bar { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s2); margin-top: var(--s3); font-size: var(--fs-small); line-height: 1.4; min-height: 36px; }
+.design__set-title { font-weight: 500; white-space: nowrap; }
+.design__set-text { color: var(--muted); }
+.design__set-title + .design__set-text::before { content: "\00b7"; margin-inline: .45em; }
+.design__nav { display: flex; align-items: center; gap: var(--s2); flex: none; }
+.design__count { color: var(--muted); font-variant-numeric: tabular-nums; margin-right: var(--s1); }
 .design__btn {
-  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--ink);
+  width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--ink);
   display: grid; place-items: center; cursor: pointer; transition: background .25s, color .25s, border-color .25s, opacity .25s;
 }
-.design__btn svg { width: 16px; height: 16px; }
+.design__btn svg { width: 14px; height: 14px; }
 .design__btn:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); color: #fff; }
 .design__btn:disabled { opacity: .3; cursor: default; }
-.design__track {
-  list-style: none; margin: 0; display: flex; align-items: flex-start; gap: clamp(36px, 5vw, 80px);
-  overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
-  padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
-  scroll-padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
-  scrollbar-width: none;
+@media (max-width: 767px) {
+  .design__sets { flex-direction: column; gap: var(--s7); }
+  .design__set { width: min(100%, calc(62svh * var(--r))); flex: none; }
+  .design__btn { width: 44px; height: 44px; }
 }
-.design__track::-webkit-scrollbar { display: none; }
-.design__track:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-.design__set { flex: 0 0 auto; }
-.design__set figure { margin: 0; }
-.design__imgs { display: flex; gap: clamp(8px, 0.8vw, 12px); }
-.design__item { display: block; flex: 0 0 auto; height: clamp(260px, 38vw, 560px); width: auto; background: var(--line); scroll-snap-align: start; }
-.design__cap { margin-top: var(--s3); font-size: var(--fs-small); line-height: 1.4; }
-.design__set-title { font-weight: 500; }
-.design__set-text { color: var(--muted, inherit); }
-.design__set-title + .design__set-text::before { content: "\00b7"; margin-inline: .45em; }
-@media (max-width: 767px) { .design__item { height: 64vw; } }
