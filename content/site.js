@@ -76,19 +76,44 @@ window.SITE = {
   ],
 
   // "Design" carousel on the home page, under the work. Swipe or use the arrows.
-  // Any size works (square, tall, wide): they all line up at the same height.
-  // Remove every item (or set items: []) to hide it.
+  // Images are grouped into sets; each set gets a caption underneath.
+  //   title  shown under the set
+  //   text   OPTIONAL short line after the title ("" hides it)
+  //   link   OPTIONAL page the caption links to, e.g. "/work/genius-sports-sizzle-reel"
+  // Any image size works (square, tall, wide): they all line up at the same height.
+  // Delete every set (sets: []) to hide the carousel.
   design: {
     title: "Design",
-    items: [
-      { image: "images/design/jake-three-sky.webp", alt: "Leave The World Behind cover art for Jake Three: a hand reaching down through the clouds" },
-      { image: "images/design/jake-three-space.webp", alt: "Leave The World Behind cover art for Jake Three: purple space and swirling smoke" },
-      { image: "images/design/gradient-bars.webp", alt: "Glowing red and pink gradient bars on black" },
-      { image: "images/design/gradient-cubes.webp", alt: "Two glossy cubes floating over a red gradient" },
-      { image: "images/design/gradient-discs.webp", alt: "A sphere resting on stacked gradient discs" },
-      { image: "images/design/genius-tshirts.webp", alt: "Genius Sports t-shirt design, front and back" },
-      { image: "images/design/genius-new-edge.jpg", alt: "Genius Sports frame: Everyone is looking for a new edge" },
-      { image: "images/design/genius-low-latency.jpg", alt: "Genius Sports frame: All within a low-latency stream" }
+    sets: [
+      {
+        title: "Jake Three",
+        text: "Leave The World Behind",
+        link: "",
+        items: [
+          { image: "images/design/jake-three-sky.webp", alt: "Leave The World Behind cover art for Jake Three: a hand reaching down through the clouds" },
+          { image: "images/design/jake-three-space.webp", alt: "Leave The World Behind cover art for Jake Three: purple space and swirling smoke" }
+        ]
+      },
+      {
+        title: "Gradient series",
+        text: "",
+        link: "",
+        items: [
+          { image: "images/design/gradient-bars.webp", alt: "Glowing red and pink gradient bars on black" },
+          { image: "images/design/gradient-cubes.webp", alt: "Two glossy cubes floating over a red gradient" },
+          { image: "images/design/gradient-discs.webp", alt: "A sphere resting on stacked gradient discs" }
+        ]
+      },
+      {
+        title: "Genius Sports",
+        text: "",
+        link: "/work/genius-sports-sizzle-reel",
+        items: [
+          { image: "images/design/genius-tshirts.webp", alt: "Genius Sports t-shirt design, front and back" },
+          { image: "images/design/genius-new-edge.jpg", alt: "Genius Sports frame: Everyone is looking for a new edge" },
+          { image: "images/design/genius-low-latency.jpg", alt: "Genius Sports frame: All within a low-latency stream" }
+        ]
+      }
     ]
   },
 

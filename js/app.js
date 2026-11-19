@@ -343,8 +343,12 @@
 
   // "Design" carousel (site.js -> design.items): one row of images at the same height, swipe or arrows
   function designBlock() {
-    var d = S.design || {}, items = (d.items || []).filter(function (it) { return it && it.image; });
-    if (!items.length) return "";
+    var d = S.design || {};
+    // sets: [{ title, text, link, items }]; a plain items list still works as one untitled set
+    var sets = (d.sets || (d.items ? [{ items: d.items }] : [])).map(function (st) {
+      return { title: st.title, text: st.text, link: st.link, items: (st.items || []).filter(function (it) { return it && it.image; }) };
+    }).filter(function (st) { return st.items.length; });
+    if (!sets.length) return "";
     var arrowL = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg>';
     var arrowR = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg>';
     return '<section class="design" aria-labelledby="design-title">' +
@@ -352,8 +356,18 @@
         '<div class="design__nav"><button type="button" class="design__btn" data-design="-1" aria-label="Previous">' + arrowL + "</button>" +
         '<button type="button" class="design__btn" data-design="1" aria-label="Next">' + arrowR + "</button></div></div>" +
       '<ul class="design__track reveal" tabindex="0" aria-label="' + esc(d.title || "Design") + ' images">' +
-        items.map(function (it) {
-          return '<li class="design__item"><img src="' + esc(src(it.image)) + '" alt="' + esc(it.alt || "") + '" loading="lazy" decoding="async"></li>';
+        sets.map(function (st) {
+          var cap = "";
+          if (st.title || st.text) {
+            var inner = (st.title ? '<span class="design__set-title">' + esc(st.title) + "</span>" : "") +
+              (st.text ? '<span class="design__set-text">' + esc(st.text) + "</span>" : "");
+            cap = '<figcaption class="design__cap">' +
+              (st.link ? '<a class="link-u" href="' + esc(st.link) + '">' + inner + "</a>" : inner) + "</figcaption>";
+          }
+          return '<li class="design__set"><figure>' +
+            '<div class="design__imgs">' + st.items.map(function (it) {
+              return '<img class="design__item" src="' + esc(src(it.image)) + '" alt="' + esc(it.alt || "") + '" loading="lazy" decoding="async">';
+            }).join("") + "</div>" + cap + "</figure></li>";
         }).join("") +
       "</ul></section>";
   }
