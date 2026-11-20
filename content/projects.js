@@ -143,7 +143,15 @@ It was part of two busy years there, working with partners like the NFL and the 
     brief: "",
     keyDecision: "",
     result: "",
-    process: [],
+    process: {
+      title: "Process",
+      intro: "",
+      items: [
+        { image: "images/geniusiq-frame-collage.webp", caption: "Style frame", wide: true },
+        { image: "images/geniusiq-frame-phone.jpg", caption: "Style frame" },
+        { image: "images/geniusiq-frame-sports.jpg", caption: "Style frame" }
+      ]
+    },
     details: [],
     visible: true,
     featured: true,
