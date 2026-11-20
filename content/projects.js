@@ -76,7 +76,7 @@ Collaborating with a talented graphic designer, we took it from start to finish,
     client: "Personal project",
     year: "2026",
     role: "Animation",
-    tools: [],
+    tools: ["After Effects"],
     summary: "It's not about the tools, it's about the craft.",
     description: `A personal project animating a set of design frames by Ordinary Folk.
 
@@ -109,7 +109,7 @@ It was also a great opportunity to animate in time with a voiceover, and to matc
     client: "Landart",
     year: "2026",
     role: "Motion design, 3D and edit",
-    tools: [],
+    tools: ["After Effects", "Cinema 4D", "Redshift", "Premiere Pro", "Illustrator"],
     summary: "The pinnacle of landscape design.",
     description: `A reel for Landart's new brand and website. It moves from the identity, onto the site on a phone, through the garden photography and onto the desktop site, all in 44 seconds.`,
     thumbnail: "images/landart-thumb.jpg",
@@ -117,6 +117,14 @@ It was also a great opportunity to animate in time with a voiceover, and to matc
     video: { file: "media/landart.mp4" },
     videoDate: null,
     credits: [{ role: "Agency", name: "Fuel" }],
+    process: {
+      title: "Process",
+      intro: "",      // a few lines on the brief and how you approached it
+      items: [
+        // { image: "images/x.jpg", caption: "Style frame", wide: true },
+        // { video: "media/x.mp4", poster: "images/x.jpg", ratio: "16 / 9", caption: "Animation test" }
+      ]
+    },
     visible: true,
     featured: true,
     placeholder: false
@@ -127,7 +135,7 @@ It was also a great opportunity to animate in time with a voiceover, and to matc
     client: "Genius Sports",
     year: "2025",
     role: "Creative direction, 3D and animation",
-    tools: [],
+    tools: ["After Effects", "Illustrator"],
     summary: "The future of sports data.",
     description: `At Genius Sports I directed the creative vision for a set of 3D renders and animated the sizzle reel that helped define a new brand identity for one part of the business.
 
@@ -137,12 +145,6 @@ It was part of two busy years there, working with partners like the NFL and the 
     video: { file: "media/geniusiq.mp4" },
     videoDate: null,
     credits: [],
-    caseStudy: true,
-    agency: "In-house, Genius Sports",
-    responsibilities: ["Creative direction of the 3D renders", "Sizzle reel animation"],
-    brief: "",
-    keyDecision: "",
-    result: "",
     process: {
       title: "Process",
       intro: "",
@@ -153,7 +155,6 @@ It was part of two busy years there, working with partners like the NFL and the 
         { image: "images/geniusiq-frame-sports.jpg", caption: "Style frame" }
       ]
     },
-    details: [],
     visible: true,
     featured: true,
     placeholder: false
@@ -164,7 +165,7 @@ It was part of two busy years there, working with partners like the NFL and the 
     client: "Genius Sports",
     year: "2024",
     role: "Animation",
-    tools: [],
+    tools: ["After Effects", "Illustrator"],
     summary: "Putting sports at the core of advertising.",
     description: `A product film for FANHub, Genius Sports' platform that helps brands find sports fans and get more out of their ad campaigns.`,
     thumbnail: "images/fanhub-thumb.jpg",
@@ -172,6 +173,14 @@ It was part of two busy years there, working with partners like the NFL and the 
     video: { file: "media/fanhub.mp4" },
     videoDate: null,
     credits: [],
+    process: {
+      title: "Process",
+      intro: "",      // a few lines on the brief and how you approached it
+      items: [
+        // { image: "images/x.jpg", caption: "Style frame", wide: true },
+        // { video: "media/x.mp4", poster: "images/x.jpg", ratio: "16 / 9", caption: "Animation test" }
+      ]
+    },
     visible: true,
     featured: true,
     placeholder: false
