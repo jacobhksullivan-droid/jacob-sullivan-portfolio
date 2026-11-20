@@ -350,12 +350,12 @@
   function designBlock() {
     var d = S.design || {};
     var sets = (d.sets || (d.items ? [{ items: d.items }] : [])).map(function (st) {
-      return { title: st.title, text: st.text, link: st.link, ratio: st.ratio, items: (st.items || []).filter(function (it) { return it && it.image; }) };
+      return { title: st.title, text: st.text, link: st.link, ratio: st.ratio, items: (st.items || []).filter(function (it) { return it && (it.image || it.video); }) };
     }).filter(function (st) { return st.items.length; });
     if (!sets.length) return "";
     var arrowL = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg>';
     var arrowR = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg>';
-    return '<section class="design section section--tight-top wrap" aria-labelledby="design-title">' +
+    return '<section class="design section" aria-labelledby="design-title"><div class="wrap">' +
       '<h2 class="design__title reveal" id="design-title">' + esc(d.title || "Design") + "</h2>" +
       '<ul class="design__sets">' +
         sets.map(function (st, i) {
@@ -368,6 +368,11 @@
             '<div class="design__frame">' +
             '<div class="design__slides" tabindex="0" role="group" aria-roledescription="carousel" aria-label="' + esc(label) + '" style="aspect-ratio:' + r + '">' +
               st.items.map(function (it, j) {
+                if (it.video) {
+                  // silent loop, plays while on screen
+                  return '<video class="design__slide design__vid" muted loop playsinline preload="none" data-src="' + esc(src(it.video)) + '"' +
+                    (it.poster ? ' poster="' + esc(src(it.poster)) + '"' : "") + ' aria-label="' + esc(it.alt || "") + '"></video>';
+                }
                 return '<img class="design__slide" src="' + esc(src(it.image)) + '" alt="' + esc(it.alt || "") + '" loading="lazy" decoding="async"' +
                   (many ? ' aria-label="' + (j + 1) + " of " + st.items.length + '"' : "") + ">";
               }).join("") +
@@ -376,11 +381,12 @@
               '<button type="button" class="design__btn design__btn--next" data-dir="1" aria-label="Next ' + esc(label) + ' image">' + arrowR + "</button>" : "") +
             "</div></li>";
         }).join("") +
-      "</ul>" +
+      "</ul></div>" +
       // Full-screen viewer: click any image
       '<dialog class="lightbox viewer" aria-label="' + esc(d.title || "Design") + '">' +
         '<button class="lightbox__close" type="button" data-viewer-close aria-label="Close"><span aria-hidden="true">&times;</span> Close</button>' +
         '<img class="viewer__img" alt="">' +
+        '<video class="viewer__img viewer__vid" muted loop playsinline hidden></video>' +
         '<button type="button" class="design__btn viewer__btn viewer__btn--prev" data-viewer="-1" aria-label="Previous image">' + arrowL + "</button>" +
         '<button type="button" class="design__btn viewer__btn viewer__btn--next" data-viewer="1" aria-label="Next image">' + arrowR + "</button>" +
         '<p class="viewer__count" aria-live="polite"></p>' +
@@ -389,12 +395,21 @@
   function wireViewer(scope) {
     var dlg = $(".viewer", scope);
     if (!dlg || !dlg.showModal) return;
-    var img = $(".viewer__img", dlg), count = $(".viewer__count", dlg);
+    var img = $("img.viewer__img", dlg), vid = $("video.viewer__vid", dlg), count = $(".viewer__count", dlg);
     var prev = $('[data-viewer="-1"]', dlg), next = $('[data-viewer="1"]', dlg);
     var list = [], at = 0, opener = null;
     function show(i) {
       at = Math.max(0, Math.min(list.length - 1, i));
-      img.src = list[at].src; img.alt = list[at].alt;
+      var it = list[at];
+      if (it.video) {
+        img.hidden = true; img.removeAttribute("src");
+        vid.hidden = false; vid.setAttribute("aria-label", it.alt || "");
+        if (vid.getAttribute("src") !== it.src) vid.src = it.src;
+        var pv = vid.play(); if (pv && pv.catch) pv.catch(function () {});
+      } else {
+        vid.pause(); vid.hidden = true; vid.removeAttribute("src"); vid.load();
+        img.hidden = false; img.src = it.src; img.alt = it.alt;
+      }
       prev.disabled = at <= 0; next.disabled = at >= list.length - 1;
       prev.hidden = next.hidden = list.length < 2;
       count.textContent = list.length > 1 ? (at + 1) + " / " + list.length : "";
@@ -403,7 +418,10 @@
       var imgs = $$(".design__slide", set);
       imgs.forEach(function (im, i) {
         im.addEventListener("click", function () {
-          list = imgs.map(function (x) { return { src: x.currentSrc || x.src, alt: x.alt }; });
+          list = imgs.map(function (x) {
+            return x.tagName === "VIDEO" ? { video: true, src: x.getAttribute("data-src"), alt: x.getAttribute("aria-label") || "" }
+              : { src: x.currentSrc || x.src, alt: x.alt };
+          });
           opener = im;
           show(i);
           root.classList.add("reel-open");
@@ -428,6 +446,7 @@
       if (Math.abs(dx) > 40) show(at + (dx < 0 ? 1 : -1));
     });
     dlg.addEventListener("close", function () {
+      vid.pause(); vid.removeAttribute("src"); vid.load();
       root.classList.remove("reel-open");
       if (opener) { var set = opener.closest(".design__set"); var box = set && $(".design__slides", set); if (box) box.focus({ preventScroll: true }); }
     });
@@ -435,6 +454,20 @@
   function wireDesign(scope) {
     wireViewer(scope);
     var still = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // Video loops in the Design sets: load and play only while on screen (not under reduced motion)
+    var vids = $$(".design__vid", scope);
+    if (vids.length && "IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var v = e.target;
+          if (e.isIntersecting && !still.matches) {
+            if (!v.getAttribute("src")) v.src = v.getAttribute("data-src");
+            var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+          } else { v.pause(); }
+        });
+      }, { threshold: 0.25 });
+      vids.forEach(function (v) { io.observe(v); });
+    }
     $$(".design__set", scope).forEach(function (set) {
       var box = $(".design__slides", set), btns = $$("[data-dir]", set), count = $(".design__count", set);
       if (!btns.length) return;

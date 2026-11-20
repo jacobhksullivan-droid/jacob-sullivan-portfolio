@@ -82,6 +82,7 @@ window.SITE = {
   //   link   OPTIONAL page the caption links to, e.g. "/work/genius-sports-sizzle-reel"
   //   ratio  the shape of the set's images: "1 / 1" square, "9 / 16" tall, "16 / 9" wide
   // Each set is its own little carousel: people use the arrows to flip through it.
+  // A set can also hold a silent looping video: { video: "media/design/x.mp4", poster: "images/design/x.jpg", alt: "..." }
   // Delete every set (sets: []) to hide the carousel.
   design: {
     title: "Design",
@@ -103,6 +104,7 @@ window.SITE = {
         text: "",
         link: "",
         items: [
+          { video: "media/design/expectation-reality.mp4", poster: "images/design/expectation-reality.jpg", alt: "Expectation / Reality: a looping gradient animation" },
           { image: "images/design/gradient-bars.webp", alt: "Glowing red and pink gradient bars on black" },
           { image: "images/design/gradient-cubes.webp", alt: "Two glossy cubes floating over a red gradient" },
           { image: "images/design/gradient-discs.webp", alt: "A sphere resting on stacked gradient discs" }
