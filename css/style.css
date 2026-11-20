@@ -718,15 +718,6 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
 }
 .js .reveal.is-in { opacity: 1; transform: none; }
 
-/* Smooth page-to-page transitions in browsers that support them */
-@view-transition { navigation: auto; }
-::view-transition-image-pair(root) { background: #1291bd; }      /* the blue you see between pages */
-::view-transition-old(root) { animation: vtOut 300ms cubic-bezier(.4, 0, .2, 1) both; }
-::view-transition-new(root) { animation: vtIn 620ms cubic-bezier(.76, 0, .24, 1) 140ms both; }
-@keyframes vtOut { to { opacity: 0; transform: scale(.985); } }
-@keyframes vtIn { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
-.site-header { view-transition-name: header; }
-::view-transition-group(header) { animation: none; }
 
 /* ---------- Reduced motion ---------- */
 
@@ -742,7 +733,6 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
   .marquee__group[aria-hidden="true"] { display: none; }
   .ph--dark::before { animation: none; }
   .closing__glow { animation: none; }
-  @view-transition { navigation: none; }
 }
 
 /* ---------- Case study, availability, quote, clients ---------- */
