@@ -590,7 +590,7 @@
 
       closing() +
 
-      '<dialog class="lightbox" aria-label="' + esc(reelTitle) + '">' +
+      '<dialog class="lightbox lightbox--reel" aria-label="' + esc(reelTitle) + '">' +
         '<button class="lightbox__close" type="button" data-reel-close aria-label="Close reel"><span aria-hidden="true">&times;</span> Close</button>' +
         '<div class="player" data-reel-frame></div>' +
       "</dialog>";
@@ -598,7 +598,7 @@
     setMeta((S.name || "") + " | " + (S.roleLine || "Motion designer"), S.description, "/");
     videoData((S.name || "") + " " + reelTitle, S.description, R.video, R.poster, R.date);
 
-    var dlg = $(".lightbox", main), frame = $("[data-reel-frame]", main);
+    var dlg = $(".lightbox--reel", main), frame = $("[data-reel-frame]", main);
     var openBtn = $("[data-reel-open]", main);
     if (openBtn && dlg && dlg.showModal) {
       var openReel = function () {
