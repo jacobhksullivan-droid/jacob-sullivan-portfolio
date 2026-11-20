@@ -862,11 +862,11 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
 
 /* Design section sits on a dark band, so it reads as its own part of the page */
 .design {
-  --ink: var(--on-dark); --muted: rgba(246,245,243,.62); --line: rgba(246,245,243,.14); --ph: #1c1c1c;
-  background: var(--dark); color: var(--ink);
+  --ink: #111; --muted: rgba(17,17,17,.68); --line: rgba(17,17,17,.2); --ph: rgba(255,255,255,.18);
+  background: #0a6ff7; color: var(--ink);
   margin-top: clamp(48px, 6vw, 88px);
 }
 .design .card__title { color: var(--ink); }
-.design .design__title { color: #1291bd; }
+.design .design__title { color: var(--ink); }
 .design + .closing { padding-top: var(--section); }   /* section heading in blue on the dark band */
-.design { --accent: var(--on-dark); }
+.design { --accent: #111; }
