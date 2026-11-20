@@ -159,6 +159,24 @@ It was part of two busy years there, working with partners like the NFL and the 
     placeholder: false
   },
   {
+    slug: "genius-sports-fanhub",
+    title: "FANHub",
+    client: "Genius Sports",
+    year: "2024",
+    role: "Animation",
+    tools: [],
+    summary: "Putting sports at the core of advertising.",
+    description: `A product film for FANHub, Genius Sports' platform that helps brands find sports fans and get more out of their ad campaigns.`,
+    thumbnail: "images/fanhub-thumb.jpg",
+    previewVideo: "media/fanhub-loop.mp4",
+    video: { file: "media/fanhub.mp4" },
+    videoDate: null,
+    credits: [],
+    visible: true,
+    featured: true,
+    placeholder: false
+  },
+  {
     slug: "jim-beam-ooh",
     title: "Out-of-home rollout",
     client: "Jim Beam",
