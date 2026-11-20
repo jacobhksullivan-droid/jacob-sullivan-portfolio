@@ -135,7 +135,7 @@ It was also a great opportunity to animate in time with a voiceover, and to matc
     client: "Genius Sports",
     year: "2025",
     role: "Creative direction, 3D and animation",
-    tools: ["After Effects", "Illustrator"],
+    tools: ["After Effects", "Blender", "Illustrator"],
     summary: "The future of sports data.",
     description: `At Genius Sports I directed the creative vision for a set of 3D renders and animated the sizzle reel that helped define a new brand identity for one part of the business.
 
