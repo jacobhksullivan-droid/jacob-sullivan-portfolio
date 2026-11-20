@@ -850,8 +850,8 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
 
 /* Design section sits on a dark band, so it reads as its own part of the page */
 .design {
-  --ink: #fff; --muted: rgba(255,255,255,.78); --line: rgba(255,255,255,.22); --ph: rgba(255,255,255,.12); --accent: #fff;
-  background: #1291bd; color: var(--ink);
+  --ink: var(--on-dark); --muted: rgba(246,245,243,.62); --line: rgba(246,245,243,.14); --ph: #1c1c1c;
+  background: var(--dark); color: var(--ink);
   margin-top: clamp(48px, 6vw, 88px);
 }
 .design .card__title, .design .design__title { color: var(--ink); }
