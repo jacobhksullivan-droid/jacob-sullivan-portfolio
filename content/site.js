@@ -92,9 +92,9 @@ window.SITE = {
         text: "",
         link: "/work/genius-sports-sizzle-reel",
         items: [
-          { image: "images/design/genius-tshirts.webp", alt: "Genius Sports t-shirt design, front and back" },
+          { image: "images/design/genius-low-latency.jpg", alt: "Genius Sports frame: All within a low-latency stream" },
           { image: "images/design/genius-new-edge.jpg", alt: "Genius Sports frame: Everyone is looking for a new edge" },
-          { image: "images/design/genius-low-latency.jpg", alt: "Genius Sports frame: All within a low-latency stream" }
+          { image: "images/design/genius-tshirts.webp", alt: "Genius Sports t-shirt design, front and back" }
         ]
       },
       {
