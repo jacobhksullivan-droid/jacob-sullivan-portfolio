@@ -494,29 +494,7 @@ ul, ol { padding: 0; list-style: none; }
 
 /* ---------- Closing CTA ---------- */
 
-.closing {
-  --ink: #fff; --muted: rgba(255,255,255,.82); --line: rgba(255,255,255,.25); --accent: #fff;
-  position: relative; overflow: hidden; isolation: isolate;
-  padding-block: var(--section); color: var(--ink); background: #0b2a5b;
-}
-/* slow drifting blues, softly blurred: the gradient motif */
-.closing__glow {
-  position: absolute; inset: -35%; z-index: -1; pointer-events: none;
-  background:
-    radial-gradient(38% 46% at 22% 32%, #1291bd 0%, transparent 70%),
-    radial-gradient(34% 42% at 78% 62%, #3b4fe0 0%, transparent 70%),
-    radial-gradient(30% 36% at 58% 18%, #8fdcf2 0%, transparent 72%),
-    radial-gradient(40% 46% at 35% 85%, #0a1a3f 0%, transparent 70%);
-  filter: blur(30px);
-  animation: gradDrift 22s ease-in-out infinite alternate;
-}
-@keyframes gradDrift {
-  0%   { transform: translate3d(-4%, -2%, 0) rotate(0deg) scale(1); }
-  50%  { transform: translate3d(3%, 4%, 0) rotate(12deg) scale(1.08); }
-  100% { transform: translate3d(5%, -3%, 0) rotate(-8deg) scale(1.02); }
-}
-.closing .btn { background: #fff; border-color: #fff; color: #0b2a5b; }
-.closing .btn:hover, .closing .btn:focus-visible { background: transparent; color: #fff; border-color: #fff; box-shadow: var(--glow); }
+.closing { padding-block: var(--section); }
 .closing__title {
   font-family: var(--serif); font-weight: var(--serif-weight);
   font-size: var(--fs-h1); line-height: 1.02; max-width: 14ch;
@@ -732,7 +710,6 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
   .marquee__group { flex-wrap: wrap; row-gap: 8px; }
   .marquee__group[aria-hidden="true"] { display: none; }
   .ph--dark::before { animation: none; }
-  .closing__glow { animation: none; }
 }
 
 /* ---------- Case study, availability, quote, clients ---------- */
@@ -890,5 +867,6 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
   margin-top: clamp(48px, 6vw, 88px);
 }
 .design .card__title { color: var(--ink); }
-.design .design__title { color: #1291bd; }   /* section heading in blue on the dark band */
+.design .design__title { color: #1291bd; }
+.design + .closing { padding-top: var(--section); }   /* section heading in blue on the dark band */
 .design { --accent: var(--on-dark); }
