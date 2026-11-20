@@ -331,12 +331,13 @@
 
   function closing() {
     var c = S.closing || {};
-    return '<section class="closing wrap reveal" aria-labelledby="closing-title">' +
+    // Sits on a slow-moving blue gradient (the gradient motif)
+    return '<section class="closing" aria-labelledby="closing-title"><div class="closing__glow" aria-hidden="true"></div><div class="wrap reveal">' +
       '<h2 class="closing__title" id="closing-title">' + esc(c.title || "Have a project in mind?") + "</h2>" +
       (c.text ? '<p class="closing__text">' + esc(c.text) + "</p>" : "") +
       (S.availability ? '<p class="availability">' + esc(S.availability) + "</p>" : "") +
       '<a class="btn" href="' + esc(mailto()) + '">' + esc(c.button || "Email me") + " " + arrow + "</a>" +
-    "</section>";
+    "</div></section>";
   }
 
   /* ---------- pages ---------- */
