@@ -85,7 +85,7 @@ window.SITE = {
   // A set can also hold a silent looping video: { video: "media/design/x.mp4", poster: "images/design/x.jpg", alt: "..." }
   // Delete every set (sets: []) to hide the carousel.
   design: {
-    title: "Design",
+    title: "Stills & Experiments",
     sets: [
       {
         title: "Genius Sports",

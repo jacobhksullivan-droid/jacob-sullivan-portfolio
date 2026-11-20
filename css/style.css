@@ -854,5 +854,6 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
   background: var(--dark); color: var(--ink);
   margin-top: clamp(48px, 6vw, 88px);
 }
-.design .card__title, .design .design__title { color: var(--ink); }
+.design .card__title, .design .design__title, .design .design__count { color: #1291bd; }   /* blue headings on the dark band */
+.design { --accent: var(--on-dark); }
 .design + .closing { padding-top: var(--section); }
