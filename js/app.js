@@ -376,9 +376,64 @@
               '<button type="button" class="design__btn design__btn--next" data-dir="1" aria-label="Next ' + esc(label) + ' image">' + arrowR + "</button>" : "") +
             "</div></li>";
         }).join("") +
-      "</ul></section>";
+      "</ul>" +
+      // Full-screen viewer: click any image
+      '<dialog class="lightbox viewer" aria-label="' + esc(d.title || "Design") + '">' +
+        '<button class="lightbox__close" type="button" data-viewer-close aria-label="Close"><span aria-hidden="true">&times;</span> Close</button>' +
+        '<img class="viewer__img" alt="">' +
+        '<button type="button" class="design__btn viewer__btn viewer__btn--prev" data-viewer="-1" aria-label="Previous image">' + arrowL + "</button>" +
+        '<button type="button" class="design__btn viewer__btn viewer__btn--next" data-viewer="1" aria-label="Next image">' + arrowR + "</button>" +
+        '<p class="viewer__count" aria-live="polite"></p>' +
+      "</dialog></section>";
+  }
+  function wireViewer(scope) {
+    var dlg = $(".viewer", scope);
+    if (!dlg || !dlg.showModal) return;
+    var img = $(".viewer__img", dlg), count = $(".viewer__count", dlg);
+    var prev = $('[data-viewer="-1"]', dlg), next = $('[data-viewer="1"]', dlg);
+    var list = [], at = 0, opener = null;
+    function show(i) {
+      at = Math.max(0, Math.min(list.length - 1, i));
+      img.src = list[at].src; img.alt = list[at].alt;
+      prev.disabled = at <= 0; next.disabled = at >= list.length - 1;
+      prev.hidden = next.hidden = list.length < 2;
+      count.textContent = list.length > 1 ? (at + 1) + " / " + list.length : "";
+    }
+    $$(".design__set", scope).forEach(function (set) {
+      var imgs = $$(".design__slide", set);
+      imgs.forEach(function (im, i) {
+        im.addEventListener("click", function () {
+          list = imgs.map(function (x) { return { src: x.currentSrc || x.src, alt: x.alt }; });
+          opener = im;
+          show(i);
+          root.classList.add("reel-open");
+          dlg.showModal();
+        });
+      });
+    });
+    prev.addEventListener("click", function () { show(at - 1); });
+    next.addEventListener("click", function () { show(at + 1); });
+    $("[data-viewer-close]", dlg).addEventListener("click", function () { dlg.close(); });
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); show(at + 1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); show(at - 1); }
+    });
+    // swipe on phones
+    var x0 = null;
+    dlg.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    dlg.addEventListener("touchend", function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40) show(at + (dx < 0 ? 1 : -1));
+    });
+    dlg.addEventListener("close", function () {
+      root.classList.remove("reel-open");
+      if (opener) { var set = opener.closest(".design__set"); var box = set && $(".design__slides", set); if (box) box.focus({ preventScroll: true }); }
+    });
   }
   function wireDesign(scope) {
+    wireViewer(scope);
     var still = window.matchMedia("(prefers-reduced-motion: reduce)");
     $$(".design__set", scope).forEach(function (set) {
       var box = $(".design__slides", set), btns = $$("[data-dir]", set), count = $(".design__count", set);

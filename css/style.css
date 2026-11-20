@@ -825,3 +825,24 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
 @media (max-width: 767px) {
   .design__frame { width: min(100%, calc(62svh * var(--r))); }
 }
+
+/* Design: full-screen viewer (click any image) */
+.design__slide { cursor: zoom-in; }
+.viewer[open] { animation: none; }
+.viewer__img {
+  position: absolute; inset: 0; margin: auto; display: block;
+  max-width: calc(100vw - 112px); max-height: calc(100dvh - 120px); width: auto; height: auto; object-fit: contain;
+}
+.viewer .viewer__btn { opacity: .8; }
+.viewer .viewer__btn:hover, .viewer .viewer__btn:focus-visible { opacity: 1; }
+.viewer .viewer__btn:disabled { opacity: 0; }
+.viewer__btn--prev { left: max(8px, env(safe-area-inset-left)); }
+.viewer__btn--next { right: max(8px, env(safe-area-inset-right)); }
+.viewer__btn svg { width: 28px; height: 28px; }
+.viewer__count {
+  position: absolute; left: 0; right: 0; bottom: max(16px, env(safe-area-inset-bottom));
+  text-align: center; font-size: var(--fs-small); color: rgba(255,255,255,.7); font-variant-numeric: tabular-nums;
+}
+@media (max-width: 767px) {
+  .viewer__img { max-width: 100vw; max-height: calc(100dvh - 140px); }
+}
