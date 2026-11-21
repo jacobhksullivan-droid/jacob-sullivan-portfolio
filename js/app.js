@@ -363,7 +363,7 @@
   function graphicCard(st, i) {
     var r = ratioNum(st.ratio), many = st.items.length > 1, label = st.title || st.client || "Graphics";
     var title = '<span>' + esc(st.title || "") + "</span>";
-    return '<article class="card card--graphic design__set reveal" style="--r:' + r + ';--d:' + ((i % 2) * 90) + 'ms">' +
+    return '<article class="card card--graphic design__set' + (r < 1 ? " card--tall" : "") + ' reveal" style="--r:' + r + ';--d:' + ((i % 2) * 90) + 'ms">' +
       (st.client ? '<p class="label card__client">' + esc(st.client) + "</p>" : "") +
       '<h3 class="card__title">' + (st.link ? '<a class="card__title-link" href="' + esc(st.link) + '">' + title + "</a>" : title) + "</h3>" +
       (st.summary ? '<p class="card__summary">' + esc(st.summary) + "</p>" : "") +
