@@ -347,50 +347,71 @@
     var n = m.length === 2 ? parseFloat(m[0]) / parseFloat(m[1]) : parseFloat(r);
     return n > 0 ? n : 1;
   }
-  function designBlock() {
+  // Graphic pieces (site.js -> design.sets). Each set is a card in the work grid,
+  // laid out like the video cards, with its own little carousel and a full-screen viewer.
+  var ARROW_L = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg>';
+  var ARROW_R = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg>';
+  function designSets() {
     var d = S.design || {};
-    var sets = (d.sets || (d.items ? [{ items: d.items }] : [])).map(function (st) {
-      return { title: st.title, text: st.text, link: st.link, ratio: st.ratio, items: (st.items || []).filter(function (it) { return it && (it.image || it.video); }) };
-    }).filter(function (st) { return st.items.length; });
-    if (!sets.length) return "";
-    var arrowL = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg>';
-    var arrowR = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg>';
-    return '<section class="design section" aria-labelledby="design-title"><div class="wrap">' +
-      '<h2 class="design__title reveal" id="design-title">' + esc(d.title || "Design") + "</h2>" +
-      '<ul class="design__sets">' +
-        sets.map(function (st, i) {
-          var r = ratioNum(st.ratio), many = st.items.length > 1, label = st.title || ("Set " + (i + 1));
-          var title = st.title ? '<h3 class="card__title design__set-title">' + (st.link ? '<a href="' + esc(st.link) + '"><span>' + esc(st.title) + "</span></a>" : "<span>" + esc(st.title) + "</span>") + "</h3>" : "";
-          var head = '<div class="design__head">' + '<div>' + title +
-            (st.text ? '<p class="card__summary">' + esc(st.text) + "</p>" : "") + "</div>" +
-            (many ? '<span class="design__count" aria-hidden="true">1 / ' + st.items.length + "</span>" : "") + "</div>";
-          return '<li class="design__set reveal" style="--r:' + r + ';--d:' + ((i % 2) * 90) + 'ms">' + head +
-            '<div class="design__frame">' +
-            '<div class="design__slides" tabindex="0" role="group" aria-roledescription="carousel" aria-label="' + esc(label) + '" style="aspect-ratio:' + r + '">' +
-              st.items.map(function (it, j) {
-                if (it.video) {
-                  // silent loop, plays while on screen
-                  return '<video class="design__slide design__vid" muted loop playsinline preload="none" data-src="' + esc(src(it.video)) + '"' +
-                    (it.poster ? ' poster="' + esc(src(it.poster)) + '"' : "") + ' aria-label="' + esc(it.alt || "") + '"></video>';
-                }
-                return '<img class="design__slide" src="' + esc(src(it.image)) + '" alt="' + esc(it.alt || "") + '" loading="lazy" decoding="async"' +
-                  (many ? ' aria-label="' + (j + 1) + " of " + st.items.length + '"' : "") + ">";
-              }).join("") +
-            "</div>" +
-            (many ? '<button type="button" class="design__btn design__btn--prev" data-dir="-1" aria-label="Previous ' + esc(label) + ' image">' + arrowL + "</button>" +
-              '<button type="button" class="design__btn design__btn--next" data-dir="1" aria-label="Next ' + esc(label) + ' image">' + arrowR + "</button>" : "") +
-            "</div></li>";
-        }).join("") +
-      "</ul></div>" +
-      // Full-screen viewer: click any image
-      '<dialog class="lightbox viewer" aria-label="' + esc(d.title || "Design") + '">' +
-        '<button class="lightbox__close" type="button" data-viewer-close aria-label="Close"><span aria-hidden="true">&times;</span> Close</button>' +
-        '<img class="viewer__img" alt="">' +
-        '<video class="viewer__img viewer__vid" muted loop playsinline hidden></video>' +
-        '<button type="button" class="design__btn viewer__btn viewer__btn--prev" data-viewer="-1" aria-label="Previous image">' + arrowL + "</button>" +
-        '<button type="button" class="design__btn viewer__btn viewer__btn--next" data-viewer="1" aria-label="Next image">' + arrowR + "</button>" +
-        '<p class="viewer__count" aria-live="polite"></p>' +
-      "</dialog></section>";
+    return (d.sets || []).map(function (st) {
+      var o = {};
+      for (var k in st) o[k] = st[k];
+      o.items = (st.items || []).filter(function (it) { return it && (it.image || it.video); });
+      return o;
+    }).filter(function (st) { return st.items.length && st.visible !== false; });
+  }
+  function graphicCard(st, i) {
+    var r = ratioNum(st.ratio), many = st.items.length > 1, label = st.title || st.client || "Graphics";
+    var title = '<span>' + esc(st.title || "") + "</span>";
+    return '<article class="card card--graphic design__set reveal" style="--r:' + r + ';--d:' + ((i % 2) * 90) + 'ms">' +
+      (st.client ? '<p class="label card__client">' + esc(st.client) + "</p>" : "") +
+      '<h3 class="card__title">' + (st.link ? '<a class="card__title-link" href="' + esc(st.link) + '">' + title + "</a>" : title) + "</h3>" +
+      (st.summary ? '<p class="card__summary">' + esc(st.summary) + "</p>" : "") +
+      '<div class="design__frame">' +
+        '<div class="design__slides" tabindex="0" role="group" aria-roledescription="carousel" aria-label="' + esc(label) + '" style="aspect-ratio:' + r + '">' +
+          st.items.map(function (it, j) {
+            if (it.video) {
+              // silent loop, plays while on screen
+              return '<video class="design__slide design__vid" muted loop playsinline preload="none" data-src="' + esc(src(it.video)) + '"' +
+                (it.poster ? ' poster="' + esc(src(it.poster)) + '"' : "") + ' aria-label="' + esc(it.alt || "") + '"></video>';
+            }
+            return '<img class="design__slide" src="' + esc(src(it.image)) + '" alt="' + esc(it.alt || "") + '" loading="lazy" decoding="async"' +
+              (many ? ' aria-label="' + (j + 1) + " of " + st.items.length + '"' : "") + ">";
+          }).join("") +
+        "</div>" +
+        (many ? '<button type="button" class="design__btn design__btn--prev" data-dir="-1" aria-label="Previous ' + esc(label) + ' image">' + ARROW_L + "</button>" +
+          '<button type="button" class="design__btn design__btn--next" data-dir="1" aria-label="Next ' + esc(label) + ' image">' + ARROW_R + "</button>" +
+          '<span class="design__count" aria-hidden="true">1 / ' + st.items.length + "</span>" : "") +
+      "</div></article>";
+  }
+  function designViewer() {
+    return '<dialog class="lightbox viewer" aria-label="Image viewer">' +
+      '<button class="lightbox__close" type="button" data-viewer-close aria-label="Close"><span aria-hidden="true">&times;</span> Close</button>' +
+      '<img class="viewer__img" alt="">' +
+      '<video class="viewer__img viewer__vid" muted loop playsinline hidden></video>' +
+      '<button type="button" class="design__btn viewer__btn viewer__btn--prev" data-viewer="-1" aria-label="Previous image">' + ARROW_L + "</button>" +
+      '<button type="button" class="design__btn viewer__btn viewer__btn--next" data-viewer="1" aria-label="Next image">' + ARROW_R + "</button>" +
+      '<p class="viewer__count" aria-live="polite"></p>' +
+    "</dialog>";
+  }
+  // Videos first in file order, then the graphic sets. A tall set is moved into a
+  // narrow (2-column) slot of the 4/2, 3/3, 2/4 rhythm so it never gets huge.
+  function mixedGrid(projects, sets) {
+    var list = projects.map(function (p) { return { p: p }; }).concat(sets.map(function (st) { return { st: st }; }));
+    var spans = [4, 2, 3, 3, 2, 4];
+    function span(i) {
+      var n = list.length, s6 = spans[i % 6];
+      if (i === n - 1 && (i % 6 === 0 || i % 6 === 2 || i % 6 === 4)) return 6;   // alone on its row
+      return s6;
+    }
+    for (var i = 0; i < list.length; i++) {
+      var it = list[i];
+      if (!it.st || ratioNum(it.st.ratio) >= 1 || span(i) === 2) continue;
+      for (var j = 0; j < list.length; j++) {
+        if (j !== i && list[j].st && span(j) === 2 && !(ratioNum(list[j].st.ratio) < 1)) { list[i] = list[j]; list[j] = it; break; }
+      }
+    }
+    return list.map(function (x, k) { return x.p ? card(x.p, k) : graphicCard(x.st, k); }).join("");
   }
   function wireViewer(scope) {
     var dlg = $(".viewer", scope);
@@ -573,10 +594,10 @@
       '<section class="section section--tight-top wrap" aria-labelledby="sel-title">' +
         '<div class="section__head"><h2 class="visually-hidden" id="sel-title">Selected work</h2><span></span>' +
           '<a class="link-u" href="/work">All work</a></div>' +
-        '<div class="grid">' + featured.map(card).join("") + "</div>" +
+        '<div class="grid">' + mixedGrid(featured, designSets().filter(function (st) { return st.featured !== false; })) + "</div>" +
       "</section>" +
 
-      designBlock() +
+      designViewer() +
 
       // Optional About teaser: only shows if about.js has a teaser line (off: not in the research brief's home order)
       (A.teaser ?
@@ -649,10 +670,11 @@
         '<h1 class="page-title reveal" style="margin-top:16px">Selected projects</h1>' +
       "</section>" +
       '<section class="section section--tight-top wrap" aria-label="Projects">' +
-        '<div class="grid">' + visible.map(card).join("") + "</div>" +
-      "</section>" + closing();
+        '<div class="grid">' + mixedGrid(visible, designSets()) + "</div>" +
+      "</section>" + designViewer() + closing();
     setMeta("Work | " + S.name, "Selected motion design, 3D and animation projects by " + S.name + ", " + (S.roleLine || "") + ".", "/work");
     wireCardPreviews(main);
+    wireDesign(main);
   }
 
   function renderProject(main) {

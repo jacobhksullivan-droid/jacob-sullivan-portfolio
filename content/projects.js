@@ -182,7 +182,7 @@ It was part of two busy years there, working with partners like the NFL and the 
       ]
     },
     visible: true,
-    featured: true,
+    featured: false,   // Work page only
     placeholder: false
   },
   {

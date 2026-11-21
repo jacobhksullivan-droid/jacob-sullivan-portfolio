@@ -75,22 +75,24 @@ window.SITE = {
     "Pictet"
   ],
 
-  // "Design" carousel on the home page, under the work. Swipe or use the arrows.
-  // Images are grouped into sets; each set gets a caption underneath.
-  //   title  shown under the set
-  //   text   OPTIONAL short line after the title ("" hides it)
-  //   link   OPTIONAL page the caption links to, e.g. "/work/genius-sports-sizzle-reel"
-  //   ratio  the shape of the set's images: "1 / 1" square, "9 / 16" tall, "16 / 9" wide
-  // Each set is its own little carousel: people use the arrows to flip through it.
+  // GRAPHIC PIECES: shown as cards in the work grid (home and Work page), next to the videos.
+  // Each set is a little carousel: people use the arrows, or click an image for full screen.
+  //   client    small label above the title (like the video cards)
+  //   title     card title
+  //   summary   one line under the title
+  //   link      OPTIONAL page the title links to, e.g. "/work/genius-sports-sizzle-reel"
+  //   ratio     the shape of the set's images: "1 / 1" square, "9 / 16" tall, "16 / 9" wide
+  //   featured  false = Work page only (not on the home page)
   // A set can also hold a silent looping video: { video: "media/design/x.mp4", poster: "images/design/x.jpg", alt: "..." }
-  // Delete every set (sets: []) to hide the carousel.
   design: {
     title: "Stills & Experiments",
     sets: [
       {
-        title: "Genius Sports",
+        client: "Genius Sports",
+        title: "Brand graphics",
+        summary: "Frames and merch for the brand.",
         ratio: "16 / 9",
-        text: "",
+        featured: true,
         link: "/work/genius-sports-sizzle-reel",
         items: [
           { image: "images/design/genius-low-latency.jpg", alt: "Genius Sports frame: All within a low-latency stream" },
@@ -99,9 +101,11 @@ window.SITE = {
         ]
       },
       {
+        client: "Personal project",
         title: "Gradient series",
+        summary: "My ongoing experiments with gradients.",
         ratio: "9 / 16",
-        text: "",
+        featured: true,
         link: "",
         items: [
           { video: "media/design/expectation-reality.mp4", poster: "images/design/expectation-reality.jpg", alt: "Expectation / Reality: a looping gradient animation" },
@@ -111,9 +115,11 @@ window.SITE = {
         ]
       },
       {
-        title: "Jake Three",
+        client: "Jake Three",
+        title: "Leave The World Behind",
+        summary: "Cover art for the single.",
         ratio: "1 / 1",
-        text: "Leave The World Behind",
+        featured: false,
         link: "",
         items: [
           { image: "images/design/jake-three-sky.webp", alt: "Leave The World Behind cover art for Jake Three: a hand reaching down through the clouds" },
