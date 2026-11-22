@@ -360,10 +360,10 @@
       return o;
     }).filter(function (st) { return st.items.length && st.visible !== false; });
   }
-  function graphicCard(st, i) {
+  function graphicCard(st, i, big) {
     var r = ratioNum(st.ratio), many = st.items.length > 1, label = st.title || st.client || "Graphics";
     var title = '<span>' + esc(st.title || "") + "</span>";
-    return '<article class="card card--graphic design__set' + (r < 1 ? " card--tall" : "") + ' reveal" style="--r:' + r + ';--d:' + ((i % 2) * 90) + 'ms">' +
+    return '<article class="card card--graphic design__set' + (r < 1 ? " card--tall" : "") + (big && r <= 1 ? " card--inset" : "") + ' reveal" style="--r:' + r + ';--d:' + ((i % 2) * 90) + 'ms">' +
       (st.client ? '<p class="label card__client">' + esc(st.client) + "</p>" : "") +
       '<h3 class="card__title">' + (st.link ? '<a class="card__title-link" href="' + esc(st.link) + '">' + title + "</a>" : title) + "</h3>" +
       (st.summary ? '<p class="card__summary">' + esc(st.summary) + "</p>" : "") +
@@ -411,7 +411,8 @@
         if (j !== i && list[j].st && span(j) === 2 && !(ratioNum(list[j].st.ratio) < 1)) { list[i] = list[j]; list[j] = it; break; }
       }
     }
-    return list.map(function (x, k) { return x.p ? card(x.p, k) : graphicCard(x.st, k); }).join("");
+    // a square or tall set in a wide (4+ column) slot keeps its image smaller, so it isn't huge
+    return list.map(function (x, k) { return x.p ? card(x.p, k) : graphicCard(x.st, k, span(k) >= 4); }).join("");
   }
   function wireViewer(scope) {
     var dlg = $(".viewer", scope);

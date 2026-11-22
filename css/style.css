@@ -788,6 +788,7 @@ html.deep-sea .tags li { background: rgba(255,255,255,.04); }
 
 /* ---------- Design (home, under the work): one small carousel per set ---------- */
 .card--graphic .design__frame { margin-top: var(--s5); }
+@media (min-width: 768px) { .card--inset .design__frame { width: 58%; } }
 @media (min-width: 768px) { .card--tall { margin-top: clamp(56px, 8vw, 128px); } }   /* tall sets sit a little lower, so they don't line up with their neighbour */
 .card__title-link span::after { content: ""; }
 .card__title-link:hover span::after, .card__title-link:focus-visible span::after { transform: scaleX(1); opacity: 1; }
